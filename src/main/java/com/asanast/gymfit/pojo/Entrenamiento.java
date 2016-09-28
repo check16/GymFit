@@ -1,18 +1,23 @@
 package com.asanast.gymfit.pojo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
+@Table(name="entrenamiento")
 public class Entrenamiento {
 	
 	@Id
@@ -30,7 +35,7 @@ public class Entrenamiento {
 	private String notas;
 	
 	@OneToMany(mappedBy="entrenamiento")
-	private List<Ejercicio> ejercicios;
+	private List<Ejercicio> ejercicios = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name="idUsuario")
