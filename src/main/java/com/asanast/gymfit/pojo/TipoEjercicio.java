@@ -2,6 +2,7 @@ package com.asanast.gymfit.pojo;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,26 +23,29 @@ public class TipoEjercicio {
 	
 	@NotEmpty
 	@NotNull
+	@Column(name="nombreEjercicio")
 	private String nombreEjercicio;
 	
 	@NotEmpty
 	@NotNull
+	@Column(name="descEjercicio")
 	private String descEjercicio;
 	
+	@Column(name="rutaImgEjercicio")
 	private String rutaImgEjercicio;
 	
 	@OneToMany(mappedBy="tipoEjercicio")
 	private List<Ejercicio> ejercicios;
+	
+	public TipoEjercicio(String nombreEjercicio, String descEjercicio) {
+		this.nombreEjercicio = nombreEjercicio;
+		this.descEjercicio = descEjercicio;
+	}
 
 	public TipoEjercicio(String nombreEjercicio, String descEjercicio, String rutaImgEjercicio) {
 		this.nombreEjercicio = nombreEjercicio;
 		this.descEjercicio = descEjercicio;
 		this.rutaImgEjercicio = rutaImgEjercicio;
-	}
-
-	public TipoEjercicio(String nombreEjercicio, String descEjercicio) {
-		this.nombreEjercicio = nombreEjercicio;
-		this.descEjercicio = descEjercicio;
 	}
 
 	public int getIdTipoEjercicio() {
