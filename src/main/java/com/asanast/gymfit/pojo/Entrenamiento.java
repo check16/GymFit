@@ -88,4 +88,12 @@ public class Entrenamiento {
 		this.usuario = usuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Entrenamiento [idEntrenamiento=" + idEntrenamiento + ", nombreEntreno=" + nombreEntreno + ", fecha="
+				+ fecha + ", notas=" + notas + ", ejercicios=" + ejercicios + ", usuario=" + usuario + "]";
+	}
+	
+	
+
 }

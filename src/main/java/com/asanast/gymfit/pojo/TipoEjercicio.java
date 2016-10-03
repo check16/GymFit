@@ -80,4 +80,13 @@ public class TipoEjercicio {
 		this.rutaImgEjercicio = rutaImgEjercicio;
 	}
 
+	@Override
+	public String toString() {
+		return "TipoEjercicio [idTipoEjercicio=" + idTipoEjercicio + ", nombreEjercicio=" + nombreEjercicio
+				+ ", descEjercicio=" + descEjercicio + ", rutaImgEjercicio=" + rutaImgEjercicio + ", ejercicios="
+				+ ejercicios + "]";
+	}
+	
+	
+
 }

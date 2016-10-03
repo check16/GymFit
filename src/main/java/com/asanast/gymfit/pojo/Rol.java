@@ -3,6 +3,7 @@ package com.asanast.gymfit.pojo;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +25,12 @@ public class Rol {
 	
 	private String descRol;
 	
-	@OneToMany(mappedBy="rol")
+	@OneToMany(mappedBy="rol", fetch=FetchType.LAZY)
 	private Set<Usuario> usuarios;
+	
+	public Rol() {
+		
+	}
 
 	public Rol(String nombreRol, String descRol) {
 		this.nombreRol = nombreRol;
@@ -64,4 +69,9 @@ public class Rol {
 		this.idRol = idRol;
 	}
 
+	@Override
+	public String toString() {
+		return "Rol [idRol=" + idRol + ", nombreRol=" + nombreRol + ", descRol=" + descRol + ", usuarios=" + usuarios
+				+ "]";
+	}
 }

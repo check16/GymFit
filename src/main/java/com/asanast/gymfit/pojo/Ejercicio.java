@@ -83,5 +83,13 @@ public class Ejercicio {
 
 	public void setTipoEjercicio(TipoEjercicio tipoEjercicio) {
 		this.tipoEjercicio = tipoEjercicio;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Ejercicio [idEjercicio=" + idEjercicio + ", cargaMax=" + cargaMax + ", totalRepeticiones="
+				+ totalRepeticiones + ", entrenamiento=" + entrenamiento + ", tipoEjercicio=" + tipoEjercicio + "]";
+	}
+	
+	
 }

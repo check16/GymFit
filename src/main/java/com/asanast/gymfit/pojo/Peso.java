@@ -73,7 +73,11 @@ public class Peso {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Peso [idRegistroPeso=" + idRegistroPeso + ", peso=" + peso + ", fecha=" + fecha + ", usuario=" + usuario
+				+ "]";
+	}
 
 }

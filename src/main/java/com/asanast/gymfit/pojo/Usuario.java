@@ -53,6 +53,10 @@ public class Usuario {
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Entrenamiento> entrenamientos;
+	
+	public Usuario() {
+		
+	}
 
 	public Usuario(String login, String clave, String email, int edad, int altura, String rutaFoto) {
 		this.login = login;
@@ -125,6 +129,13 @@ public class Usuario {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", login=" + login + ", clave=" + clave + ", email=" + email
+				+ ", edad=" + edad + ", altura=" + altura + ", rutaFoto=" + rutaFoto + ", rol=" + rol + ", pesos="
+				+ pesos + ", entrenamientos=" + entrenamientos + "]";
 	}	
 	
 	
