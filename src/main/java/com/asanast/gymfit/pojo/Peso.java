@@ -34,7 +34,9 @@ public class Peso {
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 	
-	
+	public Peso() {
+		
+	}
 
 	public Peso(BigDecimal peso, Date fecha, Usuario usuario) {
 		this.peso = peso;

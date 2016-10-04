@@ -50,13 +50,13 @@ public class RolDaoImpl implements RolDao{
 
 	@Override
 	public List<Rol> findByNombreRol(String nombreRol) {
-		final List<Rol> Rols = new ArrayList<>();
+		final List<Rol> rols = new ArrayList<>();
 		Criteria criteria = getSession().createCriteria(Rol.class);
 		criteria.add(Restrictions.like("nombreRol", "%" + nombreRol + "%"));
 		for(final Object o : criteria.list()) {
-			Rols.add((Rol)o);
+			rols.add((Rol)o);
 		}
-		return Rols;
+		return rols;
 	}
 
 	@Override
