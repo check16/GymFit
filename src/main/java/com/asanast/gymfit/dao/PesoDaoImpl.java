@@ -26,7 +26,7 @@ public class PesoDaoImpl implements PesoDao{
 	}
 
 	@Override
-	public List<Peso> findAllByIdUser(int id) {
+	public List<Peso> findAllByIdUsuario(int id) {
 		Criteria crit = getSession().createCriteria(Peso.class);
 		crit.createAlias("usuario", "usuario");
 		crit.add(Restrictions.eq("usuario.idUsuario", id));
