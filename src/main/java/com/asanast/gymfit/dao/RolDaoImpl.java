@@ -28,6 +28,7 @@ public class RolDaoImpl implements RolDao{
 	@Override
 	public void save(Rol rol) {
 		getSession().save(rol);
+		getSession().getTransaction().commit();
 		
 	}
 
@@ -49,14 +50,10 @@ public class RolDaoImpl implements RolDao{
 	}
 
 	@Override
-	public List<Rol> findByNombreRol(String nombreRol) {
-		final List<Rol> rols = new ArrayList<>();
+	public Rol findByNombreRol(String nombreRol) {
 		Criteria criteria = getSession().createCriteria(Rol.class);
-		criteria.add(Restrictions.like("nombreRol", "%" + nombreRol + "%"));
-		for(final Object o : criteria.list()) {
-			rols.add((Rol)o);
-		}
-		return rols;
+		criteria.add(Restrictions.eq("nombreRol", nombreRol));
+		return (Rol) criteria.uniqueResult();
 	}
 
 	@Override

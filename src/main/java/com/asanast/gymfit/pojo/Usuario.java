@@ -34,11 +34,11 @@ public class Usuario {
 	@NotNull
 	private String email;
 	
-	@NotEmpty
+
 	@NotNull
 	private int edad;
 	
-	@NotEmpty
+
 	@NotNull
 	private int altura;
 	

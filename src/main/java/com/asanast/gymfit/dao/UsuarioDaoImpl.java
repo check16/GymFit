@@ -28,6 +28,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	@Override
 	public void save(Usuario usuario) {
 		getSession().save(usuario);
+		getSession().getTransaction().commit();
 		
 	}
 
@@ -49,14 +50,10 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
-	public List<Usuario> findByLogin(String login) {
-		final List<Usuario> usuarios = new ArrayList<>();
+	public Usuario findByLogin(String login) {
 		Criteria criteria = getSession().createCriteria(Usuario.class);
-		criteria.add(Restrictions.like("login", "%" + login + "%"));
-		for(final Object o : criteria.list()) {
-			usuarios.add((Usuario)o);
-		}
-		return usuarios;
+		criteria.add(Restrictions.eq("login", login));
+		return (Usuario) criteria.uniqueResult();
 	}
 
 	@Override

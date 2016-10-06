@@ -23,6 +23,7 @@ public class EjercicioDaoImpl implements EjercicioDao {
 	@Override
 	public void save(Ejercicio ejercicio) {
 		getSession().save(ejercicio);
+		getSession().getTransaction().commit();
 		
 	}
 

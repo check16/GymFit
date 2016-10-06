@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name="peso")
 public class Peso {
@@ -22,11 +20,9 @@ public class Peso {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idRegistroPeso;
 	
-	@NotEmpty
 	@NotNull
 	private BigDecimal peso;
 	
-	@NotEmpty
 	@NotNull
 	private Date fecha;
 	

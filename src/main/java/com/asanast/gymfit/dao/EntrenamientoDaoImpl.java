@@ -10,10 +10,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Entrenamiento;
 import com.asanast.gymfit.pojo.Peso;
 
+@Transactional
+@Repository
 public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	
 	@Autowired
@@ -26,6 +30,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	@Override
 	public void save(Entrenamiento entrenamiento) {
 		getSession().save(entrenamiento);
+		getSession().getTransaction().commit();
 		
 	}
 
