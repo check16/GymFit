@@ -1,7 +1,7 @@
 package com.asanast.gymfit.pojo;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -31,6 +33,10 @@ public class Entrenamiento {
 	@NotEmpty
 	@NotNull
 	private Date fecha;
+	
+	@Temporal(TemporalType.DATE)
+	private Date fechaFin;
+
 	
 	private String notas;
 	

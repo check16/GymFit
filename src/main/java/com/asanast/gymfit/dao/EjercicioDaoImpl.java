@@ -8,9 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Ejercicio;
 
+@Transactional
+@Repository
 public class EjercicioDaoImpl implements EjercicioDao {
 	
 	@Autowired

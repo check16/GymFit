@@ -1,6 +1,6 @@
 package com.asanast.gymfit.dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Entrenamiento;
 import com.asanast.gymfit.pojo.Peso;
+import com.asanast.gymfit.pojo.Usuario;
 
 @Transactional
 @Repository
@@ -57,7 +58,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	}
 
 	@Override
-	public List<Entrenamiento> findAllBetweenDate(Entrenamiento entrenamiento, Date fechaInicio, Date fechaFin) {
+	public List<Entrenamiento> findAllBetweenDate(Usuario usuario, Date fechaInicio, Date fechaFin) {
 		// TODO crear metodo de EntrenamientoDAO para consultar entrenamientos entre fechas.
 		return null;
 	}

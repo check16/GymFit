@@ -1,5 +1,6 @@
 package com.asanast.gymfit.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class EntrenamientoService {
 	public List<Entrenamiento> findAllByIdUsuario(int id) {
 		return entrenamientoDao.findAllByIdUsuario(id);
 		
+	}
+	
+	public List<Entrenamiento> findAllBetweenDates(Usuario usuario, Date fechaInicio, Date fechaFin) {
+		return entrenamientoDao.findAllBetweenDate(usuario, fechaInicio, fechaFin);
 	}
 	
 	public void saveOrUpdate(Entrenamiento entrenamiento, Usuario usuario) {

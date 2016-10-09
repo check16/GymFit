@@ -1,6 +1,6 @@
 package com.asanast.gymfit.dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.asanast.gymfit.pojo.Peso;

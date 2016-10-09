@@ -1,7 +1,7 @@
 package com.asanast.gymfit;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -17,19 +17,17 @@ import com.asanast.gymfit.dao.RolDao;
 import com.asanast.gymfit.dao.UsuarioDao;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
+import com.asanast.gymfit.service.UsuarioService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GymfitDawApplicationTests {
 	
 	@Autowired
-	private PesoDao pesoDao;
-	
-	@Autowired
 	private UsuarioDao usuarioDao;
 	
 	@Autowired
-	private RolDao rolDao;
+	private PesoDao pesoDao;
 
 	SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 	
@@ -37,17 +35,18 @@ public class GymfitDawApplicationTests {
 	@Transactional
 	public void contextLoads() throws ParseException {
 		
-		Usuario usuario2 = usuarioDao.findByLogin("pepito");
+		Usuario usuario = usuarioDao.findByLogin("pepito");
 		
-		Peso peso1 = pesoDao.findByUsuarioAndFecha(usuario2, new Date(format.parse("24-09-2016").getTime()));
+		Peso peso2 = pesoDao.findByUsuarioAndFecha(usuario, new Date(format.parse("24-09-2016").getTime()));
 		
-		if(peso1!=null) {
-			peso1.setPeso(new BigDecimal("75.7"));
-			pesoDao.update(peso1);
+		if(peso2!=null) {
+			peso2.setPeso(new BigDecimal("200.71"));
+			pesoDao.update(peso2);
 			System.out.println("Peso ACTUALIZADO CORRECTAMENTE");
 		}else {
-			Peso peso2 = new Peso(new BigDecimal("60"), new Date(format.parse("24-09-2016").getTime()), usuario2);
-			pesoDao.save(peso2);
+			Peso peso3 = new Peso(new BigDecimal("60"), new Date(format.parse("24-09-2016").getTime()), usuario);
+			pesoDao.save(peso3);
+			System.out.println("Peso GRABADO CORRECTAMENTE");
 		}
 	}
 
