@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.asanast.gymfit.pojo.Rol;
 import com.asanast.gymfit.pojo.TipoEjercicio;
 
 @Transactional
@@ -51,14 +50,10 @@ public class TipoEjercicioImpl implements TipoEjercicioDao{
 	}
 
 	@Override
-	public List<TipoEjercicio> findByNombreEjercicio(String nombreEjercicio) {
-		final List<TipoEjercicio> tipoEjercicios = new ArrayList<>();
-		Criteria criteria = getSession().createCriteria(Rol.class);
-		criteria.add(Restrictions.like("nombreEjercicio", "%" + nombreEjercicio + "%"));
-		for(final Object o : criteria.list()) {
-			tipoEjercicios.add((TipoEjercicio)o);
-		}
-		return tipoEjercicios;
+	public TipoEjercicio findByNombreEjercicio(String nombreEjercicio) {
+		Criteria criteria = getSession().createCriteria(TipoEjercicio.class);
+		criteria.add(Restrictions.eq("nombreEjercicio", nombreEjercicio));
+		return (TipoEjercicio) criteria.uniqueResult();
 	}
 
 	@Override

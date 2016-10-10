@@ -9,7 +9,7 @@ public interface TipoEjercicioDao {
 	public void save(TipoEjercicio tipoEjercicio);
 	public List<TipoEjercicio> findAll();
 	public TipoEjercicio findById(int id);
-	public List<TipoEjercicio> findByNombreEjercicio(String nombreEjercicio);
+	public TipoEjercicio findByNombreEjercicio(String nombreEjercicio);
 	public void update(TipoEjercicio tipoEjercicio);
 	public void delete(TipoEjercicio tipoEjercicio);
 

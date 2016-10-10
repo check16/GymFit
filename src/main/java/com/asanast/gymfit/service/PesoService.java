@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.asanast.gymfit.dao.PesoDao;
-import com.asanast.gymfit.pojo.Entrenamiento;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
 
