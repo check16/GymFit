@@ -3,6 +3,7 @@ package com.asanast.gymfit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.asanast.gymfit.dao.RolDao;
@@ -17,10 +18,15 @@ public class UsuarioService {
 	private UsuarioDao usuarioDao;
 	
 	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private RolDao rolDao;
 	
 	public void save(Usuario usuario) {
 		usuario.setRol(rolDao.findById(Constantes.ROL_REGISTRADO));
+		String claveUsr = usuario.getClave();
+		usuario.setClave(passwordEncoder.encode(claveUsr));
 		usuarioDao.save(usuario);
 	}
 	

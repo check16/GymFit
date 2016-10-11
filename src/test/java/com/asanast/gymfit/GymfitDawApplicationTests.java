@@ -23,7 +23,7 @@ public class GymfitDawApplicationTests {
 	@Transactional
 	public void contextLoads() throws ParseException {
 		
-		Usuario usuario = new Usuario("silmaro", "1234","silmaro@prueba.es", 26, 170, "img/usuario-icono.png");
+		Usuario usuario = new Usuario("juanito", "1234","juanito@prueba.es", 26, 170, "img/usuario-icono.png");
 		
 		usuarioService.save(usuario);
 		
