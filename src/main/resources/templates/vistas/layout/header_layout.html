@@ -23,16 +23,14 @@
 						<!-- Boton toogle del menu --> <a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"> <!-- La imagen de usuario en la barra de navegación -->
 							<img src="dist/img/user2-160x160.jpg" class="user-image"
-							alt="User Image"> <span th:text="${(usuario.login)}" class="hidden-xs"></span>
+							alt="User Image"> <span th:text="${(usuario.nombre) + ' ' + ((usuario.apellido1))}" class="hidden-xs"></span>
 					</a>
 						<ul class="dropdown-menu">
 							<!-- La imagen de usuario en el menu -->
 							<li class="user-header"><img
 								src="dist/img/user2-160x160.jpg" class="img-circle"
 								alt="User Image">
-								<p>
-									Antonio Sanchez <small>Miembro desde
-										Nov. 2012</small>
+								<p th:utext="${(usuario.nombre) + ' ' + ((usuario.apellido1))} + '<small>Miembro desde: ' + ${(usuario.nombre)} + '</small>'">
 								</p></li>
 							<!-- Menu Body -->
 							<!-- Menu Footer-->
