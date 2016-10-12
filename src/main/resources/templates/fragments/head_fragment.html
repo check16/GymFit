@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (titulo)">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<title th:text="${titulo}">GymFit</title>
+<!-- Bootstrap 3.3.6 -->
+<link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	href="bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link th:href="@{dist/css/AdminLTE.min.css}" rel="stylesheet"
+	href="dist/css/AdminLTE.min.css">
+
+<link th:href="@{dist/css/skins/skin-blue.min.css}" rel="stylesheet"
+	href="dist/css/skins/skin-blue.min.css">
+
+<!-- iCheck -->
+<link th:href="@{plugins/iCheck/square/blue.css}" rel="stylesheet"
+	href="../../plugins/iCheck/square/blue.css">
+
+
+
+
+</head>
+</html>

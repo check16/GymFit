@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="../fragments/head_fragment :: head (#{home.page.title})">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <!-- Header principal -->
+  <header th:replace="/layout/header_layout :: header" class="main-header"></header>
+  
+  <aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+  </aside>
+
+  <!-- Wrapper del Contenido -->
+  <div class="content-wrapper">
+    <!-- Contenido Header-->
+    <section class="content-header">
+      <h1>
+        Bienvenidos a GymFit
+        <small>Bienvenidos a la aplicación de gestión de entrenamientos de GymFit</small>
+      </h1>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section class="content">
+
+
+
+    </section>
+    <!-- /Contenido Principal -->
+  </div>
+  <!-- /Wrapper del Contenido -->
+
+  <!-- Footer Principal -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      Proyecto Final DAW
+    </div>
+    <!-- Contenido Izquierda -->
+    <strong>Copyright &copy; 2016 <a href="#">Antonio Sanchez Astudillo</a>.</strong> Todos los derechos reservados.
+  </footer>
+</div>
+<!-- /Wrapper -->
+
+<!-- Fragment con los scripts de la aplicacion -->
+<div th:include="../fragments/scripts_fragment :: scripts"></div>
+</body>
+</html>
