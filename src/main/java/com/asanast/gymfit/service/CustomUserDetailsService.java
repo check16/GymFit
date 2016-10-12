@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.asanast.gymfit.pojo.Usuario;
 
-@Service("customUserDetailsService")
+@Service("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
 	
 	@Autowired

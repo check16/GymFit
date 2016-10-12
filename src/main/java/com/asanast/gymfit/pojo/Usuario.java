@@ -28,6 +28,18 @@ public class Usuario {
 	
 	@NotEmpty
 	@NotNull
+	private String nombre;
+	
+	@NotEmpty
+	@NotNull
+	private String apellido1;
+	
+	@NotEmpty
+	@NotNull
+	private String apellido2;
+	
+	@NotEmpty
+	@NotNull
 	private String clave;
 	
 	@NotEmpty
