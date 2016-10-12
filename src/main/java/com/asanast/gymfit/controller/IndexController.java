@@ -8,7 +8,7 @@ public class IndexController {
 	
 	@RequestMapping("/")
 	public String irIndex() {
-		return "index";
+		return "login";
 	}
 	
 
