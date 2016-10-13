@@ -25,6 +25,10 @@ public class RolService {
 	public Rol findByNombreRol(String nombreRol) {
 		return rolDao.findByNombreRol(nombreRol);
 	}
+	
+	public Rol findByIdRol(int id) {
+		return rolDao.findById(id);
+	}
 
 	public void update(Rol rol) {
 		rolDao.update(rol);

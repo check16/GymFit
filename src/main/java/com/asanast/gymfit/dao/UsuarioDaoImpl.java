@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Usuario;
 
-@Transactional
+
 @Repository
 public class UsuarioDaoImpl implements UsuarioDao{
 	
@@ -26,10 +26,9 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public void save(Usuario usuario) {
-		getSession().save(usuario);
-		getSession().getTransaction().commit();
-		
+		getSession().save(usuario);	
 	}
 
 	@Override
@@ -50,6 +49,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public Usuario findByLogin(String login) {
 		Criteria criteria = getSession().createCriteria(Usuario.class);
 		criteria.add(Restrictions.eq("login", login));

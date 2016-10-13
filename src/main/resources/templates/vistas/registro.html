@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (titulo=#{register.page.title})">
+
+
+</head>
+<body class="hold-transition register-page">
+	<div class="register-box">
+		<div class="register-logo">
+			<a href="#"><b>Admin</b>LTE</a>
+		</div>
+
+
+
+		<div class="register-box-body">
+			<p class="login-box-msg">Registrar un nuevo miembro</p>
+			<div th:if="${param.valido != null}" class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-hidden="true">&times;</button>
+				<h4>
+					<i class="icon fa fa-check"></i> Registrado!
+				</h4>
+				El registro se realizó correctamente.
+			</div>
+
+			<form th:action="@{/registrarse}" th:object="${usuario}"
+				method="post">
+				<div class="form-group has-feedback">
+					<input type="text" th:field="*{login}" class="form-control"
+						placeholder="Login"> <span
+						class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="email" th:field="*{email}" class="form-control"
+						placeholder="Email"> <span
+						class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" th:field="*{clave}" class="form-control"
+						placeholder="Contraseña"> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Registrarse</button>
+					</div>
+				</div>
+			</form>
+			<div class="row">
+				<div class="col-xs-12">
+					<a th:href="@{/login}" href="login.html" class="text-center">Ya
+						tengo un usuario registrado</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.form-box -->
+	</div>
+	<!-- /.register-box -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+
+</body>
+</html>

@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -23,35 +22,24 @@ public class Usuario {
 	private int idUsuario;
 	
 	@NotEmpty
-	@NotNull
 	private String login;
 	
-	@NotEmpty
-	@NotNull
 	private String nombre;
 	
-	@NotEmpty
-	@NotNull
 	private String apellido1;
 	
-	@NotEmpty
-	@NotNull
 	private String apellido2;
 	
 	@NotEmpty
-	@NotNull
 	private String clave;
 	
 	@NotEmpty
-	@NotNull
 	private String email;
 	
 
-	@NotNull
 	private int edad;
 	
 
-	@NotNull
 	private int altura;
 	
 	private String rutaFoto;
