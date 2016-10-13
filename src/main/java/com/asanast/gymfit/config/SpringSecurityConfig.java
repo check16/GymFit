@@ -31,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/home/**").hasAuthority("ROL_REGISTRADO")	
 		.and().formLogin().defaultSuccessUrl("/home")
 				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").usernameParameter("usuario").passwordParameter("clave")
-				.and().logout().logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/login")
+				.and().logout().clearAuthentication(true).logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/login")
 				.and().csrf().and().exceptionHandling()
 				.accessDeniedPage("/403");
 	}
