@@ -21,13 +21,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		System.out.println("ENTRA EN C-GLOBAL");
 		auth.authenticationProvider(customAuthenticationProvider);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("ENTRA EN CONFIGURE");
 		http.authorizeRequests().antMatchers("/home/**").hasAuthority("ROL_REGISTRADO")	
 		.and().formLogin().defaultSuccessUrl("/home")
 				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").usernameParameter("usuario").passwordParameter("clave")

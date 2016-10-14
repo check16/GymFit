@@ -25,7 +25,7 @@ public class UsuarioController {
 			return "registro";
 		}
 		usuarioService.save(usuario);
-		ra.addFlashAttribute("registrado", "Registrado correctamente!");
+		ra.addFlashAttribute("error", false);
 		return "redirect:registro";
 	}
 
