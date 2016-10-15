@@ -41,6 +41,10 @@ public class Entrenamiento {
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 
+	public Entrenamiento() {
+		
+	}
+	
 	public Entrenamiento(String nombreEntreno, Date fecha, String notas, Usuario usuario) {
 		this.nombreEntreno = nombreEntreno;
 		this.fecha = fecha;

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="../fragments/head_fragment :: head (#{home.page.title})">
+<head th:replace="../fragments/head_fragment :: head (#{error.page.title})">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<!-- Content Wrapper. Contains page content -->
 
-
-    <!-- Main content -->
     <section class="content">
 
       <div class="error-page">
@@ -22,10 +19,10 @@
           </p>
         </div>
       </div>
-      <!-- /.error-page -->
+
 
     </section>
-    <!-- /.content -->
+
 <div th:include="../fragments/scripts_fragment :: scripts"></div>
 </body>
 </html>

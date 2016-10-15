@@ -6,7 +6,7 @@
 <body>
 	<!-- Header Principal -->
 	<header th:fragment="header" class="main-header">
-		<a href="index2.html" class="logo"> <span class="logo-mini"><b>G</b>FT</span>
+		<a th:href="@{/home}" class="logo"> <span class="logo-mini"><b>G</b>FT</span>
 			<span class="logo-lg"><b>Gym</b>FIT</span>
 		</a>
 		<!-- Header barra de navegación -->
@@ -22,15 +22,15 @@
 					<li class="dropdown user user-menu">
 						<!-- Boton toogle del menu --> <a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"> <!-- La imagen de usuario en la barra de navegación -->
-							<img th:src="@{'/img/'+ ${(usuario.rutaFoto)}}" class="user-image"
-							alt="User Image"> <span th:text="${(usuario.login)}" class="hidden-xs"></span>
+							<img th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}" class="user-image"
+							alt="User Image"> <span th:text="${(session.usuario.login)}" class="hidden-xs"></span>
 					</a>
 						<ul class="dropdown-menu">
 							<!-- La imagen de usuario en el menu -->
 							<li class="user-header"><img
-								th:src="@{'/img/'+ ${(usuario.rutaFoto)}}" class="img-circle"
+								th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}" class="img-circle"
 								alt="User Image">
-								<p th:utext="${(usuario.login)} + '<small>Miembro desde: ' + ${#dates.format(usuario.fechaRegistro, 'dd/MM/yyyy')} + '</small>'">
+								<p th:utext="${(session.usuario.login)} + '<small>Miembro desde: ' + ${#dates.format(session.usuario.fechaRegistro, 'dd/MM/yyyy')} + '</small>'">
 								</p></li>
 							<!-- Menu Body -->
 							<!-- Menu Footer-->

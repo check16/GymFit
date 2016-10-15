@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/home/**").hasAuthority("ROL_REGISTRADO")	
-		.and().formLogin().defaultSuccessUrl("/home")
+		.and().formLogin().loginProcessingUrl("/login").defaultSuccessUrl("/home")
 				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").usernameParameter("usuario").passwordParameter("clave")
 				.and().logout().clearAuthentication(true).logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/login")
 				.and().csrf().and().exceptionHandling()

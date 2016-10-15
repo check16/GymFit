@@ -30,7 +30,8 @@ public class LoginController {
 	} 
 	
 	@RequestMapping("/login")
-	public String irLogin() {
+	public String irLogin(Model model) {
+		
 		return "login";
 	}
 	

@@ -1,7 +1,7 @@
 package com.asanast.gymfit.dao;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Entrenamiento;
-import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
 
 @Transactional
@@ -47,7 +46,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 
 	@Override
 	public List<Entrenamiento> findAllByIdUsuario(int id) {
-		Criteria crit = getSession().createCriteria(Peso.class);
+		Criteria crit = getSession().createCriteria(Entrenamiento.class);
 		crit.createAlias("usuario", "usuario");
 		crit.add(Restrictions.eq("usuario.idUsuario", id));
 		final List<Entrenamiento> entrenamientos = new ArrayList<>();
