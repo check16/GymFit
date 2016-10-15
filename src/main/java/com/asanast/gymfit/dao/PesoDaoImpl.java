@@ -15,11 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
 
-@Transactional
+
 @Repository
 public class PesoDaoImpl implements PesoDao{
 	
 	@Autowired
+	
 	private SessionFactory sessionFactory;
 	
 	private Session getSession() {
@@ -27,12 +28,14 @@ public class PesoDaoImpl implements PesoDao{
 	}
 
 	@Override
+	@Transactional
 	public void save(Peso peso) {
 		getSession().save(peso);
 		getSession().getTransaction().commit();
 	}
 
 	@Override
+	@Transactional
 	public List<Peso> findAllByIdUsuario(int id) {
 		Criteria crit = getSession().createCriteria(Peso.class);
 		crit.createAlias("usuario", "usuario");
@@ -45,6 +48,7 @@ public class PesoDaoImpl implements PesoDao{
 	}
 
 	@Override
+	@Transactional
 	public void update(Peso peso) {
 		getSession().update(peso);
 		getSession().getTransaction().commit();
@@ -52,12 +56,14 @@ public class PesoDaoImpl implements PesoDao{
 	}
 
 	@Override
+	@Transactional
 	public void delete(Peso peso) {
 		getSession().delete(peso);
 		
 	}
 
 	@Override
+	@Transactional
 	public Peso findByUsuarioAndFecha(Usuario usuario, Date fecha) {
 		Criteria crit = getSession().createCriteria(Peso.class);
 		crit.createAlias("usuario", "usuario");

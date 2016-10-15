@@ -11,14 +11,12 @@
 
 		<div class="register-box-body">
 			<p class="login-box-msg">Registrar un nuevo miembro</p>
-			<div th:if="${error == false}"
+			<div th:if="${error != null}" th:class="${error} ? 'alert alert-danger alert-dismissible' : 'alert alert-success alert-dismissible'"
 				class="alert alert-success alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert"
 					aria-hidden="true">&times;</button>
-				<h4>
-					<i class="icon fa fa-check"></i> Registrado!
+				<h4 th:text="${mensaje}">
 				</h4>
-				El registro se realizó correctamente.
 			</div>
 
 			<form th:action="@{/registrarse}" th:object="${usuario}"

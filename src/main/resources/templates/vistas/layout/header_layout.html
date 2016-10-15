@@ -30,7 +30,7 @@
 							<li class="user-header"><img
 								src="dist/img/user2-160x160.jpg" class="img-circle"
 								alt="User Image">
-								<p th:utext="${(usuario.login)} + '<small>Miembro desde: ' + ${(usuario.login)} + '</small>'">
+								<p th:utext="${(usuario.login)} + '<small>Miembro desde: ' + ${#dates.format(usuario.fechaRegistro, 'dd/MM/yyyy')} + '</small>'">
 								</p></li>
 							<!-- Menu Body -->
 							<!-- Menu Footer-->

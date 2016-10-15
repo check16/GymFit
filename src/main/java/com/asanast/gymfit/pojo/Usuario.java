@@ -1,5 +1,6 @@
 package com.asanast.gymfit.pojo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,52 +11,63 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUsuario;
-	
+
 	@NotEmpty
-	@Size(min=4)
+	@Size(min = 4)
 	private String login;
-	
+
 	@NotEmpty
-	@Size(min=4)
+	@Size(min = 4)
 	private String clave;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
-	
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date fechaRegistro;
+
 	@NotNull
 	private int edad;
-	
+
 	@NotNull
 	private int altura;
-	
+
 	private String rutaFoto;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idRol")
 	private Rol rol;
-	
-	@OneToMany(mappedBy="usuario")
+
+	@OneToMany(mappedBy = "usuario")
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<Peso> pesos;
-	
-	@OneToMany(mappedBy="usuario")
+
+	@OneToMany(mappedBy = "usuario")
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<Entrenamiento> entrenamientos;
-	
+
 	public Usuario() {
-		
+
 	}
 
 	public Usuario(String login, String clave, String email, int edad, int altura, String rutaFoto) {
@@ -129,5 +141,37 @@ public class Usuario {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
-	}		
+	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public List<Peso> getPesos() {
+		return pesos;
+	}
+
+	public void setPesos(List<Peso> pesos) {
+		this.pesos = pesos;
+	}
+
+	public List<Entrenamiento> getEntrenamientos() {
+		return entrenamientos;
+	}
+
+	public void setEntrenamientos(List<Entrenamiento> entrenamientos) {
+		this.entrenamientos = entrenamientos;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", login=" + login + ", clave=" + clave + ", email=" + email
+				+ ", fechaRegistro=" + fechaRegistro + ", edad=" + edad + ", altura=" + altura + ", rutaFoto="
+				+ rutaFoto + ", rol=" + rol + ", pesos=" + pesos + ", entrenamientos=" + entrenamientos + "]";
+	}
+
 }

@@ -1,6 +1,7 @@
 package com.asanast.gymfit;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,14 +23,9 @@ public class GymfitDawApplicationTests {
 	@Test
 	@Transactional
 	public void contextLoads() throws ParseException {
-		
-		Usuario usuario = new Usuario("juanito", "1234","juanito@prueba.es", 26, 170, "img/usuario-icono.png");
-		
-		usuarioService.save(usuario);
-		
-		System.out.println("ALMACENADO");
-		
-		
+		Usuario usuario = usuarioService.findById(5);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println(sdf.format(usuario.getFechaRegistro()));
 	}
 
 }

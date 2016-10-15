@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Rol;
 
-@Transactional
+
 @Repository
 public class RolDaoImpl implements RolDao{
 	
@@ -33,6 +33,7 @@ public class RolDaoImpl implements RolDao{
 	}
 
 	@Override
+	@Transactional
 	public List<Rol> findAll() {
 		Query query = getSession().createQuery("from Rol");
 		final List<Rol> rols = new ArrayList<>();
@@ -43,6 +44,7 @@ public class RolDaoImpl implements RolDao{
 	}
 
 	@Override
+	@Transactional
 	public Rol findById(int id) {
 		Criteria criteria = getSession().createCriteria(Rol.class);
 		criteria.add(Restrictions.eq("idRol", id));
@@ -50,6 +52,7 @@ public class RolDaoImpl implements RolDao{
 	}
 
 	@Override
+	@Transactional
 	public Rol findByNombreRol(String nombreRol) {
 		Criteria criteria = getSession().createCriteria(Rol.class);
 		criteria.add(Restrictions.eq("nombreRol", nombreRol));
@@ -57,12 +60,14 @@ public class RolDaoImpl implements RolDao{
 	}
 
 	@Override
+	@Transactional
 	public void update(Rol rol) {
 		getSession().update(rol);
 		
 	}
 
 	@Override
+	@Transactional
 	public void delete(Rol rol) {
 		getSession().delete(rol);
 		

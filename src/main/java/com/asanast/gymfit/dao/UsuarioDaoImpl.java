@@ -32,6 +32,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public List<Usuario> findAll() {
 		Query query = getSession().createQuery("from Usuario");
 		final List<Usuario> usuarios = new ArrayList<>();
@@ -42,6 +43,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public Usuario findById(int id) {
 		Criteria criteria = getSession().createCriteria(Usuario.class);
 		criteria.add(Restrictions.eq("idUsuario", id));
@@ -57,12 +59,14 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public void update(Usuario usuario) {
 		getSession().update(usuario);
 		
 	}
 
 	@Override
+	@Transactional
 	public void delete(Usuario usuario) {
 		getSession().delete(usuario);
 		
