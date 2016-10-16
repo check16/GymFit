@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -36,7 +38,8 @@ public class Entrenamiento {
 	private String notas;
 	
 	@OneToMany(mappedBy="entrenamiento")
-	private List<Ejercicio> ejercicios = new ArrayList<>();
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Ejercicio> ejercicios = new ArrayList<Ejercicio>();
 	
 	@ManyToOne
 	@JoinColumn(name="idUsuario")
@@ -97,6 +100,14 @@ public class Entrenamiento {
 	public String toString() {
 		return "Entrenamiento [idEntrenamiento=" + idEntrenamiento + ", nombreEntreno=" + nombreEntreno + ", fecha="
 				+ fecha + ", notas=" + notas + ", ejercicios=" + ejercicios + ", usuario=" + usuario + "]";
+	}
+
+	public List<Ejercicio> getEjercicios() {
+		return ejercicios;
+	}
+
+	public void setEjercicios(List<Ejercicio> ejercicios) {
+		this.ejercicios = ejercicios;
 	}
 	
 	

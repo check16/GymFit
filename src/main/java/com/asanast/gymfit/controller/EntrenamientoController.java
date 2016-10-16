@@ -34,6 +34,18 @@ public class EntrenamientoController {
 			return "redirect:/home";
 		}
 	}
+	
+	@RequestMapping(value = "/home/entrenamiento/{id}/actualizar")
+	public String actualizarEntrenamiento(@PathVariable("id") int idEntrenamiento, Model model) {
+		Entrenamiento entrenamiento = entrenamientoService.findById(idEntrenamiento);
+		if (entrenamiento != null) {
+			model.addAttribute("entrenamiento", entrenamiento);
+			return "actualizarEntrenamiento";
+		}else {
+			return "redirect:/home/entrenamiento";
+		}
+
+	}
 
 	@RequestMapping(value = "/home/entrenamiento/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody

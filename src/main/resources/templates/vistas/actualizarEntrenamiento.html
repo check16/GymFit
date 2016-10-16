@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{home.page.title})">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+			<!-- Contenido Header-->
+
+			<!-- Contenido Principal -->
+			<section class="content-header">
+				<h1
+					th:text="'Editar entrenamiento - ' + ${(entrenamiento.nombreEntreno)}"></h1>
+
+			</section>
+			<!-- /Contenido Principal -->
+
+
+			<section class="content">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-success">
+							<div class="box-header with-border">
+								<h3 class="box-title">Datos entrenamiento</h3>
+							</div>
+							<div class="box-body">
+								<form class="form-horizontal">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="nombreEntreno" class="col-sm-2 control-label">Nombre
+												entrenamiento: </label>
+
+											<div class="input-group col-sm-6">
+
+												<input th:value="${(entrenamiento.nombreEntreno)}"
+													type="text" class="form-control" id="nombreEntreno">
+												<div class="input-group-addon">
+													<i class="fa fa-pencil-square-o"></i>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="datepicker" class="col-sm-2 control-label">Fecha
+												de Entreno</label>
+
+											<div class="input-group col-sm-6">
+
+												<input
+													th:value="${#dates.format(entrenamiento.fecha, 'dd/MM/yyyy')}"
+													type="text" class="form-control" id="datepicker">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+											</div>;
+										</div>
+
+										<div class="form-group">
+											<label for="notasEntreno" class="col-sm-2 control-label">Notas
+												de entreno</label>
+
+											<div class="input-group col-sm-6">
+
+												<textarea id="notasEntreno"
+													th:text="${(entrenamiento.notas)}" style="resize: none"
+													class="form-control" rows="3"
+													placeholder="Introduce las notas del entrenamiento..."></textarea>
+												<div class="input-group-addon">
+													<i class="fa fa-sticky-note"></i>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+
+											<div th:each="ejercicio : ${entrenamiento.ejercicios}" class="form-group">
+												<span class="col-md-2 control-label">Ejercicios</span>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label for="inputKey" class="col-md-1 control-label">Ejercicio</label>
+														<div class="col-md-2">
+															<input type="text" class="form-control" id="ejercicio"
+																placeholder="Key">
+														</div>
+														<label for="inputValue" class="col-md-1 control-label">Value</label>
+														<div class="col-md-2">
+															<input type="text" class="form-control" id="inputValue"
+																placeholder="Value">
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<!-- /.box-body -->
+									<div class="box-footer">
+										<button type="submit" class="btn btn-info pull-right">Actualizar</button>
+									</div>
+									<!-- /.box-footer -->
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /.box-header -->
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script th:src="@{/ajax/ajaxEntrenamiento.js}"></script>
+	<script>
+		$(function() {
+			$('#datepicker').datepicker({
+				format : 'dd/mm/yyyy',
+				autoclose : true
+			});
+		});
+	</script>
+</body>
+</html>

@@ -36,6 +36,10 @@ public class Ejercicio {
 	@ManyToOne
 	@JoinColumn(name="idTipoEjercicio")
 	private TipoEjercicio tipoEjercicio;
+	
+	public Ejercicio() {
+		
+	}
 
 	public Ejercicio(BigDecimal cargaMax, int totalRepeticiones, Entrenamiento entrenamiento,
 			TipoEjercicio tipoEjercicio) {
