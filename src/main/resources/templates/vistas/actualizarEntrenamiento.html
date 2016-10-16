@@ -8,8 +8,7 @@
 	<div class="wrapper">
 
 		<!-- Header principal -->
-		<header th:replace="/layout/header_layout :: header"
-			class="main-header"></header>
+		<header th:replace="/layout/header_layout :: header" class="main-header"></header>
 
 		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
 
@@ -21,13 +20,9 @@
 
 			<!-- Contenido Principal -->
 			<section class="content-header">
-				<h1
-					th:text="'Editar entrenamiento - ' + ${(entrenamiento.nombreEntreno)}"></h1>
-
+				<h1	th:text="'Editar entrenamiento - ' + ${(entrenamiento.nombreEntreno)}"></h1>
 			</section>
 			<!-- /Contenido Principal -->
-
-
 			<section class="content">
 
 				<div class="row">
@@ -64,7 +59,8 @@
 												<div class="input-group-addon">
 													<i class="fa fa-calendar"></i>
 												</div>
-											</div>;
+											</div>
+
 										</div>
 
 										<div class="form-group">
@@ -83,27 +79,25 @@
 											</div>
 										</div>
 
-										<div class="form-group">
-
-											<div th:each="ejercicio : ${entrenamiento.ejercicios}" class="form-group">
-												<span class="col-md-2 control-label">Ejercicios</span>
-												<div class="col-md-6">
-													<div class="form-group row">
-														<label for="inputKey" class="col-md-1 control-label">Ejercicio</label>
-														<div class="col-md-2">
-															<input type="text" class="form-control" id="ejercicio"
-																placeholder="Key">
-														</div>
-														<label for="inputValue" class="col-md-1 control-label">Value</label>
-														<div class="col-md-2">
-															<input type="text" class="form-control" id="inputValue"
-																placeholder="Value">
-														</div>
-													</div>
-												</div>
-											</div>
-
-										</div>
+										<table style="width: 60%" class="table table-striped">
+											<tbody>
+												<tr>
+													<th style="width: 25%">Ejercicio</th>
+													<th style="width: 10%">Carga Maxima</th>
+													<th style="width: 10%">Total Repeticiones</th>
+													<th style="width: 5%"></th>
+												</tr>
+												<tr th:id="${ejercicio.idEjercicio}" th:each="ejercicio : ${entrenamiento.ejercicios}">
+													<td><select class="form-control"><option>Prueba</option></select></td>
+													<td><input th:value="${ejercicio.CargaMax}" type="number" class="form-control"
+														placeholder="(Kg.)"></td>
+													<td><input th:value="${ejercicio.totalRepeticiones}" type="number" class="form-control"
+														placeholder="Total Rep"></td>
+													<td><a class="btn btn-danger btn"><i
+															class="fa fa-trash"></i></a></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 
 									<!-- /.box-body -->
