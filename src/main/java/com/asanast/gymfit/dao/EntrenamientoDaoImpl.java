@@ -26,6 +26,13 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+	
+	@Override
+	public Entrenamiento findById(int id) {
+		Criteria criteria = getSession().createCriteria(Entrenamiento.class);
+		criteria.add(Restrictions.eq("idEntrenamiento", id));
+		return (Entrenamiento) criteria.uniqueResult();
+	}
 
 	@Override
 	public void save(Entrenamiento entrenamiento) {
@@ -70,8 +77,10 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 
 	@Override
 	public void delete(Entrenamiento entrenamiento) {
-		getSession().save(entrenamiento);
+		getSession().delete(entrenamiento);
 		
 	}
+
+	
 
 }

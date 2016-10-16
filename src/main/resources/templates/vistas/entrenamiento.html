@@ -61,7 +61,7 @@
 							<div class="box-body table-responsive">
 								A continuación se muestran los entrenamientos planificados:
 
-								<table th:if="${not #lists.isEmpty(entrenamientos)}"
+								<table id="tablaEntreno" th:if="${not #lists.isEmpty(entrenamientos)}"
 									class="table table-hover">
 									<tr>
 										<th>Nombre Entrenamiento</th>
@@ -69,7 +69,7 @@
 										<th>Notas entrenamiento</th>
 										<th>Acciones</th>
 									</tr>
-									<tr th:each="entrenamiento : ${entrenamientos}">
+									<tr th:id="${entrenamiento.idEntrenamiento}" th:each="entrenamiento : ${entrenamientos}">
 										<td th:text="${entrenamiento.nombreEntreno}"></td>
 										<td
 											th:text="${#dates.dayOfWeekName(entrenamiento.fecha) + ' ' + #dates.format(entrenamiento.fecha, 'dd MMMM yyyy')}"></td>
@@ -78,7 +78,7 @@
 										<a th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/actualizar|}" class="btn btn-success btn"> <span
 												class="fa fa-pencil-square-o"></span> Editar
 										</a>
-										<a href="#" class="btn btn-danger btn"> <span
+										<a th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/eliminar|}" th:id="${'entr' + entrenamiento.idEntrenamiento}" class="btn btn-danger btn eliminarEntreno"> <span
 												class="fa fa-times-circle"></span> Eliminar
 										</a>
 										</td>
@@ -112,5 +112,6 @@
 
 	<!-- Fragment con los scripts de la aplicacion -->
 	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script th:src="@{/ajax/ajaxEntrenamiento.js}"></script>
 </body>
 </html>

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -28,8 +30,7 @@ public class Entrenamiento {
 	@NotNull
 	private String nombreEntreno;
 	
-	@NotEmpty
-	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	private String notas;

@@ -21,6 +21,10 @@ public class EntrenamientoService {
 		entrenamientoDao.save(entrenamiento);
 	}
 	
+	public Entrenamiento findById(int id) {
+		return entrenamientoDao.findById(id);
+	}
+	
 	public List<Entrenamiento> findAll() {
 		return entrenamientoDao.findAll();
 	}
