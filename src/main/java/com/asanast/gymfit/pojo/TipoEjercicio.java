@@ -37,7 +37,7 @@ public class TipoEjercicio {
 	private String rutaImgEjercicio;
 	
 	@OneToMany(mappedBy="tipoEjercicio")
-	@LazyCollection(LazyCollectionOption.TRUE)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Ejercicio> ejercicios;
 	
 	public TipoEjercicio() {

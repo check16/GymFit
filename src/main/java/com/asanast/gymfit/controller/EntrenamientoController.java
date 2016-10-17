@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.asanast.gymfit.pojo.Entrenamiento;
+import com.asanast.gymfit.pojo.TipoEjercicio;
 import com.asanast.gymfit.pojo.Usuario;
 import com.asanast.gymfit.service.EntrenamientoService;
+import com.asanast.gymfit.service.TipoEjercicioService;
 
 @Controller
 public class EntrenamientoController {
 
 	@Autowired
 	private EntrenamientoService entrenamientoService;
+	
+	@Autowired
+	private TipoEjercicioService tipoEjercicioService;
 
 	@RequestMapping("/home/entrenamiento")
 	public String irEntrenamiento(HttpSession sesion, Model model) {
@@ -39,7 +44,9 @@ public class EntrenamientoController {
 	public String actualizarEntrenamiento(@PathVariable("id") int idEntrenamiento, Model model) {
 		Entrenamiento entrenamiento = entrenamientoService.findById(idEntrenamiento);
 		if (entrenamiento != null) {
+			List<TipoEjercicio> tipoEjercicios = tipoEjercicioService.findAll();
 			model.addAttribute("entrenamiento", entrenamiento);
+			model.addAttribute("tipoEjercicios", tipoEjercicios);
 			return "actualizarEntrenamiento";
 		}else {
 			return "redirect:/home/entrenamiento";
@@ -51,6 +58,7 @@ public class EntrenamientoController {
 	@ResponseBody
 	public void eliminarEntrenamiento(@PathVariable("id") int idEntrenamiento) {
 		Entrenamiento entrenamiento = entrenamientoService.findById(idEntrenamiento);
+		
 		if (entrenamiento != null) {
 			entrenamientoService.delete(entrenamiento);
 		}

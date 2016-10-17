@@ -34,7 +34,7 @@ public class UsuarioController {
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("error", true);
 			ra.addFlashAttribute("mensaje", "Error al registrarse!");
-			return "redirect:registro";
+			return "registro";
 		}
 		
 		usuario.setFechaRegistro(new Date());

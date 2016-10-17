@@ -88,7 +88,12 @@
 													<th style="width: 5%"></th>
 												</tr>
 												<tr th:id="${ejercicio.idEjercicio}" th:each="ejercicio : ${entrenamiento.ejercicios}">
-													<td><select class="form-control"><option>Prueba</option></select></td>
+													<td>
+													<select class="form-control select2" style="width: 100%;">
+														<option th:each="tipoEjercicio : ${tipoEjercicios}" th:value="${tipoEjercicio.idTipoEjercicio}" th:text="${tipoEjercicio.nombreEjercicio}" 
+                                							th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}"/>
+													
+													</select></td>
 													<td><input th:value="${ejercicio.CargaMax}" type="number" class="form-control"
 														placeholder="(Kg.)"></td>
 													<td><input th:value="${ejercicio.totalRepeticiones}" type="number" class="form-control"
@@ -131,6 +136,10 @@
 	<script th:src="@{/ajax/ajaxEntrenamiento.js}"></script>
 	<script>
 		$(function() {
+			//Inicializamos select2
+			$(".select2").select2();
+			
+			
 			$('#datepicker').datepicker({
 				format : 'dd/mm/yyyy',
 				autoclose : true
