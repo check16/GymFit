@@ -10,15 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Usuario;
-import com.asanast.gymfit.service.EntrenamientoService;
 import com.asanast.gymfit.service.UsuarioService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GymfitDawApplicationTests {
-	
-	@Autowired
-	private EntrenamientoService entrenamientoService;
 	
 	@Autowired
 	private UsuarioService usuarioService;
