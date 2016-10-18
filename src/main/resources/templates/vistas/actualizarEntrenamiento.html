@@ -8,7 +8,8 @@
 	<div class="wrapper">
 
 		<!-- Header principal -->
-		<header th:replace="/layout/header_layout :: header" class="main-header"></header>
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
 
 		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
 
@@ -20,7 +21,8 @@
 
 			<!-- Contenido Principal -->
 			<section class="content-header">
-				<h1	th:text="'Editar entrenamiento - ' + ${(entrenamiento.nombreEntreno)}"></h1>
+				<h1
+					th:text="'Editar entrenamiento - ' + ${(entrenamiento.nombreEntreno)}"></h1>
 			</section>
 			<!-- /Contenido Principal -->
 			<section class="content">
@@ -32,7 +34,11 @@
 								<h3 class="box-title">Datos entrenamiento</h3>
 							</div>
 							<div class="box-body">
-								<form class="form-horizontal">
+								<form th:action="@{/home/entrenamiento/actualizar}"
+									method="post" th:object="${entrenamiento}"
+									class="form-horizontal">
+									<input type="hidden" th:field="*{idEntrenamiento}"
+										th:value="${(entrenamiento.idEntrenamiento)}">
 									<div class="box-body">
 										<div class="form-group">
 											<label for="nombreEntreno" class="col-sm-2 control-label">Nombre
@@ -40,8 +46,9 @@
 
 											<div class="input-group col-sm-6">
 
-												<input th:value="${(entrenamiento.nombreEntreno)}"
-													type="text" class="form-control" id="nombreEntreno">
+												<input th:field="*{nombreEntreno}"
+													th:value="${(entrenamiento.nombreEntreno)}" type="text"
+													class="form-control" id="nombreEntreno">
 												<div class="input-group-addon">
 													<i class="fa fa-pencil-square-o"></i>
 												</div>
@@ -53,7 +60,7 @@
 
 											<div class="input-group col-sm-6">
 
-												<input
+												<input th:field="*{fecha}"
 													th:value="${#dates.format(entrenamiento.fecha, 'dd/MM/yyyy')}"
 													type="text" class="form-control" id="datepicker">
 												<div class="input-group-addon">
@@ -69,7 +76,7 @@
 
 											<div class="input-group col-sm-6">
 
-												<textarea id="notasEntreno"
+												<textarea th:field="*{notas}" id="notasEntreno"
 													th:text="${(entrenamiento.notas)}" style="resize: none"
 													class="form-control" rows="3"
 													placeholder="Introduce las notas del entrenamiento..."></textarea>
@@ -87,17 +94,21 @@
 													<th style="width: 10%">Total Repeticiones</th>
 													<th style="width: 5%"></th>
 												</tr>
-												<tr th:id="${ejercicio.idEjercicio}" th:each="ejercicio : ${entrenamiento.ejercicios}">
-													<td>
-													<select class="form-control select2" style="width: 100%;">
-														<option th:each="tipoEjercicio : ${tipoEjercicios}" th:value="${tipoEjercicio.idTipoEjercicio}" th:text="${tipoEjercicio.nombreEjercicio}" 
-                                							th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}"/>
-													
+												<tr th:field="*{ejercicios}"
+													th:id="${ejercicio.idEjercicio}"
+													th:each="ejercicio : ${entrenamiento.ejercicios}">
+													<td><select class="form-control select2"
+														style="width: 100%;">
+															<option th:each="tipoEjercicio : ${tipoEjercicios}"
+																th:value="${tipoEjercicio.idTipoEjercicio}"
+																th:text="${tipoEjercicio.nombreEjercicio}"
+																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
+
 													</select></td>
-													<td><input th:value="${ejercicio.CargaMax}" type="number" class="form-control"
-														placeholder="(Kg.)"></td>
-													<td><input th:value="${ejercicio.totalRepeticiones}" type="number" class="form-control"
-														placeholder="Total Rep"></td>
+													<td><input th:value="${ejercicio.CargaMax}"
+														type="number" class="form-control" placeholder="(Kg.)"></td>
+													<td><input th:value="${ejercicio.totalRepeticiones}"
+														type="number" class="form-control" placeholder="Total Rep"></td>
 													<td><a class="btn btn-danger btn"><i
 															class="fa fa-trash"></i></a></td>
 												</tr>
@@ -108,6 +119,26 @@
 									<!-- /.box-body -->
 									<div class="box-footer">
 										<button type="submit" class="btn btn-info pull-right">Actualizar</button>
+										<br>
+
+									</div>
+									<!-- Mensajes de actualizado o no -->
+									<div th:if="${actualizado != null}"
+										class="alert alert-success alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">&times;</button>
+										<h4 th:text="${(actualizado)}">
+											<i class="icon fa fa-check"></i>Mensaje de actualizado
+										</h4>
+									</div>
+									
+									<div th:if="${error != null}"
+										class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">&times;</button>
+										<h4 th:text="${(error)}">
+											<i class="icon fa fa-check"></i>Mensaje de actualizado
+										</h4>
 									</div>
 									<!-- /.box-footer -->
 								</form>
@@ -138,8 +169,7 @@
 		$(function() {
 			//Inicializamos select2
 			$(".select2").select2();
-			
-			
+
 			$('#datepicker').datepicker({
 				format : 'dd/mm/yyyy',
 				autoclose : true

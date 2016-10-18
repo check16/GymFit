@@ -72,6 +72,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	@Override
 	public void update(Entrenamiento entrenamiento) {
 		getSession().update(entrenamiento);
+		getSession().flush();
 		
 	}
 
