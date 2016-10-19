@@ -1,5 +1,6 @@
 package com.asanast.gymfit.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.asanast.gymfit.pojo.Ejercicio;
 import com.asanast.gymfit.pojo.Entrenamiento;
 import com.asanast.gymfit.pojo.TipoEjercicio;
 import com.asanast.gymfit.pojo.Usuario;
@@ -58,12 +60,15 @@ public class EntrenamientoController {
 	}
 
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
-	public String actualizarEntrenamiento(@ModelAttribute("entrenamiento") @Valid Entrenamiento entrenamiento,
+	public String actualizarEntrenamiento(@ModelAttribute("entrenamiento") @Valid Entrenamiento entrenamiento, @Valid ArrayList<Ejercicio> ejercicios, 
 			BindingResult result, HttpSession sesion, RedirectAttributes ra) {
 		if (result.hasErrors()) {
 			ra.addFlashAttribute("error", "Se ha producido un error al actualizar el entrenamiento");
 			return "redirect:/home/entrenamiento/" + entrenamiento.getIdEntrenamiento() + "/actualizar";
 		} else {
+			for(Ejercicio ejercicio : entrenamiento.getEjercicios()) {
+				ejercicio.setEntrenamiento(entrenamiento);
+			}
 			ra.addFlashAttribute("actualizado", "El entrenamiento " + entrenamiento.getNombreEntreno() + " se actualizó correctamente");
 			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 			entrenamiento.setUsuario(usuario);

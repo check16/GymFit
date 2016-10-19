@@ -92,23 +92,34 @@
 													<th style="width: 25%">Ejercicio</th>
 													<th style="width: 10%">Carga Maxima</th>
 													<th style="width: 10%">Total Repeticiones</th>
+													
 													<th style="width: 5%"></th>
 												</tr>
-												<tr th:field="*{ejercicios}"
+												<tr 
 													th:id="${ejercicio.idEjercicio}"
-													th:each="ejercicio : ${entrenamiento.ejercicios}">
-													<td><select class="form-control select2"
+													th:each="ejercicio, status : ${entrenamiento.ejercicios}">
+													
+													<td>
+													<input th:field="*{ejercicios[__${status.index}__].idEjercicio}" th:value="${ejercicio.idEjercicio}"
+														type="hidden" class="form-control">
+													<select  class="form-control select2"
 														style="width: 100%;">
 															<option th:each="tipoEjercicio : ${tipoEjercicios}"
+																
 																th:value="${tipoEjercicio.idTipoEjercicio}"
 																th:text="${tipoEjercicio.nombreEjercicio}"
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
-
-													</select></td>
-													<td><input th:value="${ejercicio.CargaMax}"
+													</select>
+													<td><input th:field="*{ejercicios[__${status.index}__].cargaMax}" th:value="${ejercicio.cargaMax}"
 														type="number" class="form-control" placeholder="(Kg.)"></td>
-													<td><input th:value="${ejercicio.totalRepeticiones}"
+														
+													<td><input th:field="*{ejercicios[__${status.index}__].totalRepeticiones}" th:value="${ejercicio.totalRepeticiones}"
 														type="number" class="form-control" placeholder="Total Rep"></td>
+													<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
+														type="hidden" class="form-control"></td>
+														<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
+														type="hidden" class="form-control"></td>
+														
 													<td><a class="btn btn-danger btn"><i
 															class="fa fa-trash"></i></a></td>
 												</tr>
