@@ -89,11 +89,13 @@
 										<table style="width: 60%" class="table table-striped">
 											<tbody>
 												<tr>
-													<th style="width: 25%">Ejercicio</th>
+													<th style="width: 50%">Ejercicio</th>
 													<th style="width: 10%">Carga Maxima</th>
 													<th style="width: 10%">Total Repeticiones</th>
-													
-													<th style="width: 5%"></th>
+													<th></th>
+													<th></th>
+
+													<th></th>
 												</tr>
 												<tr 
 													th:id="${ejercicio.idEjercicio}"
@@ -102,10 +104,10 @@
 													<td>
 													<input th:field="*{ejercicios[__${status.index}__].idEjercicio}" th:value="${ejercicio.idEjercicio}"
 														type="hidden" class="form-control">
-													<select  class="form-control select2"
+													<!-- Agregar en el select la propiedad a la que tiene q bindearse -->
+													<select th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"  class="form-control select2"
 														style="width: 100%;">
-															<option th:each="tipoEjercicio : ${tipoEjercicios}"
-																
+															<option  th:each="tipoEjercicio : ${tipoEjercicios}"
 																th:value="${tipoEjercicio.idTipoEjercicio}"
 																th:text="${tipoEjercicio.nombreEjercicio}"
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
@@ -115,13 +117,15 @@
 														
 													<td><input th:field="*{ejercicios[__${status.index}__].totalRepeticiones}" th:value="${ejercicio.totalRepeticiones}"
 														type="number" class="form-control" placeholder="Total Rep"></td>
+													<td><a class="btn btn-danger btn"><i
+															class="fa fa-trash"></i></a></td>
 													<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
 														type="hidden" class="form-control"></td>
+														
 														<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
 														type="hidden" class="form-control"></td>
 														
-													<td><a class="btn btn-danger btn"><i
-															class="fa fa-trash"></i></a></td>
+													
 												</tr>
 											</tbody>
 										</table>

@@ -11,8 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -37,7 +35,6 @@ public class TipoEjercicio {
 	private String rutaImgEjercicio;
 	
 	@OneToMany(mappedBy="tipoEjercicio")
-	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Ejercicio> ejercicios;
 	
 	public TipoEjercicio() {

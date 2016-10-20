@@ -68,6 +68,7 @@ public class EntrenamientoController {
 		} else {
 			for(Ejercicio ejercicio : entrenamiento.getEjercicios()) {
 				ejercicio.setEntrenamiento(entrenamiento);
+				ejercicio.setTipoEjercicio(ejercicio.getTipoEjercicio());
 			}
 			ra.addFlashAttribute("actualizado", "El entrenamiento " + entrenamiento.getNombreEntreno() + " se actualizó correctamente");
 			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
