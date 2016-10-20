@@ -44,28 +44,34 @@
 											<label for="nombreEntreno" class="col-sm-2 control-label">Nombre
 												entrenamiento: </label>
 
-											<div class="input-group col-sm-6">
-
-												<input th:field="*{nombreEntreno}"
-													th:value="${(entrenamiento.nombreEntreno)}" type="text"
-													class="form-control" id="nombreEntreno">
-												<div class="input-group-addon">
-													<i class="fa fa-pencil-square-o"></i>
-												</div>
+											<div th:class="${#fields.hasErrors('nombreEntreno')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' " class="input-group col-sm-6">
+												<input th:value="${(entrenamiento.nombreEntreno)}"
+												id="nombreEntreno"
+												type="text" class="form-control"> <span
+													class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
 											</div>
 										</div>
+
 										<div class="form-group">
 											<label for="datepicker" class="col-sm-2 control-label">Fecha
 												de Entreno</label>
 
 											<div class="input-group col-sm-6">
 
-												<input th:field="*{fecha}"
+												<input th:field="*{fecha}" readonly
 													th:value="${#dates.format(entrenamiento.fecha, 'dd/MM/yyyy')}"
 													type="text" class="form-control" id="datepicker">
 												<div class="input-group-addon">
 													<i class="fa fa-calendar"></i>
 												</div>
+											</div>
+
+											<div class="col-sm-3 control-label has-error">
+												<label th:if="${#fields.hasErrors('fecha')}"
+													th:each="err : ${#fields.errors('fecha')}"
+													class="control-label" for="inputError"><i
+													class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+												</label>
 											</div>
 
 										</div>
@@ -94,38 +100,45 @@
 													<th style="width: 10%">Total Repeticiones</th>
 													<th></th>
 													<th></th>
-
 													<th></th>
 												</tr>
-												<tr 
-													th:id="${ejercicio.idEjercicio}"
+												<tr th:id="${ejercicio.idEjercicio}"
 													th:each="ejercicio, status : ${entrenamiento.ejercicios}">
-													
-													<td>
-													<input th:field="*{ejercicios[__${status.index}__].idEjercicio}" th:value="${ejercicio.idEjercicio}"
-														type="hidden" class="form-control">
-													<!-- Agregar en el select la propiedad a la que tiene q bindearse -->
-													<select th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"  class="form-control select2"
-														style="width: 100%;">
-															<option  th:each="tipoEjercicio : ${tipoEjercicios}"
+
+													<td><input
+														th:field="*{ejercicios[__${status.index}__].idEjercicio}"
+														th:value="${ejercicio.idEjercicio}" type="hidden"
+														class="form-control"> <!-- Agregar en el select la propiedad a la que tiene q bindearse -->
+														<select
+														th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"
+														class="form-control select2" style="width: 100%;">
+															<option th:each="tipoEjercicio : ${tipoEjercicios}"
 																th:value="${tipoEjercicio.idTipoEjercicio}"
 																th:text="${tipoEjercicio.nombreEjercicio}"
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
 													</select>
-													<td><input th:field="*{ejercicios[__${status.index}__].cargaMax}" th:value="${ejercicio.cargaMax}"
-														type="number" class="form-control" placeholder="(Kg.)"></td>
-														
-													<td><input th:field="*{ejercicios[__${status.index}__].totalRepeticiones}" th:value="${ejercicio.totalRepeticiones}"
-														type="number" class="form-control" placeholder="Total Rep"></td>
+													<td><input
+														th:field="*{ejercicios[__${status.index}__].cargaMax}"
+														th:value="${ejercicio.cargaMax}" type="number"
+														class="form-control" placeholder="(Kg.)"></td>
+
+													<td><input
+														th:field="*{ejercicios[__${status.index}__].totalRepeticiones}"
+														th:value="${ejercicio.totalRepeticiones}" type="number"
+														class="form-control" placeholder="Total Rep"></td>
 													<td><a class="btn btn-danger btn"><i
 															class="fa fa-trash"></i></a></td>
-													<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
+													<td><input
+														th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"
+														th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
 														type="hidden" class="form-control"></td>
-														
-														<td><input th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}" th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
+
+													<td><input
+														th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"
+														th:value="${ejercicio.tipoEjercicio.idTipoEjercicio}"
 														type="hidden" class="form-control"></td>
-														
-													
+
+
 												</tr>
 											</tbody>
 										</table>
@@ -146,7 +159,7 @@
 											<i class="icon fa fa-check"></i>Mensaje de actualizado
 										</h4>
 									</div>
-									
+
 									<div th:if="${error != null}"
 										class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert"

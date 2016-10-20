@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="ejercicio")
@@ -18,11 +20,13 @@ public class Ejercicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEjercicio;
 	
-
+	@NotNull
+	@Min(0)
 	private BigDecimal cargaMax;
 	
-
-	private int totalRepeticiones;
+	@NotNull
+	@Min(0)
+	private Integer totalRepeticiones;
 	
 	@ManyToOne
 	@JoinColumn(name="idEntrenamiento")

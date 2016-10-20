@@ -1,6 +1,5 @@
 package com.asanast.gymfit.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -60,11 +59,12 @@ public class EntrenamientoController {
 	}
 
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
-	public String actualizarEntrenamiento(@ModelAttribute("entrenamiento") @Valid Entrenamiento entrenamiento, @Valid ArrayList<Ejercicio> ejercicios, 
-			BindingResult result, HttpSession sesion, RedirectAttributes ra) {
+	public String actualizarEntrenamiento(@Valid  @ModelAttribute("entrenamiento") Entrenamiento entrenamiento, 
+			BindingResult result, Model model, HttpSession sesion, RedirectAttributes ra) {
 		if (result.hasErrors()) {
 			ra.addFlashAttribute("error", "Se ha producido un error al actualizar el entrenamiento");
-			return "redirect:/home/entrenamiento/" + entrenamiento.getIdEntrenamiento() + "/actualizar";
+			model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
+			return "actualizarEntrenamiento";
 		} else {
 			for(Ejercicio ejercicio : entrenamiento.getEjercicios()) {
 				ejercicio.setEntrenamiento(entrenamiento);
