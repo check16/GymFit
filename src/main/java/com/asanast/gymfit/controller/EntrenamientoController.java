@@ -59,23 +59,24 @@ public class EntrenamientoController {
 	}
 
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
-	public String actualizarEntrenamiento(@Valid  @ModelAttribute("entrenamiento") Entrenamiento entrenamiento, 
+	public String actualizarEntrenamiento(@Valid @ModelAttribute("entrenamiento") Entrenamiento entrenamiento,
 			BindingResult result, Model model, HttpSession sesion, RedirectAttributes ra) {
 		if (result.hasErrors()) {
 			ra.addFlashAttribute("error", "Se ha producido un error al actualizar el entrenamiento");
 			model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
 			return "actualizarEntrenamiento";
 		} else {
-			for(Ejercicio ejercicio : entrenamiento.getEjercicios()) {
+			for (Ejercicio ejercicio : entrenamiento.getEjercicios()) {
 				ejercicio.setEntrenamiento(entrenamiento);
 				ejercicio.setTipoEjercicio(ejercicio.getTipoEjercicio());
 			}
-			ra.addFlashAttribute("actualizado", "El entrenamiento " + entrenamiento.getNombreEntreno() + " se actualizó correctamente");
-			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-			entrenamiento.setUsuario(usuario);
-			entrenamientoService.update(entrenamiento);
-			return "redirect:/home/entrenamiento/" + entrenamiento.getIdEntrenamiento() + "/actualizar";
 		}
+		ra.addFlashAttribute("actualizado",
+				"El entrenamiento " + entrenamiento.getNombreEntreno() + " se actualizó correctamente");
+		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+		entrenamiento.setUsuario(usuario);
+		entrenamientoService.update(entrenamiento);
+		return "redirect:/home/entrenamiento/" + entrenamiento.getIdEntrenamiento() + "/actualizar";
 	}
 
 	@RequestMapping(value = "/home/entrenamiento/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
@@ -87,6 +88,13 @@ public class EntrenamientoController {
 			entrenamientoService.delete(entrenamiento);
 		}
 
+	}
+
+	@RequestMapping(value = "/home/entrenamiento/crearejercicio", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public List<TipoEjercicio> dameEjercicio() {
+		List<TipoEjercicio> ejercicios = tipoEjercicioService.findAll();
+		return ejercicios;
 	}
 
 }

@@ -31,6 +31,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	public Entrenamiento findById(int id) {
 		Criteria criteria = getSession().createCriteria(Entrenamiento.class);
 		criteria.add(Restrictions.eq("idEntrenamiento", id));
+		
 		return (Entrenamiento) criteria.uniqueResult();
 	}
 
@@ -55,7 +56,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	public List<Entrenamiento> findAllByIdUsuario(int id) {
 		Criteria crit = getSession().createCriteria(Entrenamiento.class);
 		crit.createAlias("usuario", "usuario");
-		crit.add(Restrictions.eq("usuario.idUsuario", id));
+		crit.add(Restrictions.eq("usuario.idUsuario", id)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		final List<Entrenamiento> entrenamientos = new ArrayList<>();
 		for(final Object o : crit.list()) {
 			entrenamientos.add((Entrenamiento)o);
@@ -71,7 +72,7 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 
 	@Override
 	public void update(Entrenamiento entrenamiento) {
-		getSession().update(entrenamiento);
+		getSession().saveOrUpdate(entrenamiento);
 		
 	}
 

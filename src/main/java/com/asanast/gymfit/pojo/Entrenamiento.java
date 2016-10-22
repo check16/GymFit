@@ -38,7 +38,7 @@ public class Entrenamiento {
 	
 	private String notas;
 	
-	@OneToMany(mappedBy="entrenamiento", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="entrenamiento", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Ejercicio> ejercicios = new ArrayList<Ejercicio>();
 	
 	@ManyToOne
