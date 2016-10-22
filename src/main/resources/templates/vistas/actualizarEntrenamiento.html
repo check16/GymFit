@@ -42,7 +42,7 @@
 									<div class="box-body">
 										<div class="form-group">
 											<label for="nombreEntreno" class="col-sm-2 control-label">Nombre
-												entrenamiento: </label>
+												entrenamiento(*): </label>
 
 											<div
 												th:class="${#fields.hasErrors('nombreEntreno')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
@@ -57,7 +57,7 @@
 
 										<div class="form-group">
 											<label for="datepicker" class="col-sm-2 control-label">Fecha
-												de Entreno</label>
+												de Entreno(*)</label>
 
 											<div class="input-group col-sm-6">
 
@@ -102,8 +102,7 @@
 													<th style="width: 10%">Carga Maxima</th>
 													<th style="width: 10%">Total Repeticiones</th>
 													<th></th>
-													<th></th>
-													<th></th>
+
 												</tr>
 												<tr class="ejercicio"
 													th:each="ejercicio, status : ${entrenamiento.ejercicios}">
@@ -121,11 +120,12 @@
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
 													</select>
 													<td><input
+														min=0
 														th:field="*{ejercicios[__${status.index}__].cargaMax}"
 														th:value="${ejercicio.cargaMax}" type="number"
 														class="form-control" placeholder="(Kg.)"></td>
 
-													<td><input
+													<td><input min=0
 														th:field="*{ejercicios[__${status.index}__].totalRepeticiones}"
 														th:value="${ejercicio.totalRepeticiones}" type="number"
 														class="form-control" placeholder="Total Rep"></td>

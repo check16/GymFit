@@ -1,6 +1,10 @@
 $("#agregarEjercicio").on("click", function(e) {
-	$('#tablaEjercicios tbody tr:last').clone().find('input[type=number], input[type=hidden]').val(0).end().appendTo($('#tablaEjercicios tbody'));
+	$('#tablaEjercicios tbody tr').find('select').select2('destroy');
+	var clonado = $('#tablaEjercicios tbody tr:last').clone().find('input[type=number], input[type=hidden]').val(0).end().appendTo($('#tablaEjercicios tbody'));
+	clonado.find('select').select2();
+	$('#tablaEjercicios tbody tr').find('select').select2();
 	modificarIndicesTabla();
+	
 });
 
 function modificarIndicesTabla() {
@@ -15,7 +19,10 @@ function modificarIndicesTabla() {
         numeroInput.eq(0).attr({name: 'ejercicios[' + indice + '].cargaMax'});
         numeroInput.eq(1).attr({name: 'ejercicios[' + indice + '].totalRepeticiones'});
         idEjercicio.eq(0).attr({name: 'ejercicios[' + indice + '].idEjercicio'});
+        
+
     });
+	
 }
 
 $(document).on('click','.borrarEjercicio', function(){
