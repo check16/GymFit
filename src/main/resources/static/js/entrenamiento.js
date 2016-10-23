@@ -1,9 +1,32 @@
+//$("#agregarEjercicio").on("click", function(e) {
+//	
+//	var clonado = $('#tablaEjercicios tbody tr:last').clone().find('input[type=number], input[type=hidden]').val(0).end().appendTo($('#tablaEjercicios tbody'));
+//	clonado.find('select').select2();
+//	$('#tablaEjercicios tbody tr').find('select').select2();
+//	modificarIndicesTabla();
+//	
+//});
+
 $("#agregarEjercicio").on("click", function(e) {
-	$('#tablaEjercicios tbody tr').find('select').select2('destroy');
-	var clonado = $('#tablaEjercicios tbody tr:last').clone().find('input[type=number], input[type=hidden]').val(0).end().appendTo($('#tablaEjercicios tbody'));
-	clonado.find('select').select2();
-	$('#tablaEjercicios tbody tr').find('select').select2();
-	modificarIndicesTabla();
+	$.ajax({
+		url : "/home/entrenamiento/crearejercicio",
+		method: "GET",
+		success : function(respuesta) {
+			var tr = "";
+			tr += "<tr class='ejercicio'><td><input value=0 type='hidden'><select class='form-control select2'>";
+			$.each(respuesta, function(indice, valor) {
+				tr+="<option value='" + valor.idTipoEjercicio +"'>" + valor.nombreEjercicio + "</option>"
+			});
+			tr+="</select></td>";
+			tr+="<td><input class='form-control' min=0 type='number'value='0'></td>";
+			tr+="<td><input class='form-control' min=0 type='number'value='0'></td>";
+			tr+="<td><a class='btn btn-danger btn borrarEjercicio'><i class='fa fa-trash'></i> Eliminar</a></td>";
+			$('#tablaEjercicios > tbody:last-child').append(tr);
+			
+			$('#tablaEjercicios tbody tr:last').find('select').select2();
+			modificarIndicesTabla();
+		}
+	});
 	
 });
 

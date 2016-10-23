@@ -21,6 +21,7 @@ import com.asanast.gymfit.pojo.Ejercicio;
 import com.asanast.gymfit.pojo.Entrenamiento;
 import com.asanast.gymfit.pojo.TipoEjercicio;
 import com.asanast.gymfit.pojo.Usuario;
+import com.asanast.gymfit.service.EjercicioService;
 import com.asanast.gymfit.service.EntrenamientoService;
 import com.asanast.gymfit.service.TipoEjercicioService;
 
@@ -32,6 +33,9 @@ public class EntrenamientoController {
 
 	@Autowired
 	private TipoEjercicioService tipoEjercicioService;
+	
+	@Autowired
+	private EjercicioService ejercicioService;
 
 	@RequestMapping("/home/entrenamiento")
 	public String irEntrenamiento(HttpSession sesion, Model model) {
@@ -89,10 +93,24 @@ public class EntrenamientoController {
 		}
 
 	}
+	
+	@RequestMapping(value = "/home/entrenamiento/ejercicio/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public boolean eliminarEjercicio(@PathVariable("id") int idEjercicio) {
+		Ejercicio ejercicio = ejercicioService.findByIdEjercicio(idEjercicio);
+
+		if (ejercicio != null) {
+			ejercicioService.delete(ejercicio);
+			return true;
+		}else {
+			return false;
+		}
+
+	}
 
 	@RequestMapping(value = "/home/entrenamiento/crearejercicio", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public List<TipoEjercicio> dameEjercicio() {
+	public List<TipoEjercicio> dameEjercicios() {
 		List<TipoEjercicio> ejercicios = tipoEjercicioService.findAll();
 		return ejercicios;
 	}

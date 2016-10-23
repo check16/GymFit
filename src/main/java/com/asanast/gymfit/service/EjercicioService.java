@@ -25,6 +25,11 @@ public class EjercicioService {
 		
 	}
 	
+	public Ejercicio findByIdEjercicio(int id) {
+		return ejercicioDao.findByIdEjercicio(id);
+		
+	}
+	
 	public void saveOrUpdate(Ejercicio ejercicio, TipoEjercicio tipoEjercicio) {
 		if(ejercicio.getIdEjercicio() == 0) {
 			ejercicio.setTipoEjercicio(tipoEjercicio);

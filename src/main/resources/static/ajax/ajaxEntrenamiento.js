@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	eliminarEntreno();
+	eliminarEjercicio();
 });
 
 function eliminarEntreno() {
@@ -27,6 +28,28 @@ function eliminarEntreno() {
 			                swal("Eliminado", "El entrenamiento fue eliminado correctamente.", "success");
 					}
 				});
+			}
+		});
+	});
+}
+
+function eliminarEjercicio() {
+	$(".eliminarEjercicio").click(function(event) {
+		event.preventDefault();
+		$.ajax({
+			url : $(event.target).attr("href"),
+			method: "GET",
+			success : function(respuesta) {
+				if (respuesta) {
+					var tr = $(event.target).closest("tr");
+	                tr.css("background-color","#287ca0");
+	                tr.fadeIn(1000).fadeOut(300, function(){
+	                tr.remove();})
+	                swal("Eliminado", "El ejercicio fue eliminado correctamente.", "success");
+				} else {
+					swal("Error", "El ejercicio NO se eliminó.", "warning");
+				}
+					
 			}
 		});
 	});

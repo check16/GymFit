@@ -55,4 +55,12 @@ public class EjercicioDaoImpl implements EjercicioDao {
 		
 	}
 
+	@Override
+	public Ejercicio findByIdEjercicio(int id) {
+		Criteria criteria = getSession().createCriteria(Ejercicio.class);
+		criteria.add(Restrictions.eq("idEjercicio", id));
+		
+		return (Ejercicio) criteria.uniqueResult();
+	}
+
 }
