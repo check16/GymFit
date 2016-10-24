@@ -61,6 +61,20 @@ public class EntrenamientoController {
 			return "redirect:/home/entrenamiento";
 		}
 	}
+	
+	@RequestMapping(value = "/home/entrenamiento/nuevoentrenamiento")
+	public String irNuevoEntrenamiento(Model model) {
+		model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
+		model.addAttribute("entrenamiento", new Entrenamiento());
+		return "nuevoEntrenamiento";
+	}
+	
+	@RequestMapping(value="/home/entrenamiento/crearentrenamiento")
+	public String crearNuevoEntrenamiento() {
+		// TODO crear el mapeo para el nuevo entrenamiento
+		System.out.println("El controlador funciona");
+		return "redirect:/home/entrenamiento";
+	}
 
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
 	public String actualizarEntrenamiento(@Valid @ModelAttribute("entrenamiento") Entrenamiento entrenamiento,
