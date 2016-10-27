@@ -29,7 +29,6 @@ public class Entrenamiento {
 	
 	@NotEmpty
 	@NotNull
-	
 	private String nombreEntreno;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")

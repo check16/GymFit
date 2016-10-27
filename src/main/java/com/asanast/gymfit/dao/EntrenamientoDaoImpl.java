@@ -36,9 +36,9 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	}
 
 	@Override
+	@Transactional
 	public void save(Entrenamiento entrenamiento) {
 		getSession().save(entrenamiento);
-		getSession().getTransaction().commit();
 		
 	}
 

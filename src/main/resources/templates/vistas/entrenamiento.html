@@ -35,7 +35,8 @@
 								<h3 class="box-title">Agregar entrenamiento</h3>
 							</div>
 							<div class="box-body">
-								<a th:href="@{/home/entrenamiento/nuevoentrenamiento}" class="btn btn-success"> Nuevo Entrenamiento</a>
+								<a th:href="@{/home/entrenamiento/nuevoentrenamiento}"
+									class="btn btn-success"> Nuevo Entrenamiento</a>
 							</div>
 						</div>
 					</div>
@@ -60,7 +61,8 @@
 							<div class="box-body table-responsive">
 								A continuación se muestran los entrenamientos planificados:
 
-								<table id="tablaEntreno" th:if="${not #lists.isEmpty(entrenamientos)}"
+								<table id="tablaEntreno"
+									th:if="${not #lists.isEmpty(entrenamientos)}"
 									class="table table-hover">
 									<tr>
 										<th>Nombre Entrenamiento</th>
@@ -68,19 +70,22 @@
 										<th>Notas entrenamiento</th>
 										<th>Acciones</th>
 									</tr>
-									<tr th:id="${entrenamiento.idEntrenamiento}" th:each="entrenamiento : ${entrenamientos}">
+									<tr th:id="${entrenamiento.idEntrenamiento}"
+										th:each="entrenamiento : ${entrenamientos}">
 										<td th:text="${entrenamiento.nombreEntreno}"></td>
 										<td
 											th:text="${#dates.dayOfWeekName(entrenamiento.fecha) + ' ' + #dates.format(entrenamiento.fecha, 'dd MMMM yyyy')}"></td>
 										<td th:text="${entrenamiento.notas}"></td>
-										<td>
-										<a th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/actualizar|}" class="btn btn-success btn"> <span
+										<td><a
+											th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/actualizar|}"
+											class="btn btn-success btn"> <span
 												class="fa fa-pencil-square-o"></span> Editar
-										</a>
-										<a th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/eliminar|}" th:id="${'entr' + entrenamiento.idEntrenamiento}" class="btn btn-danger btn eliminarEntreno"> <span
+										</a> <a
+											th:href="@{|/home/entrenamiento/${entrenamiento.idEntrenamiento}/eliminar|}"
+											th:id="${'entr' + entrenamiento.idEntrenamiento}"
+											class="btn btn-danger btn eliminarEntreno"> <span
 												class="fa fa-times-circle"></span> Eliminar
-										</a>
-										</td>
+										</a></td>
 									</tr>
 
 								</table>
@@ -91,6 +96,14 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div th:if="${insertado != null}"
+					class="alert alert-success alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-hidden="true">&times;</button>
+					<h4 th:text="${(insertado)}">
+						<i class="icon fa fa-check"></i>Insertado
+					</h4>
 				</div>
 
 			</section>

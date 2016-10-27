@@ -27,8 +27,6 @@ public class TipoEjercicio {
 	@Column(name="nombreEjercicio")
 	private String nombreEjercicio;
 	
-	@NotEmpty
-	@NotNull
 	@Column(name="descEjercicio")
 	private String descEjercicio;
 	

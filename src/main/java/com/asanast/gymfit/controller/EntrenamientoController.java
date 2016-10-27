@@ -1,5 +1,6 @@
 package com.asanast.gymfit.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -70,10 +71,24 @@ public class EntrenamientoController {
 	}
 	
 	@RequestMapping(value="/home/entrenamiento/crearentrenamiento")
-	public String crearNuevoEntrenamiento() {
-		// TODO crear el mapeo para el nuevo entrenamiento
-		System.out.println("El controlador funciona");
-		return "redirect:/home/entrenamiento";
+	public String crearNuevoEntrenamiento(@Valid @ModelAttribute("entrenamiento") Entrenamiento entrenamiento,
+			BindingResult result, HttpSession sesion, Model model, RedirectAttributes ra) {
+		if(result.hasErrors()) {
+			model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
+			return "nuevoEntrenamiento";
+		}else {
+			for(Ejercicio ejercicio : entrenamiento.getEjercicios()) {
+				if(ejercicio.getCargaMax() == null) {
+					ejercicio.setCargaMax(new BigDecimal(0));
+				}
+				ejercicio.setEntrenamiento(entrenamiento);
+			}
+			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+			entrenamientoService.save(entrenamiento, usuario);
+			ra.addFlashAttribute("insertado", "El entrenamiento " + entrenamiento.getNombreEntreno() + " se creó correctamente");
+			return "redirect:/home/entrenamiento";
+		}
+		
 	}
 
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
@@ -85,6 +100,9 @@ public class EntrenamientoController {
 			return "actualizarEntrenamiento";
 		} else {
 			for (Ejercicio ejercicio : entrenamiento.getEjercicios()) {
+				if(ejercicio.getCargaMax() == null) {
+					ejercicio.setCargaMax(new BigDecimal(0));
+				}
 				ejercicio.setEntrenamiento(entrenamiento);
 				ejercicio.setTipoEjercicio(ejercicio.getTipoEjercicio());
 			}
