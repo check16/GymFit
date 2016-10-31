@@ -44,6 +44,7 @@ public class EntrenamientoController {
 		if (usuario != null) {
 			List<Entrenamiento> entrenamientos = entrenamientoService.findAllByIdUsuario(usuario.getIdUsuario());
 			model.addAttribute("entrenamientos", entrenamientos);
+			model.addAttribute("activo", "entrenamiento");
 			return "entrenamiento";
 		} else {
 			return "redirect:/home";
@@ -56,6 +57,7 @@ public class EntrenamientoController {
 		if (entrenamiento != null) {
 			List<TipoEjercicio> tipoEjercicios = tipoEjercicioService.findAll();
 			model.addAttribute("entrenamiento", entrenamiento);
+			model.addAttribute("activo", "entrenamiento");
 			model.addAttribute("tipoEjercicios", tipoEjercicios);
 			return "actualizarEntrenamiento";
 		} else {
@@ -66,6 +68,7 @@ public class EntrenamientoController {
 	@RequestMapping(value = "/home/entrenamiento/nuevoentrenamiento")
 	public String irNuevoEntrenamiento(Model model) {
 		model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
+		model.addAttribute("activo", "entrenamiento");
 		model.addAttribute("entrenamiento", new Entrenamiento());
 		return "nuevoEntrenamiento";
 	}
@@ -109,6 +112,7 @@ public class EntrenamientoController {
 		}
 		ra.addFlashAttribute("actualizado",
 				"El entrenamiento " + entrenamiento.getNombreEntreno() + " se actualizó correctamente");
+		model.addAttribute("activo", "entrenamiento");
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 		entrenamiento.setUsuario(usuario);
 		entrenamientoService.update(entrenamiento);

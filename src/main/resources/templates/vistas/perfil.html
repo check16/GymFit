@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{perfil.page.title})">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+
+			<!-- Contenido Header-->
+			<section class="content-header">
+				<h1 th:text="'Perfil de: ' + ${(session.usuario.login)}"></h1>
+			</section>
+
+			<section class="content">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-default">
+							<div class="box-header with-border">
+
+								<div class="box-body">
+									<div class="nav-tabs-custom">
+										<ul class="nav nav-tabs">
+											<li class="active"><a href="#datosUsuario"
+												data-toggle="tab">Ajustes Usuario</a></li>
+											<li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="datosUsuario">
+												<form th:action="@{/home/perfil/actualizar}" method="post"
+													th:object="${usuario}" class="form-horizontal">
+													<input type="hidden" th:field="*{idUsuario}"> <input
+														type="hidden" th:field="*{login}"> <input
+														type="hidden" th:field="*{clave}">
+													<div class="form-group">
+														<label for="nombreApellido" class="col-sm-2 control-label">Nombre
+															y Apellidos: </label>
+
+														<div
+															th:class="${#fields.hasErrors('nombreApellido')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
+															class="input-group col-sm-6">
+															<input th:field="*{nombreApellido}" id="nombreApellido"
+																type="text" class="form-control"
+																placeholder="Nombre y Apellidos">
+															<div class="input-group-addon">
+																<i class="fa fa-user"></i>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="altura" class="col-sm-2 control-label">Altura(cm):
+														</label>
+
+														<div
+															th:class="${#fields.hasErrors('altura')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
+															class="input-group col-sm-6">
+															<input min=0 th:field="*{altura}" id="nombreApellido"
+																type="number" step="1" class="form-control">
+															<div class="input-group-addon">
+																<i class="fa fa-pencil-square-o"></i>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="edad" class="col-sm-2 control-label">Edad:
+														</label>
+
+														<div
+															th:class="${#fields.hasErrors('edad')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
+															class="input-group col-sm-6">
+															<input min=0 th:field="*{edad}" id="edad" type="number"
+																step="1" class="form-control">
+															<div class="input-group-addon">
+																<i class="fa fa-pencil-square-o"></i>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="nombreApellido" class="col-sm-2 control-label">Email:
+														</label>
+
+														<div
+															th:class="${#fields.hasErrors('email')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
+															class="input-group col-sm-6">
+															<input readonly="readonly" th:field="*{email}" id="email"
+																type="text" class="form-control">
+															<div class="input-group-addon">
+																<i class="fa fa-envelope-open-o"></i>
+															</div>
+														</div>
+													</div>
+
+													<div class="box-footer">
+														<button type="submit" class="btn btn-primary pull-right">Guardar
+															Perfil</button>
+														<br>
+													</div>
+													<div th:if="${actualizado != null}"
+														class="alert alert-success alert-dismissible">
+														<button type="button" class="close" data-dismiss="alert"
+															aria-hidden="true">&times;</button>
+														<h4 th:text="${(actualizado)}">
+															<i class="icon fa fa-check"></i>Mensaje de actualizado
+														</h4>
+													</div>
+												</form>
+											</div>
+											<!-- /.tab-pane -->
+											<div class="tab-pane" id="tab_2"></div>
+											<!-- /.tab-pane -->
+										</div>
+										<!-- /.tab-content -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+</body>
+</html>

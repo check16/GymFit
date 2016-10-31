@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.LazyCollection;
@@ -30,9 +29,10 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUsuario;
 
-	@NotEmpty
 	@Size(min = 4)
 	private String login;
+	
+	private String nombreApellido;
 
 	@NotEmpty
 	@Size(min = 4)
@@ -46,10 +46,9 @@ public class Usuario {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaRegistro;
 
-	@NotNull
+
 	private int edad;
 
-	@NotNull
 	private int altura;
 
 	private String rutaFoto;
@@ -167,11 +166,19 @@ public class Usuario {
 		this.entrenamientos = entrenamientos;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", login=" + login + ", clave=" + clave + ", email=" + email
-				+ ", fechaRegistro=" + fechaRegistro + ", edad=" + edad + ", altura=" + altura + ", rutaFoto="
-				+ rutaFoto + ", rol=" + rol + ", pesos=" + pesos + ", entrenamientos=" + entrenamientos + "]";
+	public String getNombreApellido() {
+		return nombreApellido;
 	}
 
+	public void setNombreApellido(String nombreApellido) {
+		this.nombreApellido = nombreApellido;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", login=" + login + ", nombreApellido=" + nombreApellido
+				+ ", clave=" + clave + ", email=" + email + ", fechaRegistro=" + fechaRegistro + ", edad=" + edad
+				+ ", altura=" + altura + ", rutaFoto=" + rutaFoto + ", rol=" + rol + ", pesos=" + pesos
+				+ ", entrenamientos=" + entrenamientos + "]";
+	}
 }
