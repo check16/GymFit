@@ -2,7 +2,6 @@ package com.asanast.gymfit.pojo;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +28,7 @@ public class Ejercicio {
 	@Min(0)
 	private Integer totalRepeticiones = 0;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="idEntrenamiento")
 	private Entrenamiento entrenamiento;
 	

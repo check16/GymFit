@@ -121,12 +121,12 @@
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
 													</select>
 													<td><input
-														min=0 required
+														min=0 required step="0.01"
 														th:field="*{ejercicios[__${status.index}__].cargaMax}"
 														th:value="${ejercicio.cargaMax}" type="number"
 														class="form-control" placeholder="(Kg.)"></td>
 
-													<td><input min=0 required
+													<td><input min=0 required step="1"
 														th:field="*{ejercicios[__${status.index}__].totalRepeticiones}"
 														th:value="${ejercicio.totalRepeticiones}" type="number"
 														class="form-control" placeholder="Total Rep"></td>

@@ -117,12 +117,14 @@ public class EntrenamientoController {
 
 	@RequestMapping(value = "/home/entrenamiento/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public void eliminarEntrenamiento(@PathVariable("id") int idEntrenamiento) {
+	public boolean eliminarEntrenamiento(@PathVariable("id") int idEntrenamiento) {
 		Entrenamiento entrenamiento = entrenamientoService.findById(idEntrenamiento);
 
 		if (entrenamiento != null) {
 			entrenamientoService.delete(entrenamiento);
+			return true;
 		}
+		return false;
 
 	}
 	

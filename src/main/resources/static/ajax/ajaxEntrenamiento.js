@@ -28,6 +28,8 @@ function eliminarEntreno() {
 			                swal("Eliminado", "El entrenamiento fue eliminado correctamente.", "success");
 					}
 				});
+			}else {
+				swal("Error", "Se produjo un error al eliminar el entrenamiento", "warning");
 			}
 		});
 	});
