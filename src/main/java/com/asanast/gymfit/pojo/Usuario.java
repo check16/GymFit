@@ -13,8 +13,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
@@ -23,6 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "usuario")
+@DynamicUpdate(value=true)
 public class Usuario {
 
 	@Id
@@ -37,6 +40,10 @@ public class Usuario {
 	@NotEmpty
 	@Size(min = 4)
 	private String clave;
+	
+	@Transient
+	@Size(min = 4)
+	private String claveRep;
 
 	@NotEmpty
 	@Email
@@ -172,6 +179,14 @@ public class Usuario {
 
 	public void setNombreApellido(String nombreApellido) {
 		this.nombreApellido = nombreApellido;
+	}
+
+	public String getClaveRep() {
+		return claveRep;
+	}
+
+	public void setClaveRep(String claveRep) {
+		this.claveRep = claveRep;
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 					throw new BadCredentialsException("Error de login");
 				}
 	}
-
+	
 	@Override
 	public boolean supports(Class<?> authentication) {
 		return true;
