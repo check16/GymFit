@@ -36,6 +36,10 @@ public class PesoService {
 		}
 	}
 	
+	public Peso findLastPeso(Usuario usuario) {
+		return pesoDao.findByLastDate(usuario);
+	}
+	
 	public void update(Peso peso) {
 		pesoDao.update(peso);
 	}

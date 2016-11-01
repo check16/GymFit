@@ -52,6 +52,7 @@
 												</div>
 											</div>
 										</div>
+										
 
 										<div class="form-group">
 											<label for="datepicker" class="col-sm-2 control-label">Fecha
@@ -146,7 +147,9 @@
 
 			$('#datepicker').datepicker({
 				format : 'dd/mm/yyyy',
-				autoclose : true
+				autoclose : true,
+				language: "es",
+				todayHighlight: true
 			}).datepicker("setDate", new Date());
 
 		});

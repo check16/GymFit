@@ -29,6 +29,19 @@
 				<li th:class="${activo == 'entrenamiento'} ? 'active' : ''" class="active"><a th:href="@{/home/entrenamiento}"><i class="fa fa-calendar"></i> <span>Entrenamientos</span></a></li>
 
 				<li th:class="${activo == 'perfil'} ? 'active' : ''"><a th:href="@{/home/perfil}"><i class="fa fa-user"></i><span>Perfil</span></a></li>
+				
+				<li class="treeview">
+          <a href="#">
+            <i class="fa fa-bars"></i> <span>Peso Corporal</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a th:href="@{/home/registrarPeso}"><i class="fa fa-balance-scale"></i> Registrar Peso</a></li>
+            <li><a href="#"><i class="fa fa-bar-chart"></i> Seguimiento Peso</a></li>
+          </ul>
+        </li>
 			</ul>
 			<!-- /.sidebar-menu -->
 		</section>

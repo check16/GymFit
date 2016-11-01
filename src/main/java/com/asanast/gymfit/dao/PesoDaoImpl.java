@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -69,6 +70,17 @@ public class PesoDaoImpl implements PesoDao{
 		crit.createAlias("usuario", "usuario");
 		crit.add(Restrictions.eq("usuario.idUsuario", usuario.getIdUsuario()));
 		crit.add(Restrictions.eq("fecha", fecha));
+		return (Peso) crit.uniqueResult();
+	}
+
+	@Override
+	@Transactional
+	public Peso findByLastDate(Usuario usuario) {
+		Criteria crit = getSession().createCriteria(Peso.class);
+		crit.createAlias("usuario", "usuario");
+		crit.add(Restrictions.eq("usuario.idUsuario", usuario.getIdUsuario()));
+		crit.addOrder(Order.desc("fecha"));
+		crit.setMaxResults(1);
 		return (Peso) crit.uniqueResult();
 	}
 
