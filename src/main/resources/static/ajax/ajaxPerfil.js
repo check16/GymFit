@@ -15,7 +15,7 @@ function modificarClave() {
 	                $('#errorClave').empty();
 	                $("#formClave")[0].reset();
 				} else {
-					swal("Error", "La contraseña no se modificó correctamente, revise los campos", "warning");
+					swal("Error", "La contraseña no se modificó correctamente, revise los campos", "error");
 					$('#errorClave').empty();
 					$.each( respuesta, function( key, value ) {						
 						$.notify(respuesta[key].field + " " + respuesta[key].code, "error");

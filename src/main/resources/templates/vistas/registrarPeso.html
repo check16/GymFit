@@ -35,24 +35,43 @@
 								<form th:action="@{/home/registrarPeso/registrar}" method="post"
 									th:object="${peso}" class="form-horizontal">
 									<div class="box-body">
-										<div class="form-group">
-											<label for="nombreEntreno" class="col-sm-2 control-label">Peso(*):
+
+										<div
+											th:class="${#fields.hasErrors('pesoReg')} ? 'form-group has-error' : 'form-group' "
+											class="form-group">
+											<label for="pesoReg" class="col-sm-2 control-label">Peso(*):
 											</label>
 
-											<div
-												th:class="${#fields.hasErrors('peso')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
-												class="input-group col-sm-6">
-												<input th:field="*{peso}" id="nombreEntreno" type="text"
-													class="form-control">
-												<div class="input-group-addon">
-													<i class="fa fa-balance-scale"></i>
+											<div class="input-group col-sm-6">
+
+												<input th:field="*{pesoReg}" id="pesoReg" type="number"
+													step="0.1" class="form-control"> <span
+													class="input-group-addon"> <i
+													class="fa fa-balance-scale"></i>
+												</span>
+
+											</div>
+											<div class="form-group">
+												<div class="input-group col-sm-6 col-sm-offset-2">
+													<label th:if="${#fields.hasErrors('pesoReg')}"
+														th:each="err : ${#fields.errors('pesoReg')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
 												</div>
 											</div>
+
 										</div>
 
-
-										<div class="form-group">
+										<div th:class="${#fields.hasErrors('fecha')} ? 'form-group has-error' : 'form-group' ">
 											<div class="input-group col-sm-12" id="datepickerPeso"></div>
+											<div class="input-group col-sm-12 col-sm-offset-4">
+													<label th:if="${#fields.hasErrors('fecha')}"
+														th:each="err : ${#fields.errors('fecha')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
+												</div>
 										</div>
 										<input type="hidden" th:field="*{fecha}" id="fechaPeso">
 									</div>
@@ -72,7 +91,7 @@
 						<div class="small-box bg-green">
 							<div class="inner">
 								<h3
-									th:utext="${ultimoPeso.peso != null} ? ${(ultimoPeso.peso)} + '<sup style=font-size:' + '20px' + '>Kg</sup>' : 'No hay datos'">
+									th:utext="${ultimoPeso.pesoReg == null} ? 'No hay datos': ${(ultimoPeso.pesoReg)} + '<sup style=font-size:' + '20px' + '>Kg</sup>'">
 								</h3>
 
 								<p>Peso actual registrado</p>
@@ -106,7 +125,7 @@
 	<div th:include="../fragments/scripts_fragment :: scripts"></div>
 	<script>
 		$(function() {
-			
+
 			$('#datepickerPeso').datepicker({
 				format : 'dd/mm/yyyy',
 				autoclose : true,
@@ -122,7 +141,7 @@
 						$('#fechaPeso').val(
 								$('#datepickerPeso').datepicker(
 										'getFormattedDate'));
-			});
+					});
 		});
 	</script>
 </body>

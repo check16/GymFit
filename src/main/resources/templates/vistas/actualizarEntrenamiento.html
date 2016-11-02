@@ -40,18 +40,21 @@
 									<input type="hidden" th:field="*{idEntrenamiento}"
 										th:value="${(entrenamiento.idEntrenamiento)}">
 									<div class="box-body">
-										<div class="form-group">
+										<div th:class="${#fields.hasErrors('nombreEntreno')} ? 'form-group has-error' : 'form-group' "
+											class="form-group">
 											<label for="nombreEntreno" class="col-sm-2 control-label">Nombre
 												entrenamiento(*): </label>
 
-											<div
-												th:class="${#fields.hasErrors('nombreEntreno')} ? 'input-group has-error col-sm-6' : 'input-group col-sm-6' "
-												class="input-group col-sm-6">
-												<input th:field="*{nombreEntreno}"
+											<div class="input-group col-sm-6">
+
+												<input th:field="*{nombreEntreno}" id="pesoReg" type="text"
 													th:value="${(entrenamiento.nombreEntreno)}"
-													id="nombreEntreno" type="text" class="form-control">
-												<span class="input-group-addon"><i
-													class="fa fa-pencil-square-o"></i></span>
+													id="nombreEntreno"
+													class="form-control"> <span
+													class="input-group-addon"> <i
+													class="fa fa-pencil-square-o"></i>
+												</span>
+
 											</div>
 										</div>
 

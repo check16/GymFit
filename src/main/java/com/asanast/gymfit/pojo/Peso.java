@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 @Entity
 @Table(name="peso")
@@ -21,9 +24,12 @@ public class Peso {
 	private int idRegistroPeso;
 	
 	@NotNull
-	private BigDecimal peso;
+	@Max(350)
+	@Min(0)
+	private BigDecimal pesoReg;
 	
 	@NotNull
+	@Past
 	private Date fecha;
 	
 	@ManyToOne
@@ -35,7 +41,7 @@ public class Peso {
 	}
 
 	public Peso(BigDecimal peso, Date fecha, Usuario usuario) {
-		this.peso = peso;
+		this.pesoReg = peso;
 		this.fecha = fecha;
 		this.usuario = usuario;
 	}
@@ -48,12 +54,12 @@ public class Peso {
 		this.idRegistroPeso = idRegistroPeso;
 	}
 
-	public BigDecimal getPeso() {
-		return peso;
+	public BigDecimal getPesoReg() {
+		return pesoReg;
 	}
 
-	public void setPeso(BigDecimal peso) {
-		this.peso = peso;
+	public void setPesoReg(BigDecimal pesoReg) {
+		this.pesoReg = pesoReg;
 	}
 
 	public Date getFecha() {
@@ -74,7 +80,7 @@ public class Peso {
 
 	@Override
 	public String toString() {
-		return "Peso [idRegistroPeso=" + idRegistroPeso + ", peso=" + peso + ", fecha=" + fecha + ", usuario=" + usuario
+		return "Peso [idRegistroPeso=" + idRegistroPeso + ", peso=" + pesoReg + ", fecha=" + fecha + ", usuario=" + usuario
 				+ "]";
 	}
 

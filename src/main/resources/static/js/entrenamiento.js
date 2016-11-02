@@ -42,8 +42,6 @@ function modificarIndicesTabla() {
         numeroInput.eq(0).attr({name: 'ejercicios[' + indice + '].cargaMax'});
         numeroInput.eq(1).attr({name: 'ejercicios[' + indice + '].totalRepeticiones'});
         idEjercicio.eq(0).attr({name: 'ejercicios[' + indice + '].idEjercicio'});
-        
-
     });
 	
 }
