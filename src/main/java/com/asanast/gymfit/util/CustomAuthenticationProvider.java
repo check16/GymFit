@@ -30,14 +30,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 				User user = (User) customUserDetailsService.loadUserByUsername(principal);
 				if (user != null) {
 					if (bCryptPasswordEncoder.matches(credentials, user.getPassword())) {
-						System.out.println("Login correcto");
 						return new UsernamePasswordAuthenticationToken(principal, credentials, user.getAuthorities());
 					}else {
-						System.out.println("Error de login: " + principal);
 						throw new BadCredentialsException("Error de login");
 					}
 				} else {
-					System.out.println("Error de login: " + principal);
 					throw new BadCredentialsException("Error de login");
 				}
 	}

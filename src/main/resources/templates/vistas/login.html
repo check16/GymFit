@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="../fragments/head_fragment :: head (titulo=#{login.page.title})">
-  
+<head
+	th:replace="../fragments/head_fragment :: head (titulo=#{login.page.title})">
+
 
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="#"><b>Gym</b>FIT</a>
-  </div>
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="#"><b>Gym</b>FIT</a>
+		</div>
 
-  <div class="login-box-body">
-    <p th:if="${param.error == null}" class="login-box-msg">Introduce tus datos para acceder a la aplicación</p>
-	<p th:if="${param.error != null}" class="text-red" th:text="#{login.error}">Mensaje Error</p>
-	
-	<div th:if="${logout != null}" class="alert alert-success alert-dismissible">
+		<div class="login-box-body">
+			<p th:if="${param.error == null}" class="login-box-msg">Introduce
+				tus datos para acceder a la aplicación</p>
+			<p th:if="${param.error != null}" class="text-red"
+				th:text="#{login.error}">Mensaje Error</p>
+
+			<div th:if="${logout != null}"
+				class="alert alert-success alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert"
 					aria-hidden="true">&times;</button>
 				<h4 th:text="${(logout)}">
@@ -22,53 +26,60 @@
 				</h4>
 			</div>
 
-    <form th:action="@{/login}" method="post">
-      <div th:class="${param.error != null} ? 'form-group has-error' : 'form-group has-feedback'">
-        <input type="text" name="usuario" class="form-control" placeholder="Usuario">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      
-      <div th:class="${param.error != null} ? 'form-group has-error' : 'form-group has-feedback'">
-        <input type="password" name="clave" class="form-control" placeholder="Contraseña">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox" name='recuerdame'> Recuérdame
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <input type="submit" value="Acceder" class="btn btn-primary btn-block btn-flat"/>
-        </div>
-        <!-- /.col -->
-      </div>
-    </form>
+			<form th:action="@{/login}" method="post">
+				<div th:class="${param.error != null} ? 'form-group has-error' : 'form-group'">
+					<div class="input-group">
+						<input type="text" name="usuario" class="form-control" placeholder="Usuario">
+						<span class="input-group-addon"> <i class="fa fa-user"></i>
+						</span>
+					</div>
+				</div>
+				
+				<div th:class="${param.error != null} ? 'form-group has-error' : 'form-group'">
+					<div class="input-group">
+						<input type="password" name="clave" class="form-control" placeholder="Contraseña">
+						<span class="input-group-addon"> <i class="fa fa-lock"></i>
+						</span>
+					</div>
+				</div>
 
-    <a th:href="@{/registro}" class="text-center">Registrar un nuevo miembro</a>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="checkbox icheck">
+							<label> <input type="checkbox" name='recuerdame'>
+								Recuérdame
+							</label>
+						</div>
+					</div>
+					<!-- /.col -->
+					<div class="col-xs-4">
+						<input type="submit" value="Acceder"
+							class="btn btn-primary btn-block btn-flat" />
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
 
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+			<a th:href="@{/registro}" class="text-center">Registrar un nuevo
+				miembro</a>
 
-<!-- Fragment con los scripts de la aplicacion -->
-<div th:include="../fragments/scripts_fragment :: scripts"></div>
+		</div>
+		<!-- /.login-box-body -->
+	</div>
+	<!-- /.login-box -->
 
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-    
-    
-    
-  });
-</script>
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+
+	<script>
+		$(function() {
+			$('input').iCheck({
+				checkboxClass : 'icheckbox_square-blue',
+				radioClass : 'iradio_square-blue',
+				increaseArea : '20%' // optional
+			});
+
+		});
+	</script>
 </body>
 </html>
