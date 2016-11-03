@@ -15,4 +15,5 @@ public interface PesoDao {
 	//public List<Peso> findBetweenDate(Peso peso, Date fechaFinal);
 	public void update(Peso peso);
 	public void delete(Peso peso);
+	public void saveOrUpdate(Peso peso);
 }

@@ -22,13 +22,13 @@ public class PasswordFormValidator implements Validator{
             errors.rejectValue("clave","Las claves no coinciden");
         }
 		if(pf.getClave().isEmpty()) {
-			errors.rejectValue("clave","No puede estar vacío");
+			errors.rejectValue("clave","Clave no puede estar vacía");
 		}
 		if(pf.getRepiteClave().isEmpty()) {
-			errors.rejectValue("repiteClave","No puede estar vacío");
+			errors.rejectValue("repiteClave","Clave 2 no puede estar vacía");
 		}
 		if(pf.getClave().length() < 4) {
-			errors.rejectValue("clave","Debe tener 4 caracteres como mínimo");
+			errors.rejectValue("clave","Debe tener 4 carácteres como mínimo");
 		}
 		if(pf.getRepiteClave().length() < 4) {
 			errors.rejectValue("repiteClave","Debe tener 4 caracteres como mínimo");

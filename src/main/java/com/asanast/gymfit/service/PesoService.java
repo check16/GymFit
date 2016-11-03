@@ -29,11 +29,7 @@ public class PesoService {
 	}
 	
 	public void saveOrUpdate(Peso peso) {
-		if(pesoDao.findByUsuarioAndFecha(peso.getUsuario(), peso.getFecha()) != null) {
-			pesoDao.update(peso);
-		}else {
-			pesoDao.save(peso);
-		}
+		pesoDao.saveOrUpdate(peso);
 	}
 	
 	public Peso findLastPeso(Usuario usuario) {

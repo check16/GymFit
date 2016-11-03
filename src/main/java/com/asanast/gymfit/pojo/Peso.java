@@ -1,11 +1,10 @@
 package com.asanast.gymfit.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,12 +16,10 @@ import javax.validation.constraints.Past;
 
 @Entity
 @Table(name="peso")
-public class Peso {
+public class Peso implements Serializable{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idRegistroPeso;
-	
+	private static final long serialVersionUID = 1L;
+
 	@NotNull
 	@Max(350)
 	@Min(0)
@@ -30,10 +27,12 @@ public class Peso {
 	
 	@NotNull
 	@Past
+	@Id
 	private Date fecha;
 	
 	@ManyToOne
 	@JoinColumn(name="idUsuario")
+	@Id
 	private Usuario usuario;
 	
 	public Peso() {
@@ -44,14 +43,6 @@ public class Peso {
 		this.pesoReg = peso;
 		this.fecha = fecha;
 		this.usuario = usuario;
-	}
-
-	public int getIdRegistroPeso() {
-		return idRegistroPeso;
-	}
-
-	public void setIdRegistroPeso(int idRegistroPeso) {
-		this.idRegistroPeso = idRegistroPeso;
 	}
 
 	public BigDecimal getPesoReg() {
@@ -78,10 +69,5 @@ public class Peso {
 		this.usuario = usuario;
 	}
 
-	@Override
-	public String toString() {
-		return "Peso [idRegistroPeso=" + idRegistroPeso + ", peso=" + pesoReg + ", fecha=" + fecha + ", usuario=" + usuario
-				+ "]";
-	}
 
 }

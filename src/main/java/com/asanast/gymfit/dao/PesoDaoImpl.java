@@ -52,7 +52,6 @@ public class PesoDaoImpl implements PesoDao{
 	@Transactional
 	public void update(Peso peso) {
 		getSession().update(peso);
-		getSession().getTransaction().commit();
 		
 	}
 
@@ -82,6 +81,13 @@ public class PesoDaoImpl implements PesoDao{
 		crit.addOrder(Order.desc("fecha"));
 		crit.setMaxResults(1);
 		return (Peso) crit.uniqueResult();
+	}
+
+	@Override
+	@Transactional
+	public void saveOrUpdate(Peso peso) {
+		getSession().saveOrUpdate(peso);
+		
 	}
 
 }

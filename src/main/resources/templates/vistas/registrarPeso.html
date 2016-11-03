@@ -63,21 +63,30 @@
 
 										</div>
 
-										<div th:class="${#fields.hasErrors('fecha')} ? 'form-group has-error' : 'form-group' ">
+										<div
+											th:class="${#fields.hasErrors('fecha')} ? 'form-group has-error' : 'form-group' ">
 											<div class="input-group col-sm-12" id="datepickerPeso"></div>
 											<div class="input-group col-sm-12 col-sm-offset-4">
-													<label th:if="${#fields.hasErrors('fecha')}"
-														th:each="err : ${#fields.errors('fecha')}"
-														class="control-label" for="inputError"><i
-														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
-													</label>
-												</div>
+												<label th:if="${#fields.hasErrors('fecha')}"
+													th:each="err : ${#fields.errors('fecha')}"
+													class="control-label" for="inputError"><i
+													class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+												</label>
+											</div>
 										</div>
 										<input type="hidden" th:field="*{fecha}" id="fechaPeso">
 									</div>
 									<div class="box-footer">
 										<button type="submit" class="btn btn-success pull-right">Guardar</button>
 										<br>
+										<div th:if="${registrado != null}"
+											class="alert alert-success alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert"
+												aria-hidden="true">&times;</button>
+											<h4 th:text="${(registrado)}">
+												<i class="icon fa fa-check"></i>Insertado
+											</h4>
+										</div>
 									</div>
 								</form>
 							</div>

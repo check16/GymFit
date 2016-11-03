@@ -40,11 +40,17 @@ public class PesoController {
 	}
 	
 	@RequestMapping("/home/registrarPeso/registrar")
-	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, RedirectAttributes ra) {
+	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, RedirectAttributes ra, HttpSession sesion) {
 		if(results.hasErrors()) {
 			return "registrarPeso";
+		}else {
+			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+			peso.setUsuario(usuario);
+			pesoService.saveOrUpdate(peso);
+			ra.addFlashAttribute("registrado", "Peso registrado correctamente");
+			return "redirect:/home/registrarPeso";
 		}
-		return "redirect:/home/registrarPeso";
+		
 	}
 
 }
