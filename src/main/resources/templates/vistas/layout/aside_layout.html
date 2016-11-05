@@ -12,11 +12,12 @@
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}" class="img-circle"
-						alt="User Image">
+					<img th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}"
+						class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
-					<p th:text="${(session.usuario.nombreApellido != null && session.usuario.nombreApellido != '')} ? ${(session.usuario.nombreApellido)} : ${(session.usuario.login)}"></p>
+					<p
+						th:text="${(session.usuario.nombreApellido != null && session.usuario.nombreApellido != '')} ? ${(session.usuario.nombreApellido)} : ${(session.usuario.login)}"></p>
 					<!-- Status -->
 					<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 				</div>
@@ -26,22 +27,27 @@
 			<ul class="sidebar-menu">
 				<li class="header">MENU PRINCIPAL</li>
 
-				<li th:class="${activo == 'entrenamiento'} ? 'active' : ''" class="active"><a th:href="@{/home/entrenamiento}"><i class="fa fa-calendar"></i> <span>Entrenamientos</span></a></li>
+				<li th:class="${activo == 'entrenamiento'} ? 'active' : ''"
+					class="active"><a th:href="@{/home/entrenamiento}"><i
+						class="fa fa-calendar"></i> <span>Entrenamientos</span></a></li>
 
-				<li th:class="${activo == 'perfil'} ? 'active' : ''"><a th:href="@{/home/perfil}"><i class="fa fa-user"></i><span>Perfil</span></a></li>
-				
-				<li class="treeview">
-          <a href="#">
-            <i class="fa fa-bars"></i> <span>Peso Corporal</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a th:href="@{/home/registrarPeso}"><i class="fa fa-balance-scale"></i> Registrar Peso</a></li>
-            <li><a href="#"><i class="fa fa-bar-chart"></i> Seguimiento Peso</a></li>
-          </ul>
-        </li>
+				<li th:class="${activo == 'perfil'} ? 'active' : ''"><a
+					th:href="@{/home/perfil}"><i class="fa fa-user"></i><span>Perfil</span></a></li>
+
+				<li class="treeview"><a href="#"> <i class="fa fa-bars"></i>
+						<span>Peso Corporal</span> <span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+					<ul class="treeview-menu">
+						<li><a th:href="@{/home/registrarPeso}"><i
+								class="fa fa-balance-scale"></i> Registrar Peso</a></li>
+						<li><a href="#"><i class="fa fa-bar-chart"></i>
+								Seguimiento Peso</a></li>
+					</ul></li>
+					
+				<li th:class="${activo == 'idr'} ? 'active' : ''"><a
+					th:href="@{/home/idr}"><i class="fa fa-cutlery"></i><span>IDR</span></a></li>
 			</ul>
 			<!-- /.sidebar-menu -->
 		</section>

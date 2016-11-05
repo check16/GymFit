@@ -28,6 +28,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @DynamicUpdate(value=true)
 public class Usuario {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUsuario;
@@ -73,16 +74,8 @@ public class Usuario {
 	private List<Entrenamiento> entrenamientos;
 
 	public Usuario() {
+		
 
-	}
-
-	public Usuario(String login, String clave, String email, int edad, int altura, String rutaFoto) {
-		this.login = login;
-		this.clave = clave;
-		this.email = email;
-		this.edad = edad;
-		this.altura = altura;
-		this.rutaFoto = rutaFoto;
 	}
 
 	public int getIdUsuario() {

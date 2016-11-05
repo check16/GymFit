@@ -47,8 +47,7 @@ public class LoginController {
 	
 	@RequestMapping("/registro")
 	public String irRegistro(Model model) {
-		Usuario usuario = new Usuario();
-		model.addAttribute("usuario", usuario);
+		model.addAttribute("usuario", new Usuario());
 		return "registro";
 	}
 	

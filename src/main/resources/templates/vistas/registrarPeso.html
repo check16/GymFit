@@ -33,7 +33,7 @@
 							</div>
 							<div class="box-body">
 								<form th:action="@{/home/registrarPeso/registrar}" method="post"
-									th:object="${peso}" class="form-horizontal">
+									th:object="${peso}" id="formPeso" class="form-horizontal">
 									<div class="box-body">
 
 										<div
@@ -44,8 +44,8 @@
 
 											<div class="input-group col-sm-6">
 
-												<input th:field="*{pesoReg}" id="pesoReg" type="number"
-													step="0.1" class="form-control"> <span
+												<input th:field="*{pesoReg}" type="number"
+													step="0.1" class="form-control" id="pesoReg"> <span
 													class="input-group-addon"> <i
 													class="fa fa-balance-scale"></i>
 												</span>
@@ -103,7 +103,7 @@
 									th:utext="${ultimoPeso.pesoReg == null} ? 'No hay datos': ${(ultimoPeso.pesoReg)} + '<sup style=font-size:' + '20px' + '>Kg</sup>'">
 								</h3>
 
-								<p>Peso actual registrado</p>
+								<p th:text="${ultimoPeso.fecha == null} ? '' : 'Peso actual registrado a fecha de: ' + ${#dates.format(ultimoPeso.fecha, 'dd/MM/yyyy')}">Peso actual registrado</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-stats-bars"></i>

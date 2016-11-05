@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{idr.page.title})">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+
+			<!-- Contenido Header-->
+			<section class="content-header">
+				<h1 th:text="'Calculo de Ingesta Diaria Recomendada (IDR) de: ' + ${(session.usuario.login)}"></h1>
+			</section>
+
+			<section class="content">
+
+				
+			</section>
+
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script>
+		$(function() {
+
+			$('#datepickerPeso').datepicker({
+				format : 'dd/mm/yyyy',
+				autoclose : true,
+				todayBtn : "linked",
+				endDate : '+0d',
+				language : "es",
+				todayHighlight : true
+			}).datepicker("setDate", new Date());
+
+			$('#datepickerPeso').on(
+					"changeDate",
+					function() {
+						$('#fechaPeso').val(
+								$('#datepickerPeso').datepicker(
+										'getFormattedDate'));
+					});
+		});
+	</script>
+</body>
+</html>

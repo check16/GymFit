@@ -1,8 +1,8 @@
 package com.asanast.gymfit.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +23,9 @@ public class InicioController {
 	}
 	
 	@RequestMapping("/home")
-	public String mostrarHome(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String nombre = auth.getName();
-		model.addAttribute("usuario", usuarioService.findByLogin(nombre));
+	public String mostrarHome(Model model, HttpSession sesion) {
+		String login = SecurityContextHolder.getContext().getAuthentication().getName();
+		sesion.setAttribute("usuario", usuarioService.findByLogin(login));
 		return "home";
 	}
 
