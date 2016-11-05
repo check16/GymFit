@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.asanast.gymfit.service.CustomUserDetailsService;
 import com.asanast.gymfit.util.CustomAuthenticationProvider;
+import com.asanast.gymfit.util.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests().antMatchers("/home/**").hasAuthority("ROL_REGISTRADO")	
 		.and().formLogin().loginProcessingUrl("/login").defaultSuccessUrl("/home")
-				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").usernameParameter("usuario").passwordParameter("clave")
+				.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error").successHandler(customAuthenticationSuccessHandler()).usernameParameter("usuario").passwordParameter("clave")
 				.and().logout().clearAuthentication(true).logoutUrl("/logout").invalidateHttpSession(true).logoutSuccessUrl("/login")
 				.and().csrf().and().exceptionHandling()
 				.accessDeniedPage("/403");
@@ -52,6 +53,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public CustomUserDetailsService customUserDetailsService() {
 		return new CustomUserDetailsService();
+	}
+	
+	@Bean
+	@Autowired
+	public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+		return new CustomAuthenticationSuccessHandler();
 	}
 
 }
