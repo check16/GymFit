@@ -32,7 +32,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         response.setStatus(HttpServletResponse.SC_OK);
  
-        response.sendRedirect("/home");
+        response.sendRedirect(request.getContextPath() + "/home");
 		
 	}
 

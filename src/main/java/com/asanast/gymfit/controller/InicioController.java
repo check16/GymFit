@@ -19,7 +19,7 @@ public class InicioController {
 	
 	@RequestMapping("/")
 	public String acceso() {
-		return "redirect:home";
+		return "redirect:/home";
 	}
 	
 	@RequestMapping("/home")
