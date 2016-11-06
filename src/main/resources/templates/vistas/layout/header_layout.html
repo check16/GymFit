@@ -22,13 +22,13 @@
 					<li class="dropdown user user-menu">
 						<!-- Boton toogle del menu --> <a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"> <!-- La imagen de usuario en la barra de navegación -->
-							<img th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}" class="user-image"
+							<img th:src="@{'/img/user-icon.png'}" class="user-image"
 							alt="User Image"> <span th:text="${(session.usuario.nombreApellido != null && session.usuario.nombreApellido != '')} ? ${(session.usuario.nombreApellido)} : ${(session.usuario.login)}" class="hidden-xs"></span>
 					</a>
 						<ul class="dropdown-menu">
 							<!-- La imagen de usuario en el menu -->
 							<li class="user-header"><img
-								th:src="@{'/img/'+ ${(session.usuario.rutaFoto)}}" class="img-circle"
+								th:src="@{'/img/user-icon.png'}" class="img-circle"
 								alt="User Image">
 								<p th:utext="${(session.usuario.nombreApellido != null && session.usuario.nombreApellido != '')} ? ${(session.usuario.nombreApellido)} + '<small>Miembro desde: ' + ${#dates.format(session.usuario.fechaRegistro, 'dd/MM/yyyy')} + '</small>' : ${(session.usuario.login)} + '<small>Miembro desde: ' + ${#dates.format(session.usuario.fechaRegistro, 'dd/MM/yyyy')} + '</small>'">
 								</p></li>

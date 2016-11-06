@@ -15,6 +15,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.asanast.gymfit.pojo.Usuario;
@@ -77,6 +78,7 @@ public class UsuarioController {
 	}
 	
  	@RequestMapping(value="/home/perfil/modificarclave", method = RequestMethod.POST)
+ 	@ResponseBody
 	public List<ObjectError> modificarClave(@Valid @ModelAttribute("passwordForm") PasswordForm pf,HttpSession sesion, BindingResult results) {
  		passwordValidator.validate(pf, results);
  		if(results.hasErrors()) {

@@ -19,13 +19,11 @@ public class InicioController {
 	
 	@RequestMapping("/")
 	public String acceso() {
-		return "redirect:/home";
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("/home")
 	public String mostrarHome(Model model, HttpSession sesion) {
-		//String login = SecurityContextHolder.getContext().getAuthentication().getName();
-		//sesion.setAttribute("usuario", usuarioService.findByLogin(login));
 		return "home";
 	}
 

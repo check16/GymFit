@@ -9,7 +9,7 @@
 
 $("#agregarEjercicio").on("click", function(e) {
 	$.ajax({
-		url : "/home/entrenamiento/crearejercicio",
+		url : "/gymfit/home/entrenamiento/crearejercicio",
 		method: "GET",
 		success : function(respuesta) {
 			var tr = "";

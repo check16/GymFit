@@ -6,7 +6,7 @@ function modificarClave() {
 	$("#formClave").submit(function(event) {
 		event.preventDefault();
 		$.ajax({
-			url : "/home/perfil/modificarclave",
+			url : "/gymfit/home/perfil/modificarclave",
 			data: $("#formClave").serialize(),
 			method: "POST",
 			success : function(respuesta) {

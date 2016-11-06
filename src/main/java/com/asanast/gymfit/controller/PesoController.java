@@ -25,6 +25,7 @@ public class PesoController {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 		Peso ultimoPeso = pesoService.findLastPeso(usuario);
 		if(ultimoPeso != null) {
+			model.addAttribute("activo", "peso");
 			model.addAttribute("ultimoPeso", pesoService.findLastPeso(usuario));
 			model.addAttribute("peso", new Peso());
 		}else {
