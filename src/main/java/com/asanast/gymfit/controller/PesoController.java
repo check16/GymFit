@@ -29,6 +29,7 @@ public class PesoController {
 			model.addAttribute("ultimoPeso", pesoService.findLastPeso(usuario));
 			model.addAttribute("peso", new Peso());
 		}else {
+			model.addAttribute("activo", "peso");
 			model.addAttribute("ultimoPeso", new Peso());
 			model.addAttribute("peso", new Peso());
 		}
@@ -36,12 +37,15 @@ public class PesoController {
 	
 	@RequestMapping("/home/registrarPeso")
 	public String irRegistrarPeso(Model model) {
+		model.addAttribute("activoPeso", "regPeso");
+		model.addAttribute("activo", "peso");
 		return "registrarPeso";
 	}
 	
 	@RequestMapping("/home/registrarPeso/registrar")
 	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, HttpSession sesion) {
 		if(results.hasErrors()) {
+			
 			return "registrarPeso";
 		}else {
 			Usuario usuario = (Usuario) sesion.getAttribute("usuario");

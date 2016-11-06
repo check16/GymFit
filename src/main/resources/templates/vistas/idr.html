@@ -26,7 +26,7 @@
 
 			<section class="content">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
+					<div class="col-md-12">
 						<div class="box box-primary">
 							<div class="box-header with-border">
 
@@ -38,21 +38,114 @@
 									<div class="box-body">
 										<div
 											th:class="${#fields.hasErrors('edad')} ? 'form-group has-error' : 'form-group' ">
-											<label for="nombreEntreno" class="col-sm-2 control-label">Edad(*): </label>
+											<label for="nombreEntreno" class="col-sm-3 control-label">Edad(*):
+											</label>
 
 											<div class="input-group col-sm-6">
 
-												<input th:field="*{edad}" id="edad" type="number"
-													th:value="${(idrForm.edad)}"
-													id="edad" class="form-control"> <span
+												<input placeholder="Edad" th:field="*{edad}" type="number"
+													th:value="${(idrForm.edad)}" id="edad" class="form-control">
+												<span class="input-group-addon"> <i
+													class="fa fa-pencil-square-o"></i>
+												</span>
+
+											</div>
+											<div class="form-group">
+												<div class="input-group col-sm-8 col-sm-offset-3">
+													<label th:if="${#fields.hasErrors('edad')}"
+														th:each="err : ${#fields.errors('edad')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
+												</div>
+											</div>
+										</div>
+
+										<div
+											th:class="${#fields.hasErrors('peso')} ? 'form-group has-error' : 'form-group' ">
+											<label for="nombreEntreno" class="col-sm-3 control-label">Peso(*):
+											</label>
+
+											<div class="input-group col-sm-6">
+
+												<input placeholder="Peso (Kg.)" th:field="*{peso}" type="number" min=0
+													th:value="${(idrForm.peso)}" id="peso"
+													class="form-control"> <span
 													class="input-group-addon"> <i
 													class="fa fa-pencil-square-o"></i>
 												</span>
 
 											</div>
+											
+											<div class="form-group">
+												<div class="input-group col-sm-8 col-sm-offset-3">
+													<label th:if="${#fields.hasErrors('peso')}"
+														th:each="err : ${#fields.errors('peso')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
+												</div>
+											</div>
 										</div>
-									</div>
 
+										<div
+											th:class="${#fields.hasErrors('altura')} ? 'form-group has-error' : 'form-group' ">
+											<label for="nombreEntreno" class="col-sm-3 control-label">Altura cm.(*):
+											</label>
+
+											<div class="input-group col-sm-6">
+												<input placeholder="Altura (Cm.)" th:field="*{altura}" type="number"
+													th:value="${(idrForm.altura)}" id="altura"
+													class="form-control"> <span
+													class="input-group-addon"> <i
+													class="fa fa-pencil-square-o"></i>
+												</span>
+											</div>
+											
+											<div class="form-group">
+												<div class="input-group col-sm-8 col-sm-offset-3">
+													<label th:if="${#fields.hasErrors('altura')}"
+														th:each="err : ${#fields.errors('altura')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
+												</div>
+											</div>
+										</div>
+
+										<div
+											th:class="${#fields.hasErrors('sexo')} ? 'form-group has-error' : 'form-group' ">
+											<label for="nombreEntreno" class="col-sm-3 control-label">Sexo(*):
+
+											</label>
+											<div class="input-group col-sm-6">
+												<input th:field="*{sexo}" type="radio" th:field="*{sexo}" th:checked="${sexo.sexo == 'Masculino'}"
+													checked="checked" 
+													th:each="sexo, index : ${T(com.asanast.gymfit.pojo.VO.IdrForm.Sexo).values()}"
+													th:value="${sexo}" th:text="${sexo.sexo}">
+											</div>
+										</div>
+
+										<div
+											th:class="${#fields.hasErrors('objetivo')} ? 'form-group has-error' : 'form-group' ">
+											<label for="nombreEntreno" class="col-sm-3 control-label">Objetivo(*):
+
+											</label>
+											<div class="input-group col-sm-6">
+												<select class="form-control" th:field="*{objetivo}">
+													<option
+														th:each="objetivo : ${T(com.asanast.gymfit.pojo.VO.IdrForm.Objetivo).values()}"
+														th:value="${objetivo}" th:text="${objetivo.objetivo}"></option>
+												</select>
+											</div>
+										</div>
+										
+										
+									</div>
+									<div class="box-footer">
+										<button type="submit" class="btn btn-success pull-right">Calcular</button>
+										<br>
+									</div>
 								</form>
 							</div>
 						</div>
@@ -78,7 +171,14 @@
 	<!-- Fragment con los scripts de la aplicacion -->
 	<div th:include="../fragments/scripts_fragment :: scripts"></div>
 	<script>
-		
+		$(function() {
+			//iCheck for checkbox and radio inputs
+
+			$('input[type="radio"]').iCheck({
+				checkboxClass : 'iradio_flat-blue',
+				radioClass : 'iradio_flat-blue'
+			});
+		})
 	</script>
 </body>
 </html>

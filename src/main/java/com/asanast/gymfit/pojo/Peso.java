@@ -22,7 +22,7 @@ public class Peso implements Serializable{
 
 	@NotNull
 	@Max(350)
-	@Min(0)
+	@Min(30)
 	private BigDecimal pesoReg;
 	
 	@NotNull

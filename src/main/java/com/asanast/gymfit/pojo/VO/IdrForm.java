@@ -1,14 +1,33 @@
 package com.asanast.gymfit.pojo.VO;
 
-import com.asanast.gymfit.pojo.Peso;
+import java.math.BigDecimal;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class IdrForm {
 
+	@Min(14)
+	@Max(120)
+	@NotNull
 	private int edad;
 
-	private Peso peso;
+	@NotNull
+	@Max(350)
+	@Min(30)
+	private BigDecimal peso;
 
+	@NotNull
+	@Min(30)
+	@Max(260)
 	private int altura;
+	
+	@NotNull
+	private Objetivo objetivo;
+	
+	@NotNull
+	private Sexo sexo;
 
 	public enum Objetivo {
 		AUMENTAR("Aumentar de peso"), AUMENTAR_LENTAMENTE("Aumentar de peso lentamente"), MANTENER(
@@ -49,11 +68,11 @@ public class IdrForm {
 		this.edad = edad;
 	}
 
-	public Peso getPeso() {
+	public BigDecimal getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Peso peso) {
+	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 
@@ -64,7 +83,20 @@ public class IdrForm {
 	public void setAltura(int altura) {
 		this.altura = altura;
 	}
-	
-	
 
+	public Objetivo getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(Objetivo objetivo) {
+		this.objetivo = objetivo;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
 }
