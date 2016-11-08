@@ -22,10 +22,13 @@ public class IdrForm {
 	@Min(30)
 	@Max(260)
 	private int altura;
-	
+
 	@NotNull
 	private Objetivo objetivo;
-	
+
+	@NotNull
+	private Actividad actividad;
+
 	@NotNull
 	private Sexo sexo;
 
@@ -56,6 +59,22 @@ public class IdrForm {
 
 		public String getSexo() {
 			return this.sexo;
+		}
+
+	}
+
+	public enum Actividad {
+		SEDENTARIO("Sedentario"), LIGERA("Actividad ligera"), MODERADA("Actividad moderada"), INTENSA(
+				"Actividad intensa"), MUYINTENSA("Actividad muy intensa");
+
+		private String actividad;
+
+		private Actividad(String actividad) {
+			this.actividad = actividad;
+		}
+
+		public String getActividad() {
+			return this.actividad;
 		}
 
 	}
@@ -98,5 +117,13 @@ public class IdrForm {
 
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
+	}
+
+	public Actividad getActividad() {
+		return actividad;
+	}
+
+	public void setActividad(Actividad actividad) {
+		this.actividad = actividad;
 	}
 }

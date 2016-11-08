@@ -26,7 +26,7 @@
 
 			<section class="content">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-8">
 						<div class="box box-primary">
 							<div class="box-header with-border">
 
@@ -68,15 +68,15 @@
 
 											<div class="input-group col-sm-6">
 
-												<input placeholder="Peso (Kg.)" th:field="*{peso}" type="number" min=0
-													th:value="${(idrForm.peso)}" id="peso"
+												<input placeholder="Peso (Kg.)" th:field="*{peso}" step="0.1"
+													type="number" min=30 th:value="${(idrForm.peso)}" id="peso"
 													class="form-control"> <span
 													class="input-group-addon"> <i
 													class="fa fa-pencil-square-o"></i>
 												</span>
 
 											</div>
-											
+
 											<div class="form-group">
 												<div class="input-group col-sm-8 col-sm-offset-3">
 													<label th:if="${#fields.hasErrors('peso')}"
@@ -90,18 +90,18 @@
 
 										<div
 											th:class="${#fields.hasErrors('altura')} ? 'form-group has-error' : 'form-group' ">
-											<label for="nombreEntreno" class="col-sm-3 control-label">Altura cm.(*):
-											</label>
+											<label for="nombreEntreno" class="col-sm-3 control-label">Altura
+												cm.(*): </label>
 
 											<div class="input-group col-sm-6">
-												<input placeholder="Altura (Cm.)" th:field="*{altura}" type="number"
-													th:value="${(idrForm.altura)}" id="altura"
+												<input placeholder="Altura (Cm.)" th:field="*{altura}"
+													type="number" th:value="${(idrForm.altura)}" id="altura"
 													class="form-control"> <span
 													class="input-group-addon"> <i
 													class="fa fa-pencil-square-o"></i>
 												</span>
 											</div>
-											
+
 											<div class="form-group">
 												<div class="input-group col-sm-8 col-sm-offset-3">
 													<label th:if="${#fields.hasErrors('altura')}"
@@ -119,8 +119,8 @@
 
 											</label>
 											<div class="input-group col-sm-6">
-												<input th:field="*{sexo}" type="radio" th:field="*{sexo}" th:checked="${sexo.sexo == 'Masculino'}"
-													checked="checked" 
+												<input th:field="*{sexo}" type="radio" th:field="*{sexo}"
+													th:checked="${sexo.sexo == 'Masculino'}" checked="checked"
 													th:each="sexo, index : ${T(com.asanast.gymfit.pojo.VO.IdrForm.Sexo).values()}"
 													th:value="${sexo}" th:text="${sexo.sexo}">
 											</div>
@@ -139,8 +139,21 @@
 												</select>
 											</div>
 										</div>
-										
-										
+
+										<div
+											th:class="${#fields.hasErrors('actividad')} ? 'form-group has-error' : 'form-group' ">
+											<label for="nombreEntreno" class="col-sm-3 control-label">Nivel
+												de actividad(*): </label>
+											<div class="input-group col-sm-6">
+												<select class="form-control" th:field="*{actividad}">
+													<option
+														th:each="actividad : ${T(com.asanast.gymfit.pojo.VO.IdrForm.Actividad).values()}"
+														th:value="${actividad}" th:text="${actividad.actividad}"></option>
+												</select>
+											</div>
+										</div>
+
+
 									</div>
 									<div class="box-footer">
 										<button type="submit" class="btn btn-success pull-right">Calcular</button>
@@ -149,6 +162,25 @@
 								</form>
 							</div>
 						</div>
+					</div>
+					<div class="col-md-4" th:if="${kcalNecesarias != null}">
+
+						<div class="info-box bg-green">
+							<span class="info-box-icon"><i
+								class="ion ion-fork"></i></span>
+
+							<div class="info-box-content">
+								<span class="info-box-text">Debes consumir</span> <span th:text="${kcalNecesarias} + ' Kcal'"
+									class="info-box-number"></span>
+
+								<div class="progress">
+									<div class="progress-bar" th:style="'width:' + ${porcIncremento} + '%;'"></div>
+								</div>
+								<span th:text="${porcIncremento} + '% de incremento sobre IDR de 2000 Kcal'" class="progress-description"> % de incremento sobre IDR de 2000 Kcal </span>
+							</div>
+							<!-- /.info-box-content -->
+						</div>
+
 					</div>
 				</div>
 
