@@ -20,7 +20,7 @@ public class PesoService {
 		pesoDao.save(peso);
 	}
 	
-	public List<Peso> findAllById_Usuario(Usuario usuario) {
+	public List<Peso> findAllByIdUsuario(Usuario usuario) {
 		return pesoDao.findAllByIdUsuario(usuario.getIdUsuario());
 	}
 	

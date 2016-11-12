@@ -18,6 +18,7 @@ import com.asanast.gymfit.pojo.Usuario;
 
 
 @Repository
+@Transactional
 public class PesoDaoImpl implements PesoDao{
 	
 	@Autowired

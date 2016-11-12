@@ -42,7 +42,7 @@
 					<ul class="treeview-menu menu-open">
 						<li th:class="${activoPeso == 'regPeso'} ? 'active' : ''"><a th:href="@{/home/registrarPeso}"><i
 								class="fa fa-balance-scale"></i> Registrar Peso</a></li>
-						<li><a href="#"><i class="fa fa-bar-chart"></i>
+						<li th:class="${activoPeso == 'segPeso'} ? 'active' : ''"><a th:href="@{/home/seguimientoPeso}"><i class="fa fa-bar-chart"></i>
 								Seguimiento Peso</a></li>
 					</ul></li>
 					

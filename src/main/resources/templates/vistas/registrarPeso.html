@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="../fragments/head_fragment :: head (#{perfil.page.title})">
+	th:replace="../fragments/head_fragment :: head (#{registroPeso.page.title})">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -50,14 +50,15 @@
 													class="fa fa-balance-scale"></i>
 												</span>
 
-												<div class="form-group">
-													<div class="input-group col-sm-6 col-sm-offset-2">
-														<label th:if="${#fields.hasErrors('pesoReg')}"
-															th:each="err : ${#fields.errors('pesoReg')}"
-															class="control-label" for="inputError"><i
-															class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
-														</label>
-													</div>
+
+											</div>
+											<div class="form-group">
+												<div class="input-group col-sm-6 col-sm-offset-2">
+													<label th:if="${#fields.hasErrors('pesoReg')}"
+														th:each="err : ${#fields.errors('pesoReg')}"
+														class="control-label" for="inputError"><i
+														class="fa fa-times-circle-o"></i> <span th:text="${err}"></span>
+													</label>
 												</div>
 											</div>
 										</div>

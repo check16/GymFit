@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{seguimientoPeso.page.title})">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+
+			<!-- Contenido Header-->
+			<section class="content-header">
+				<h1
+					th:text="'Seguimiento del peso de: ' + ${(session.usuario.login)}"></h1>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<h3 class="box-title">Evolución peso</h3>
+
+								<div class="box-tools pull-right">
+									<button type="button" class="btn btn-box-tool"
+										data-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-box-tool"
+										data-widget="remove">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body" style="display: block;">
+								<div class="chart">
+									<canvas id="areaChart" style="height: 250px; width: 788px;"
+										height="250" width="788"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script th:src="@{/ajax/ajaxSeguimientoPeso.js}"></script>
+</body>
+</html>

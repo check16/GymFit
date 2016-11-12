@@ -53,7 +53,6 @@ public class PesoController {
 			pesoService.saveOrUpdate(peso);
 			return "redirect:/home/registrarPeso";
 		}
-		
 	}
 
 }
