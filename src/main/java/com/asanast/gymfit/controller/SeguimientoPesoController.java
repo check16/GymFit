@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.asanast.gymfit.pojo.Grafico;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
-import com.asanast.gymfit.pojo.VO.EvolucionPeso;
 import com.asanast.gymfit.service.PesoService;
 import com.asanast.gymfit.util.Utilidades;
 
@@ -34,13 +34,13 @@ public class SeguimientoPesoController {
 	
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public EvolucionPeso obtenerPesos(HttpSession sesion) {
+	public Grafico obtenerPesos(HttpSession sesion) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 		List<Peso> pesos = pesoService.findAllByIdUsuario(usuario);
-		EvolucionPeso evolucionPeso = new EvolucionPeso();
+		Grafico evolucionPeso = new Grafico();
 		for(Peso peso : pesos) {
 			evolucionPeso.getFechas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));
-			evolucionPeso.getPesos().add(peso.getPesoReg());
+			evolucionPeso.getPesos().add(peso.getPesoReg().toString());
 		}
 		return evolucionPeso;
 	}

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
@@ -43,7 +44,7 @@ public class PesoController {
 	}
 	
 	@RequestMapping("/home/registrarPeso/registrar")
-	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, HttpSession sesion) {
+	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, HttpSession sesion, RedirectAttributes ra) {
 		if(results.hasErrors()) {
 			
 			return "registrarPeso";
@@ -51,6 +52,7 @@ public class PesoController {
 			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 			peso.setUsuario(usuario);
 			pesoService.saveOrUpdate(peso);
+			ra.addFlashAttribute("registrado", "El peso se registró correctamente");
 			return "redirect:/home/registrarPeso";
 		}
 	}

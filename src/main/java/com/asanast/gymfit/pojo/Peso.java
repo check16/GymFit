@@ -14,6 +14,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="peso")
 public class Peso implements Serializable{
@@ -28,6 +30,7 @@ public class Peso implements Serializable{
 	@NotNull
 	@Past
 	@Id
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date fecha;
 	
 	@ManyToOne
