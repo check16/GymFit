@@ -12,6 +12,7 @@ public interface PesoDao {
 	public List<Peso> findAllByIdUsuario(int id);
 	public Peso findByUsuarioAndFecha(Usuario usuario, Date fecha);
 	public Peso findByLastDate(Usuario usuario);
+	public List<Peso> findAllPesoByDias(Usuario usuario, int dias);
 	//public List<Peso> findBetweenDate(Peso peso, Date fechaFinal);
 	public void update(Peso peso);
 	public void delete(Peso peso);

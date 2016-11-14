@@ -32,15 +32,15 @@ public class SeguimientoPesoController {
 		return "seguimientoPeso";
 	}
 	
-	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso30", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public Grafico obtenerPesos(HttpSession sesion) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-		List<Peso> pesos = pesoService.findAllByIdUsuario(usuario);
+		List<Peso> pesos = pesoService.findAllByLastDay(usuario, 30);
 		Grafico evolucionPeso = new Grafico();
 		for(Peso peso : pesos) {
-			evolucionPeso.getFechas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));
-			evolucionPeso.getPesos().add(peso.getPesoReg().toString());
+			evolucionPeso.getEtiquetas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));
+			evolucionPeso.getValores().add(peso.getPesoReg().toString());
 		}
 		return evolucionPeso;
 	}

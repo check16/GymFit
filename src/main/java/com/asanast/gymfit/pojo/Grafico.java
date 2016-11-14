@@ -13,22 +13,19 @@ public class Grafico {
 		valores = new ArrayList<String>();
 	}
 
-	public List<String> getFechas() {
+	public List<String> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setFechas(List<String> fechas) {
-		this.etiquetas = fechas;
+	public void setEtiquetas(List<String> etiquetas) {
+		this.etiquetas = etiquetas;
 	}
 
-	public List<String> getPesos() {
+	public List<String> getValores() {
 		return valores;
 	}
 
-	public void setPesos(List<String> pesos) {
-		this.valores = pesos;
+	public void setValores(List<String> valores) {
+		this.valores = valores;
 	}
-	
-	
-
 }

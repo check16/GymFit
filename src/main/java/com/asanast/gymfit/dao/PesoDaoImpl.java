@@ -1,7 +1,8 @@
 package com.asanast.gymfit.dao;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -88,6 +89,22 @@ public class PesoDaoImpl implements PesoDao{
 	@Transactional
 	public void saveOrUpdate(Peso peso) {
 		getSession().saveOrUpdate(peso);
+		
+	}
+
+	@Override
+	public List<Peso> findAllPesoByDias(Usuario usuario, int dias) {
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, -dias); 
+		Criteria crit = getSession().createCriteria(Peso.class);
+		crit.createAlias("usuario", "usuario");
+		crit.add(Restrictions.eq("usuario.idUsuario", usuario.getIdUsuario()));
+		crit.add(Restrictions.ge("fecha", c.getTime()));
+		final List<Peso> listaPesos = new ArrayList<>();
+		for(final Object o : crit.list()) {
+			listaPesos.add((Peso)o);
+		}
+		return listaPesos;
 		
 	}
 

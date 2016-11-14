@@ -24,6 +24,10 @@ public class PesoService {
 		return pesoDao.findAllByIdUsuario(usuario.getIdUsuario());
 	}
 	
+	public List<Peso> findAllByLastDay(Usuario usuario, int dias) {
+		return pesoDao.findAllPesoByDias(usuario, dias);
+	}
+	
 	public Peso findByUsuarioAndFecha(Usuario usuario, Date fecha) {
 		return pesoDao.findByUsuarioAndFecha(usuario, fecha);
 	}
