@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	evolucionPesoUsuario30dias();
+	
 });
 
 function evolucionPesoUsuario30dias() {
