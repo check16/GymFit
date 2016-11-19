@@ -108,4 +108,17 @@ public class PesoDaoImpl implements PesoDao{
 		
 	}
 
+	@Override
+	public List<Peso> findBetweenDate(Usuario usuario, Date fechaInicio, Date fechaFinal) {
+		Criteria crit = getSession().createCriteria(Peso.class);
+		crit.createAlias("usuario", "usuario");
+		crit.add(Restrictions.ge("fecha", fechaInicio));
+		crit.add(Restrictions.le("fecha", fechaFinal));
+		final List<Peso> listaPesos = new ArrayList<>();
+		for(final Object o : crit.list()) {
+			listaPesos.add((Peso)o);
+		}
+		return listaPesos;
+	}
+
 }

@@ -1,12 +1,3 @@
-//$("#agregarEjercicio").on("click", function(e) {
-//	
-//	var clonado = $('#tablaEjercicios tbody tr:last').clone().find('input[type=number], input[type=hidden]').val(0).end().appendTo($('#tablaEjercicios tbody'));
-//	clonado.find('select').select2();
-//	$('#tablaEjercicios tbody tr').find('select').select2();
-//	modificarIndicesTabla();
-//	
-//});
-
 $("#agregarEjercicio").on("click", function(e) {
 	$.ajax({
 		url : "/gymfit/home/entrenamiento/crearejercicio",

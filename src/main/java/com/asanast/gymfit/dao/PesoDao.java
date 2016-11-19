@@ -13,7 +13,7 @@ public interface PesoDao {
 	public Peso findByUsuarioAndFecha(Usuario usuario, Date fecha);
 	public Peso findByLastDate(Usuario usuario);
 	public List<Peso> findAllPesoByDias(Usuario usuario, int dias);
-	//public List<Peso> findBetweenDate(Peso peso, Date fechaFinal);
+	public List<Peso> findBetweenDate(Usuario usuario, Date fechaInicio, Date fechaFinal);
 	public void update(Peso peso);
 	public void delete(Peso peso);
 	public void saveOrUpdate(Peso peso);

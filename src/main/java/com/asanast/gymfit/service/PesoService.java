@@ -32,6 +32,10 @@ public class PesoService {
 		return pesoDao.findByUsuarioAndFecha(usuario, fecha);
 	}
 	
+	public List<Peso> finPesoUsuarioBetweenDates(Usuario usuario, Date fechaInicio, Date fechaFin) {
+		return pesoDao.findBetweenDate(usuario, fechaInicio, fechaFin);
+	}
+	
 	public void saveOrUpdate(Peso peso) {
 		pesoDao.saveOrUpdate(peso);
 	}

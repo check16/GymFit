@@ -38,13 +38,11 @@
 												class="form-control input-sm pull-right" type="text"
 												placeholder="Rango de fecha...">
 											<div class="input-group-btn">
-												<button id="btnBuscar" class="btn btn-sm btn-primary">
+												<button id="btnFiltrar" class="btn btn-sm btn-primary">
 													<i class="fa fa-search"></i> Consultar
 												</button>
 											</div>
 										</div>
-
-
 									</div>
 
 
@@ -84,45 +82,6 @@
 	<!-- Fragment con los scripts de la aplicacion -->
 	<div th:include="../fragments/scripts_fragment :: scripts"></div>
 	<script th:src="@{/ajax/ajaxSeguimientoPeso.js}"></script>
-	<script>
-	$(document).ready(function() {
-		
-		$('#rangoFecha').daterangepicker({
-		    "locale": {
-		        "format": "DD/MM/YYYY",
-		        "separator": " - ",
-		        "applyLabel": "Aplicar",
-		        "cancelLabel": "Cancelar",
-		        "fromLabel": "Desde",
-		        "toLabel": "Hasta",
-		        "customRangeLabel": "Custom",
-		        "daysOfWeek": [
-		            "Dom",
-		            "Lun",
-		            "Mar",
-		            "Mie",
-		            "Jue",
-		            "Vie",
-		            "Sab"
-		        ],
-		        "monthNames": [
-		            "Enero",
-		            "Febrero",
-		            "Marzo",
-		            "Abril",
-		            "Mayo",
-		            "Junio",
-		            "Julio",
-		            "Augosto",
-		            "Septiembre",
-		            "Octubre",
-		            "Noviembre",
-		            "Deciembre"
-		        ],
-		        "firstDay": 1
-		    }
-		})
-    });
-	</script>
+	<script th:src="@{/js/seguimientoPeso.js}"></script>
 </body>
 </html>

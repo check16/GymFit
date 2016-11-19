@@ -1,5 +1,6 @@
 package com.asanast.gymfit.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.asanast.gymfit.pojo.Grafico;
@@ -32,11 +34,24 @@ public class SeguimientoPesoController {
 		return "seguimientoPeso";
 	}
 	
-	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso30", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public Grafico obtenerPesos(HttpSession sesion) {
+	public Grafico obtenerPesos(HttpSession sesion, @RequestParam("dias") int dias) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-		List<Peso> pesos = pesoService.findAllByLastDay(usuario, 30);
+		List<Peso> pesos = pesoService.findAllByLastDay(usuario, dias);
+		Grafico evolucionPeso = new Grafico();
+		for(Peso peso : pesos) {
+			evolucionPeso.getEtiquetas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));
+			evolucionPeso.getValores().add(peso.getPesoReg().toString());
+		}
+		return evolucionPeso;
+	}
+	
+	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoIntervalo", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public Grafico obtenerPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin) throws ParseException {
+		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+		List<Peso> pesos = pesoService.finPesoUsuarioBetweenDates(usuario, Utilidades.convertirAFecha(inicio), Utilidades.convertirAFecha(fin));
 		Grafico evolucionPeso = new Grafico();
 		for(Peso peso : pesos) {
 			evolucionPeso.getEtiquetas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));

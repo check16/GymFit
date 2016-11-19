@@ -1,13 +1,25 @@
 $(document).ready(function() {
-	evolucionPesoUsuario30dias();
-	
+	evolucionPesoUsuariodias(30);
 });
 
-function evolucionPesoUsuario30dias() {
+function evolucionPesoUsuariodias(dias) {
 
 	$.ajax({
-		url : "/gymfit/home/seguimientoPeso/evolucionPeso30",
+		url : "/gymfit/home/seguimientoPeso/evolucionPeso",
 		method : "GET",
+		data: { dias: dias },
+		success : function(respuesta) {
+			procesarGrafico(respuesta);
+		}
+	});
+}
+
+function evolucionPesoUsuarioIntervalodias(inicio, fin) {
+
+	$.ajax({
+		url : "/gymfit/home/seguimientoPeso/evolucionPesoIntervalo",
+		method : "GET",
+		data: { inicio: inicio, fin:fin },
 		success : function(respuesta) {
 			procesarGrafico(respuesta);
 		}
@@ -18,9 +30,10 @@ function procesarGrafico(respuesta) {
 	if (respuesta.valores.length == 0) {
 		$(".chart").html("<h3 class='text-red'>No existen datos registrados de peso</h3>")
 	} else {
+		$('#areaChart').remove();
+		$('.chart').append("<canvas id='areaChart' style='height: 250px; width: 788px;'	height='250' width='788'>");
 		var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
 		var areaChart = new Chart(areaChartCanvas);
-
 		var areaChartData = {
 			labels : respuesta.etiquetas,
 			datasets : [ {
@@ -76,7 +89,7 @@ function procesarGrafico(respuesta) {
 			responsive : true,
 		};
 		// Create the line chart
+		
 		areaChart.Line(areaChartData, areaChartOptions);
 	}
-
 }
