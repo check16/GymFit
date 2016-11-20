@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -37,6 +38,9 @@ public class Peso implements Serializable{
 	@JoinColumn(name="idUsuario")
 	@Id
 	private Usuario usuario;
+	
+	@Transient
+	private boolean aumenta;
 	
 	public Peso() {
 		
@@ -72,5 +76,11 @@ public class Peso implements Serializable{
 		this.usuario = usuario;
 	}
 
+	public boolean isAumenta() {
+		return aumenta;
+	}
 
+	public void setAumenta(boolean aumenta) {
+		this.aumenta = aumenta;
+	}
 }

@@ -1,6 +1,7 @@
 package com.asanast.gymfit.controller;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.asanast.gymfit.pojo.Grafico;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
+import com.asanast.gymfit.pojo.VO.PesoTabla;
+import com.asanast.gymfit.pojo.VO.PesoTabla.EstadoPeso;
 import com.asanast.gymfit.service.PesoService;
 import com.asanast.gymfit.util.Utilidades;
 
@@ -58,5 +61,33 @@ public class SeguimientoPesoController {
 			evolucionPeso.getValores().add(peso.getPesoReg().toString());
 		}
 		return evolucionPeso;
+	}
+	
+	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoTabla", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public List<PesoTabla> obtenerPesosTabla(HttpSession sesion, @RequestParam("dias") int dias) throws ParseException {
+		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+		List<Peso> pesos = pesoService.findAllByLastDay(usuario, dias);
+		List<PesoTabla> pesosTabla = new ArrayList<PesoTabla>();
+		for(Peso peso : pesos) {
+			pesosTabla.add(new PesoTabla(peso.getPesoReg(), peso.getFecha()));
+		}
+		compruebaAumentoPerdidaPeso(pesosTabla);
+		return pesosTabla;
+	}
+	
+	private List<PesoTabla> compruebaAumentoPerdidaPeso(List<PesoTabla> pesosTabla) {
+		for(int i=1; i<pesosTabla.size(); i++) {
+			if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == 1) {
+				pesosTabla.get(i).setEstadoPeso(EstadoPeso.AUMENTA);
+			}else if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == -1) {
+				pesosTabla.get(i).setEstadoPeso(EstadoPeso.DISMINUYE);
+			}
+			else {
+				pesosTabla.get(i).setEstadoPeso(EstadoPeso.MANTIENE);
+			}
+		}
+		pesosTabla.get(0).setEstadoPeso(EstadoPeso.MANTIENE);
+		return pesosTabla;
 	}
 }

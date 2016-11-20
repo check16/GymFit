@@ -1,15 +1,40 @@
-$(document).ready(function() {
-	evolucionPesoUsuariodias(30);
-});
+$(document).ready(
+		function() {
+			evolucionPesoUsuariodias(30);
+			evolucionPesoUsuarioTabla(30);
+
+			moment.updateLocale('es', {
+				months : [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+						"Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+						"Noviembre", "Diciembre" ]
+			});
+			
+			
+		});
 
 function evolucionPesoUsuariodias(dias) {
 
 	$.ajax({
 		url : "/gymfit/home/seguimientoPeso/evolucionPeso",
 		method : "GET",
-		data: { dias: dias },
+		data : {
+			dias : dias
+		},
 		success : function(respuesta) {
 			procesarGrafico(respuesta);
+		}
+	});
+}
+
+function evolucionPesoUsuarioTabla(dias) {
+	$.ajax({
+		url : "/gymfit/home/seguimientoPeso/evolucionPesoTabla",
+		method : "GET",
+		data : {
+			dias : dias
+		},
+		success : function(respuesta) {
+			procesarTabla(respuesta);
 		}
 	});
 }
@@ -19,7 +44,10 @@ function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 	$.ajax({
 		url : "/gymfit/home/seguimientoPeso/evolucionPesoIntervalo",
 		method : "GET",
-		data: { inicio: inicio, fin:fin },
+		data : {
+			inicio : inicio,
+			fin : fin
+		},
 		success : function(respuesta) {
 			procesarGrafico(respuesta);
 		}
@@ -28,10 +56,15 @@ function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 
 function procesarGrafico(respuesta) {
 	if (respuesta.valores.length == 0) {
-		$(".chart").html("<h3 class='text-red'>No existen datos registrados de peso</h3>")
+		$(".chart")
+				.html(
+						"<h3 class='text-red'>No existen datos registrados de peso</h3>")
 	} else {
 		$('#areaChart').remove();
-		$('.chart').append("<canvas id='areaChart' style='height: 250px; width: 788px;'	height='250' width='788'>");
+		$(".chart").empty();
+		$('.chart')
+				.append(
+						"<canvas id='areaChart' style='height: 250px; width: 788px;'	height='250' width='788'>");
 		var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
 		var areaChart = new Chart(areaChartCanvas);
 		var areaChartData = {
@@ -89,7 +122,42 @@ function procesarGrafico(respuesta) {
 			responsive : true,
 		};
 		// Create the line chart
-		
+
 		areaChart.Line(areaChartData, areaChartOptions);
 	}
+}
+
+function procesarTabla(datos) {
+
+	for (var i = 0; i < datos.length; i++) {
+		$('#datosTabla').append(
+				"<tr><td>"
+						+ datos[i].pesoValor
+						+ "</td><td>"
+						+ moment(new Date(datos[i].fechaPeso)).format(
+								"DD/MMM/YYYY") + "</td><td>"
+						+ datos[i].estadoPeso + "</td></tr>");
+	}
+
+	$('#dataTable').DataTable({
+		"language" : {
+			"lengthMenu" : "Mostrando _MENU_ registros por página",
+			"search" : "Buscar: ",
+			"zeroRecords" : "Nada encontrado. Lo sentimos",
+			"info" : "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty" : "No existen datos disponibles",
+			"infoFiltered" : "(De un total de _MAX_ registros)",
+			"paginate": {
+			      "previous": "Anterior",
+			      "next": "Siguiente"
+			    }
+		},
+		"paging" : true,
+		"lengthChange" : true,
+		"searching" : true,
+		"ordering" : true,
+		"info" : true,
+		"autoWidth" : true
+	});
+
 }
