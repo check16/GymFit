@@ -52,6 +52,18 @@ function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 			procesarGrafico(respuesta);
 		}
 	});
+	
+	$.ajax({
+		url : "/gymfit/home/seguimientoPeso/evolucionPesoIntervaloTabla",
+		method : "GET",
+		data : {
+			inicio : inicio,
+			fin : fin
+		},
+		success : function(respuesta) {
+			procesarTabla(respuesta);
+		}
+	});
 }
 
 function procesarGrafico(respuesta) {
@@ -128,7 +140,7 @@ function procesarGrafico(respuesta) {
 }
 
 function procesarTabla(datos) {
-
+	$('#datosTabla').empty();
 	for (var i = 0; i < datos.length; i++) {
 		$('#datosTabla').append(
 				"<tr><td>"
@@ -138,7 +150,7 @@ function procesarTabla(datos) {
 								"DD/MMM/YYYY") + "</td><td>"
 						+ datos[i].estadoPeso + "</td></tr>");
 	}
-
+	
 	$('#dataTable').DataTable({
 		"language" : {
 			"lengthMenu" : "Mostrando _MENU_ registros por página",
@@ -152,6 +164,7 @@ function procesarTabla(datos) {
 			      "next": "Siguiente"
 			    }
 		},
+		retrieve: true,
 		"paging" : true,
 		"lengthChange" : true,
 		"searching" : true,

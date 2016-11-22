@@ -1,6 +1,9 @@
 var fechaInicio;
 var fechaFin;
 $(document).ready(function() {
+	fechaInicio = moment().subtract(29, 'days').format("DD/MM/YYYY");
+	fechaFin = moment().format("DD/MM/YYYY");
+		
 		$('#rangoFecha').daterangepicker({
 			"autoApply": true,
 			"locale": {

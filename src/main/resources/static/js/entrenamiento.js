@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	$('#tablaEjercicios tbody tr').find('select').select2();
+});
+
 $("#agregarEjercicio").on("click", function(e) {
 	$.ajax({
 		url : "/gymfit/home/entrenamiento/crearejercicio",

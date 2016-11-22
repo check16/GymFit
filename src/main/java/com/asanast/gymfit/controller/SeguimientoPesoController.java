@@ -54,7 +54,7 @@ public class SeguimientoPesoController {
 	@ResponseBody
 	public Grafico obtenerPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin) throws ParseException {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-		List<Peso> pesos = pesoService.finPesoUsuarioBetweenDates(usuario, Utilidades.convertirAFecha(inicio), Utilidades.convertirAFecha(fin));
+		List<Peso> pesos = pesoService.findPesoUsuarioBetweenDates(usuario, Utilidades.convertirAFecha(inicio), Utilidades.convertirAFecha(fin));
 		Grafico evolucionPeso = new Grafico();
 		for(Peso peso : pesos) {
 			evolucionPeso.getEtiquetas().add(Utilidades.converTirFecha(peso.getFecha(), "dd/MM/yyyy"));
@@ -65,9 +65,22 @@ public class SeguimientoPesoController {
 	
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoTabla", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
-	public List<PesoTabla> obtenerPesosTabla(HttpSession sesion, @RequestParam("dias") int dias) throws ParseException {
+	public List<PesoTabla> obtenerTablaPesosTabla(HttpSession sesion, @RequestParam("dias") int dias) throws ParseException {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 		List<Peso> pesos = pesoService.findAllByLastDay(usuario, dias);
+		List<PesoTabla> pesosTabla = new ArrayList<PesoTabla>();
+		for(Peso peso : pesos) {
+			pesosTabla.add(new PesoTabla(peso.getPesoReg(), peso.getFecha()));
+		}
+		compruebaAumentoPerdidaPeso(pesosTabla);
+		return pesosTabla;
+	}
+	
+	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoIntervaloTabla", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+	@ResponseBody
+	public List<PesoTabla> obtenerTablaPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin) throws ParseException {
+		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+		List<Peso> pesos = pesoService.findPesoUsuarioBetweenDates(usuario, Utilidades.convertirAFecha(inicio), Utilidades.convertirAFecha(fin));
 		List<PesoTabla> pesosTabla = new ArrayList<PesoTabla>();
 		for(Peso peso : pesos) {
 			pesosTabla.add(new PesoTabla(peso.getPesoReg(), peso.getFecha()));
