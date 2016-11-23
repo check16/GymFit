@@ -195,5 +195,17 @@
 	<div th:include="../fragments/scripts_fragment :: scripts"></div>
 	<script th:src="@{/ajax/ajaxEntrenamiento.js}"></script>
 	<script th:src="@{/js/entrenamiento.js}"></script>
+	<script>
+		$(function() {
+
+			$('#datepicker').datepicker({
+				format : 'dd/mm/yyyy',
+				autoclose : true,
+				language: "es",
+				todayHighlight: true
+			}).datepicker("setDate", new Date());
+
+		});
+	</script>
 </body>
 </html>

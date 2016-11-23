@@ -1,3 +1,4 @@
+var miTabla;
 $(document).ready(
 		function() {
 			evolucionPesoUsuariodias(30);
@@ -8,8 +9,7 @@ $(document).ready(
 						"Junio", "Julio", "Agosto", "Septiembre", "Octubre",
 						"Noviembre", "Diciembre" ]
 			});
-			
-			
+
 		});
 
 function evolucionPesoUsuariodias(dias) {
@@ -52,7 +52,7 @@ function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 			procesarGrafico(respuesta);
 		}
 	});
-	
+
 	$.ajax({
 		url : "/gymfit/home/seguimientoPeso/evolucionPesoIntervaloTabla",
 		method : "GET",
@@ -140,37 +140,44 @@ function procesarGrafico(respuesta) {
 }
 
 function procesarTabla(datos) {
-	$('#datosTabla').empty();
-	for (var i = 0; i < datos.length; i++) {
-		$('#datosTabla').append(
-				"<tr><td>"
-						+ datos[i].pesoValor
-						+ "</td><td>"
-						+ moment(new Date(datos[i].fechaPeso)).format(
-								"DD/MMM/YYYY") + "</td><td>"
-						+ datos[i].estadoPeso + "</td></tr>");
+
+	if (!$.fn.DataTable.isDataTable('#dataTable')) {
+		miTabla = $('#dataTable').DataTable({
+			"language" : {
+				"lengthMenu" : "Mostrando _MENU_ registros por página",
+				"search" : "Buscar: ",
+				"zeroRecords" : "Nada encontrado. Lo sentimos",
+				"info" : "Mostrando página _PAGE_ de _PAGES_",
+				"infoEmpty" : "No existen datos disponibles",
+				"infoFiltered" : "(De un total de _MAX_ registros)",
+				"paginate" : {
+					"previous" : "Anterior",
+					"next" : "Siguiente"
+				}
+			},
+			"paging" : true,
+			data : datos,
+			columns : [ {
+				data : 'pesoValor'
+			}, {
+				data : 'fechaPeso',
+				render : function(data, type, row) {
+					return moment(data).format("DD/MM/YYYY");
+				}
+			}, {
+				data : 'iconoEstado'
+			} ],
+			"lengthChange" : true,
+			"searching" : true,
+			"ordering" : true,
+			"info" : true,
+			"autoWidth" : true,
+			"order" : [ [ 1, "desc" ] ]
+		});
+	}else {
+		miTabla.clear().draw();
+		   miTabla.rows.add(datos); // Add new data
+		   miTabla.columns.adjust().draw(); // Redraw the DataTable
 	}
-	
-	$('#dataTable').DataTable({
-		"language" : {
-			"lengthMenu" : "Mostrando _MENU_ registros por página",
-			"search" : "Buscar: ",
-			"zeroRecords" : "Nada encontrado. Lo sentimos",
-			"info" : "Mostrando página _PAGE_ de _PAGES_",
-			"infoEmpty" : "No existen datos disponibles",
-			"infoFiltered" : "(De un total de _MAX_ registros)",
-			"paginate": {
-			      "previous": "Anterior",
-			      "next": "Siguiente"
-			    }
-		},
-		retrieve: true,
-		"paging" : true,
-		"lengthChange" : true,
-		"searching" : true,
-		"ordering" : true,
-		"info" : true,
-		"autoWidth" : true
-	});
 
 }
