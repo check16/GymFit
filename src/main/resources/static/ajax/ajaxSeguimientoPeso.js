@@ -70,7 +70,7 @@ function procesarGrafico(respuesta) {
 	if (respuesta.valores.length == 0) {
 		$(".chart")
 				.html(
-						"<h3 class='text-red'>No existen datos registrados de peso</h3>")
+						"<h4 class='text-red'>No existen datos registrados de peso</h4>")
 	} else {
 		$('#areaChart').remove();
 		$(".chart").empty();
@@ -83,12 +83,12 @@ function procesarGrafico(respuesta) {
 			labels : respuesta.etiquetas,
 			datasets : [ {
 				label : "Peso",
-				fillColor : "rgba(60,141,188,0.9)",
-				strokeColor : "rgba(60,141,188,0.8)",
+				fillColor : "rgba(60,141,188,0.15)",
+				strokeColor : "rgba(60,141,188,0.9)",
 				pointColor : "#1DD1C2",
 				pointStrokeColor : "rgba(3, 154, 141,1)",
-				pointHighlightFill : "#fff",
-				pointHighlightStroke : "rgba(60,141,188,1)",
+				pointHighlightFill : "#FFF",
+				pointHighlightStroke : "rgba(3, 154, 141,1)",
 				data : respuesta.valores
 			} ]
 		};
@@ -99,7 +99,7 @@ function procesarGrafico(respuesta) {
 			// Boolean - Whether grid lines are shown across the chart
 			scaleShowGridLines : true,
 			// String - Colour of the grid lines
-			scaleGridLineColor : "rgba(0,0,0,.1)",
+			scaleGridLineColor : "rgba(0,0,0,.15)",
 			// Number - Width of the grid lines
 			scaleGridLineWidth : 1,
 			// Boolean - Whether to show horizontal lines (except X axis)
@@ -109,13 +109,13 @@ function procesarGrafico(respuesta) {
 			// Boolean - Whether the line is curved between points
 			bezierCurve : true,
 			// Number - Tension of the bezier curve between points
-			bezierCurveTension : 0.3,
+			bezierCurveTension : 0.25,
 			// Boolean - Whether to show a dot for each point
 			pointDot : true,
 			// Number - Radius of each point dot in pixels
 			pointDotRadius : 4,
 			// Number - Pixel width of point dot stroke
-			pointDotStrokeWidth : 1,
+			pointDotStrokeWidth : 2,
 			// Number - amount extra to add to the radius to cater for hit
 			// detection outside the drawn point
 			pointHitDetectionRadius : 20,
@@ -124,7 +124,7 @@ function procesarGrafico(respuesta) {
 			// Number - Pixel width of dataset stroke
 			datasetStrokeWidth : 2,
 			// Boolean - Whether to fill the dataset with a color
-			datasetFill : false,
+			datasetFill : true,
 			// String - A legend template
 			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
 			// Boolean - whether to maintain the starting aspect ratio or not
@@ -140,54 +140,59 @@ function procesarGrafico(respuesta) {
 }
 
 function procesarTabla(datos) {
+		if (!$.fn.DataTable.isDataTable('#dataTable')) {
+			miTabla = $('#dataTable').DataTable({
 
-	if (!$.fn.DataTable.isDataTable('#dataTable')) {
-		miTabla = $('#dataTable').DataTable({
-			
-			"language" : {
-				"lengthMenu" : "Mostrando _MENU_ registros por página",
-				"search" : "Buscar: ",
-				"zeroRecords" : "Nada encontrado. Lo sentimos",
-				"info" : "Mostrando página _PAGE_ de _PAGES_",
-				"infoEmpty" : "No existen datos disponibles",
-				"infoFiltered" : "(De un total de _MAX_ registros)",
-				"paginate" : {
-					"previous" : "Anterior",
-					"next" : "Siguiente"
-				}
-			},
-			"paging" : true,
-			data : datos,
-			columns : [ {
-				data : 'pesoValor'
-			}, {
-				data : 'fechaPeso',
-				
-				render : function(data, type, row) {
-					return moment(data).format("DD/MM/YYYY");
-				}
-			}, {
-				data : 'iconoEstado',
-				
-			}, {
-				data : 'fechaPeso',
-				
-			} ],
-			"lengthChange" : true,
-			"searching" : true,
-			"ordering" : true,
-			"info" : true,
-			"autoWidth" : true,
-			'columnDefs': [
-			               { 'sortable': false, 'searchable': false, 'visible': false, 'type': 'num', 'targets': [3] },
-			               { 'orderData':[3], 'targets': [1] },
-			           ],
-			"order" : [ [ 1, "desc" ] ]
-		});
-	}else {
-		miTabla.clear().draw();
-		   miTabla.rows.add(datos); // Add new data
-		   miTabla.columns.adjust().draw(); // Redraw the DataTable
-	}
+				"language" : {
+					"lengthMenu" : "Mostrando _MENU_ registros por página",
+					"search" : "Buscar: ",
+					"zeroRecords" : "Nada encontrado. Lo sentimos",
+					"info" : "Mostrando página _PAGE_ de _PAGES_",
+					"infoEmpty" : "No existen datos disponibles",
+					"infoFiltered" : "(De un total de _MAX_ registros)",
+					"paginate" : {
+						"previous" : "Anterior",
+						"next" : "Siguiente"
+					}
+				},
+				"paging" : true,
+				data : datos,
+				columns : [ {
+					data : 'pesoValor'
+				}, {
+					data : 'fechaPeso',
+
+					render : function(data, type, row) {
+						return moment(data).format("DD/MM/YYYY");
+					}
+				}, {
+					data : 'iconoEstado',
+
+				}, {
+					data : 'fechaPeso',
+
+				} ],
+				"lengthChange" : true,
+				"searching" : true,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : true,
+				'columnDefs' : [ {
+					'sortable' : false,
+					'searchable' : false,
+					'visible' : false,
+					'type' : 'num',
+					'targets' : [ 3 ]
+				}, {
+					'orderData' : [ 3 ],
+					'targets' : [ 1 ]
+				}, ],
+				"order" : [ [ 1, "desc" ] ]
+			});
+		} else {
+			miTabla.clear().draw();
+			miTabla.rows.add(datos); // Add new data
+			miTabla.columns.adjust().draw(); // Redraw the DataTable
+		}
 
 }

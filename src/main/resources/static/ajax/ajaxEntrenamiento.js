@@ -1,6 +1,39 @@
 $(document).ready(function() {
 	eliminarEntreno();
 	eliminarEjercicio();
+	miTabla = $('#tablaEntreno').DataTable({
+
+		"language" : {
+			"lengthMenu" : "Mostrando _MENU_ registros por página",
+			"search" : "Buscar: ",
+			"zeroRecords" : "Nada encontrado. Lo sentimos",
+			"info" : "Mostrando página _PAGE_ de _PAGES_",
+			"infoEmpty" : "No existen datos disponibles",
+			"infoFiltered" : "(De un total de _MAX_ registros)",
+			"paginate" : {
+				"previous" : "Anterior",
+				"next" : "Siguiente"
+			}
+		},
+		"paging" : true,
+		"lengthChange" : true,
+		"searching" : true,
+		"ordering" : true,
+		"info" : true,
+		"autoWidth" : true,
+		'columnDefs' : [ {
+			'sortable' : false,
+			'searchable' : true,
+			'visible' : true,
+			'targets' : [1]
+		},{
+			'sortable' : false,
+			'searchable' : false,
+			'visible' : true,
+			'targets' : [3]
+		}],
+		"order" : [ [ 0, "asc" ] ]
+	});
 });
 
 function eliminarEntreno() {

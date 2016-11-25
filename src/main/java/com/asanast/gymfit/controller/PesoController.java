@@ -28,6 +28,7 @@ public class PesoController {
 		if(ultimoPeso != null) {
 			model.addAttribute("activo", "peso");
 			model.addAttribute("ultimoPeso", pesoService.findLastPeso(usuario));
+			model.addAttribute("promedioPeso", pesoService.avgPesoFromLastDias(usuario, 30));
 			model.addAttribute("peso", new Peso());
 		}else {
 			model.addAttribute("activo", "peso");

@@ -9,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -120,6 +121,19 @@ public class PesoDaoImpl implements PesoDao{
 			listaPesos.add((Peso)o);
 		}
 		return listaPesos;
+	}
+
+	@Override
+	public Double findAvgPesoByDias(Usuario usuario, int dias) {
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, -dias); 
+		Criteria crit = getSession().createCriteria(Peso.class);
+		crit.createAlias("usuario", "usuario");
+		crit.add(Restrictions.eq("usuario.idUsuario", usuario.getIdUsuario()));
+		crit.add(Restrictions.ge("fecha", c.getTime()));
+		crit.setProjection(Projections.avg("pesoReg"));
+		Double avgPeso = (Double) crit.uniqueResult();
+		return avgPeso;
 	}
 
 }

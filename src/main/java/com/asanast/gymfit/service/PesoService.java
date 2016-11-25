@@ -51,5 +51,9 @@ public class PesoService {
 	public void delete(Peso peso) {
 		pesoDao.delete(peso);
 	}
+	
+	public Double avgPesoFromLastDias(Usuario usuario, int dias) {
+		return pesoDao.findAvgPesoByDias(usuario, dias);
+	}
 
 }

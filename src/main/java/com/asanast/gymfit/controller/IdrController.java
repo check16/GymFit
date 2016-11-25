@@ -17,13 +17,9 @@ import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
 import com.asanast.gymfit.pojo.VO.IdrForm;
 import com.asanast.gymfit.service.PesoService;
-import com.asanast.gymfit.service.UsuarioService;
 
 @Controller
 public class IdrController {
-	
-	@Autowired
-	private UsuarioService usuarioService;
 	
 	@Autowired
 	private PesoService pesoService;
@@ -31,17 +27,18 @@ public class IdrController {
 	@RequestMapping("/home/idr")
 	public String irIdr(Model model, HttpSession sesion) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-		Usuario usuarioForm = usuarioService.findById(usuario.getIdUsuario());
-		if(usuarioForm != null) {
+		if(usuario != null) {
 		IdrForm idrForm = new IdrForm();
-		idrForm.setAltura(usuarioForm.getAltura());
-		idrForm.setEdad(usuarioForm.getEdad());
-		Peso peso = pesoService.findLastPeso(usuarioForm);
-		idrForm.setPeso(peso.getPesoReg());
+		idrForm.setAltura(usuario.getAltura());
+		idrForm.setEdad(usuario.getEdad());
+		Peso peso = pesoService.findLastPeso(usuario);
+		if(peso != null)
+			idrForm.setPeso(peso.getPesoReg());
 		model.addAttribute("idrForm", idrForm);
 		model.addAttribute("activo", "idr");
 		}else {
 			model.addAttribute("idrForm" , new IdrForm());
+			model.addAttribute("activo", "idr");
 		}
 		
 		return "idr";

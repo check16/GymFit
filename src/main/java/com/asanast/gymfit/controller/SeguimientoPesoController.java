@@ -91,21 +91,25 @@ public class SeguimientoPesoController {
 	}
 	
 	private List<PesoTabla> compruebaAumentoPerdidaPeso(List<PesoTabla> pesosTabla) {
-		for(int i=1; i<pesosTabla.size(); i++) {
-			if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == 1) {
-				pesosTabla.get(i).setEstadoPeso(EstadoPeso.AUMENTA);
-				pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-danger'>Aumenta <i class='fa fa-arrow-circle-o-up'></i></button></td></tr>");
-			}else if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == -1) {
-				pesosTabla.get(i).setEstadoPeso(EstadoPeso.DISMINUYE);
-				pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-success'>Disminuye <i class='fa fa-arrow-circle-o-down'></i></button></td></tr>");
+		if(!pesosTabla.isEmpty()) {
+			for(int i=1; i<pesosTabla.size(); i++) {
+				if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == 1) {
+					pesosTabla.get(i).setEstadoPeso(EstadoPeso.AUMENTA);
+					pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-danger'>Aumenta <i class='fa fa-arrow-circle-o-up'></i></button></td></tr>");
+				}else if(pesosTabla.get(i).getPesoValor().compareTo(pesosTabla.get(i-1).getPesoValor()) == -1) {
+					pesosTabla.get(i).setEstadoPeso(EstadoPeso.DISMINUYE);
+					pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-success'>Disminuye <i class='fa fa-arrow-circle-o-down'></i></button></td></tr>");
+				}
+				else {
+					pesosTabla.get(i).setEstadoPeso(EstadoPeso.MANTIENE);
+					pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-warning'>Mantiene <i class='fa fa-minus'></i></button></td></tr>");
+				}
 			}
-			else {
-				pesosTabla.get(i).setEstadoPeso(EstadoPeso.MANTIENE);
-				pesosTabla.get(i).setIconoEstado("<button type='button' class='btn btn-warning'>Mantiene <i class='fa fa-minus'></i></button></td></tr>");
-			}
+			pesosTabla.get(0).setEstadoPeso(EstadoPeso.MANTIENE);
+			pesosTabla.get(0).setIconoEstado("<button type='button' class='btn btn-warning'>Mantiene <i class='fa fa-minus'></i></button></td></tr>");
+			return pesosTabla;
 		}
-		pesosTabla.get(0).setEstadoPeso(EstadoPeso.MANTIENE);
-		pesosTabla.get(0).setIconoEstado("<button type='button' class='btn btn-warning'>Mantiene <i class='fa fa-minus'></i></button></td></tr>");
 		return pesosTabla;
+		
 	}
 }
