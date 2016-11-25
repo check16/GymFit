@@ -143,6 +143,7 @@ function procesarTabla(datos) {
 
 	if (!$.fn.DataTable.isDataTable('#dataTable')) {
 		miTabla = $('#dataTable').DataTable({
+			
 			"language" : {
 				"lengthMenu" : "Mostrando _MENU_ registros por página",
 				"search" : "Buscar: ",
@@ -161,17 +162,26 @@ function procesarTabla(datos) {
 				data : 'pesoValor'
 			}, {
 				data : 'fechaPeso',
+				
 				render : function(data, type, row) {
 					return moment(data).format("DD/MM/YYYY");
 				}
 			}, {
-				data : 'iconoEstado'
+				data : 'iconoEstado',
+				
+			}, {
+				data : 'fechaPeso',
+				
 			} ],
 			"lengthChange" : true,
 			"searching" : true,
 			"ordering" : true,
 			"info" : true,
 			"autoWidth" : true,
+			'columnDefs': [
+			               { 'sortable': false, 'searchable': false, 'visible': false, 'type': 'num', 'targets': [3] },
+			               { 'orderData':[3], 'targets': [1] },
+			           ],
 			"order" : [ [ 1, "desc" ] ]
 		});
 	}else {
