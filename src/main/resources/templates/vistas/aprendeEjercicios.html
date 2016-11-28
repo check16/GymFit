@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{home.page.title})">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+
+			<!-- Contenido Principal -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="box box-success box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title">Aprende a ejecutar los ejercicios
+									correctamente</h3>
+
+								<div class="box-tools pull-right">
+									<button type="button" class="btn btn-box-tool"
+										data-widget="collapse" data-toggle="tooltip" title="Minimizar">
+										<i class="fa fa-minus"></i>
+									</button>
+								</div>
+								<!-- /.box-tools -->
+							</div>
+							<div class="box-body">
+
+
+								<table id="tablaEjercicios"
+									th:if="${not #lists.isEmpty(ejercicios)}"
+									class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>Nombre Ejercicio</th>
+											<th>Descripcion</th>
+											<th>Imagen</th>
+											<th>Video</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="ejercicio : ${ejercicios}">
+											<td th:text="${ejercicio.nombreEjercicio}"></td>
+											<td th:text="${ejercicio.descEjercicio}"></td>
+											<td><a class="thumbnail imgEjercicio"
+												th:href="@{'/img/ejercicios/' + ${ejercicio.rutaImgEjercicio}}"
+												th:attr="title=${ejercicio.nombreEjercicio}"> <img
+													th:attr="src=@{'/img/ejercicios/' + ${ejercicio.rutaImgEjercicio}},title=${ejercicio.nombreEjercicio}" /></a></td>
+											
+										</tr>
+									</tbody>
+								</table>
+
+								<p th:if="${#lists.isEmpty(ejercicios)}" class="text-red">No
+									existen ejercicios disponibles</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- /Contenido Principal -->
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script th:src="@{/js/aprenderEjercicios.js}"></script>
+</body>
+</html>

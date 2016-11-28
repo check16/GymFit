@@ -2,7 +2,6 @@ package com.asanast.gymfit.pojo;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,14 +23,12 @@ public class TipoEjercicio {
 	
 	@NotEmpty
 	@NotNull
-	@Column(name="nombreEjercicio")
 	private String nombreEjercicio;
-	
-	@Column(name="descEjercicio")
+
 	private String descEjercicio;
-	
-	@Column(name="rutaImgEjercicio")
+
 	private String rutaImgEjercicio;
+	
 	
 	@OneToMany(mappedBy="tipoEjercicio", fetch=FetchType.EAGER)
 	private List<Ejercicio> ejercicios;
@@ -83,13 +80,12 @@ public class TipoEjercicio {
 		this.rutaImgEjercicio = rutaImgEjercicio;
 	}
 
-	@Override
-	public String toString() {
-		return "TipoEjercicio [idTipoEjercicio=" + idTipoEjercicio + ", nombreEjercicio=" + nombreEjercicio
-				+ ", descEjercicio=" + descEjercicio + ", rutaImgEjercicio=" + rutaImgEjercicio + ", ejercicios="
-				+ ejercicios + "]";
+	public List<Ejercicio> getEjercicios() {
+		return ejercicios;
 	}
-	
-	
+
+	public void setEjercicios(List<Ejercicio> ejercicios) {
+		this.ejercicios = ejercicios;
+	}
 
 }
