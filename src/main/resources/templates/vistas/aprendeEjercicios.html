@@ -56,7 +56,9 @@
 												th:href="@{'/img/ejercicios/' + ${ejercicio.rutaImgEjercicio}}"
 												th:attr="title=${ejercicio.nombreEjercicio}"> <img
 													th:attr="src=@{'/img/ejercicios/' + ${ejercicio.rutaImgEjercicio}},title=${ejercicio.nombreEjercicio}" /></a></td>
-											
+											<td><a class="btn btn-app fancybox-media" th:href="${ejercicio.urlVideo}"> <i class="fa fa-play"></i>
+													Ver video
+											</a></td>
 										</tr>
 									</tbody>
 								</table>

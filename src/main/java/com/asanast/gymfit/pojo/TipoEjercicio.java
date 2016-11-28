@@ -29,6 +29,8 @@ public class TipoEjercicio {
 
 	private String rutaImgEjercicio;
 	
+	private String urlVideo;
+	
 	
 	@OneToMany(mappedBy="tipoEjercicio", fetch=FetchType.EAGER)
 	private List<Ejercicio> ejercicios;
@@ -80,12 +82,14 @@ public class TipoEjercicio {
 		this.rutaImgEjercicio = rutaImgEjercicio;
 	}
 
-	public List<Ejercicio> getEjercicios() {
-		return ejercicios;
+	public String getUrlVideo() {
+		return urlVideo;
 	}
 
-	public void setEjercicios(List<Ejercicio> ejercicios) {
-		this.ejercicios = ejercicios;
+	public void setUrlVideo(String urlVideo) {
+		this.urlVideo = urlVideo;
 	}
+	
+	
 
 }
