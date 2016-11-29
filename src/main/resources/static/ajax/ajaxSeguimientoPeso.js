@@ -78,121 +78,112 @@ function procesarGrafico(respuesta) {
 				.append(
 						"<canvas id='areaChart' style='height: 250px; width: 788px;'	height='250' width='788'>");
 		var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-		var areaChart = new Chart(areaChartCanvas);
-		var areaChartData = {
+		var opciones = {
+
+			scales : {
+				yAxes : [ {
+					scaleLabel : {
+						display : true,
+						labelString : 'Peso (Kg.)'
+					}
+				} ],
+				xAxes : [ {
+					scaleLabel : {
+						display : true,
+						labelString : 'Fecha'
+					}
+				} ]
+			}
+		};
+		var datos = {
 			labels : respuesta.etiquetas,
 			datasets : [ {
-				label : "Peso",
-				fillColor : "rgba(60,141,188,0.15)",
-				strokeColor : "rgba(60,141,188,0.9)",
-				pointColor : "#1DD1C2",
-				pointStrokeColor : "rgba(3, 154, 141,1)",
-				pointHighlightFill : "#FFF",
-				pointHighlightStroke : "rgba(3, 154, 141,1)",
-				data : respuesta.valores
-			} ]
+				label : "Peso (Kg.)",
+				fill : true,
+				lineTension : 0.1,
+				backgroundColor : "rgba(60,141,188,0.15)",
+				borderColor : "rgba(60,141,188,0.9)",
+				borderCapStyle : 'round',
+				borderDash : [],
+				borderDashOffset : 0.0,
+				borderJoinStyle : 'miter',
+				pointBorderColor : "rgba(75,192,192,1)",
+				pointBackgroundColor : "#fff",
+				pointBorderWidth : 7,
+				pointHoverRadius : 6,
+				pointHoverBackgroundColor : "rgba(218, 44, 44,1)",
+				pointHoverBorderWidth : 1.5,
+				pointRadius : 1,
+				pointHitRadius : 40,
+				data : respuesta.valores,
+				spanGaps : false,
+			} ],
+
 		};
 
-		var areaChartOptions = {
-			// Boolean - If we should show the scale at all
-			showScale : true,
-			// Boolean - Whether grid lines are shown across the chart
-			scaleShowGridLines : true,
-			// String - Colour of the grid lines
-			scaleGridLineColor : "rgba(0,0,0,.15)",
-			// Number - Width of the grid lines
-			scaleGridLineWidth : 1,
-			// Boolean - Whether to show horizontal lines (except X axis)
-			scaleShowHorizontalLines : true,
-			// Boolean - Whether to show vertical lines (except Y axis)
-			scaleShowVerticalLines : true,
-			// Boolean - Whether the line is curved between points
-			bezierCurve : true,
-			// Number - Tension of the bezier curve between points
-			bezierCurveTension : 0.25,
-			// Boolean - Whether to show a dot for each point
-			pointDot : true,
-			// Number - Radius of each point dot in pixels
-			pointDotRadius : 4,
-			// Number - Pixel width of point dot stroke
-			pointDotStrokeWidth : 2,
-			// Number - amount extra to add to the radius to cater for hit
-			// detection outside the drawn point
-			pointHitDetectionRadius : 20,
-			// Boolean - Whether to show a stroke for datasets
-			datasetStroke : true,
-			// Number - Pixel width of dataset stroke
-			datasetStrokeWidth : 2,
-			// Boolean - Whether to fill the dataset with a color
-			datasetFill : true,
-			// String - A legend template
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-			// Boolean - whether to maintain the starting aspect ratio or not
-			// when responsive, if set to false, will take up entire container
-			maintainAspectRatio : true,
-			// Boolean - whether to make the chart responsive to window resizing
-			responsive : true,
-		};
-		// Create the line chart
+		var myLineChart = new Chart(areaChartCanvas, {
+			type : 'line',
+			data : datos,
+			options : opciones
+		});
 
-		areaChart.Line(areaChartData, areaChartOptions);
 	}
 }
 
 function procesarTabla(datos) {
-		if (!$.fn.DataTable.isDataTable('#dataTable')) {
-			miTabla = $('#dataTable').DataTable({
+	if (!$.fn.DataTable.isDataTable('#dataTable')) {
+		miTabla = $('#dataTable').DataTable({
 
-				"language" : {
-					"lengthMenu" : "Mostrando _MENU_ registros por página",
-					"search" : "Buscar: ",
-					"zeroRecords" : "Nada encontrado. Lo sentimos",
-					"info" : "Mostrando página _PAGE_ de _PAGES_",
-					"infoEmpty" : "No existen datos disponibles",
-					"infoFiltered" : "(De un total de _MAX_ registros)",
-					"paginate" : {
-						"previous" : "Anterior",
-						"next" : "Siguiente"
-					}
-				},
-				"paging" : true,
-				data : datos,
-				columns : [ {
-					data : 'pesoValor'
-				}, {
-					data : 'fechaPeso',
+			"language" : {
+				"lengthMenu" : "Mostrando _MENU_ registros por página",
+				"search" : "Buscar: ",
+				"zeroRecords" : "Nada encontrado. Lo sentimos",
+				"info" : "Mostrando página _PAGE_ de _PAGES_",
+				"infoEmpty" : "No existen datos disponibles",
+				"infoFiltered" : "(De un total de _MAX_ registros)",
+				"paginate" : {
+					"previous" : "Anterior",
+					"next" : "Siguiente"
+				}
+			},
+			"paging" : true,
+			data : datos,
+			columns : [ {
+				data : 'pesoValor'
+			}, {
+				data : 'fechaPeso',
 
-					render : function(data, type, row) {
-						return moment(data).format("DD/MM/YYYY");
-					}
-				}, {
-					data : 'iconoEstado',
+				render : function(data, type, row) {
+					return moment(data).format("DD/MM/YYYY");
+				}
+			}, {
+				data : 'iconoEstado',
 
-				}, {
-					data : 'fechaPeso',
+			}, {
+				data : 'fechaPeso',
 
-				} ],
-				"lengthChange" : true,
-				"searching" : true,
-				"ordering" : true,
-				"info" : true,
-				"autoWidth" : true,
-				'columnDefs' : [ {
-					'sortable' : false,
-					'searchable' : false,
-					'visible' : false,
-					'type' : 'num',
-					'targets' : [ 3 ]
-				}, {
-					'orderData' : [ 3 ],
-					'targets' : [ 1 ]
-				}, ],
-				"order" : [ [ 1, "desc" ] ]
-			});
-		} else {
-			miTabla.clear().draw();
-			miTabla.rows.add(datos); // Add new data
-			miTabla.columns.adjust().draw(); // Redraw the DataTable
-		}
+			} ],
+			"lengthChange" : true,
+			"searching" : true,
+			"ordering" : true,
+			"info" : true,
+			"autoWidth" : true,
+			'columnDefs' : [ {
+				'sortable' : false,
+				'searchable' : false,
+				'visible' : false,
+				'type' : 'num',
+				'targets' : [ 3 ]
+			}, {
+				'orderData' : [ 3 ],
+				'targets' : [ 1 ]
+			}, ],
+			"order" : [ [ 1, "desc" ] ]
+		});
+	} else {
+		miTabla.clear().draw();
+		miTabla.rows.add(datos); // Add new data
+		miTabla.columns.adjust().draw(); // Redraw the DataTable
+	}
 
 }

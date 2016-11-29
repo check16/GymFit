@@ -7,10 +7,12 @@ public class Grafico {
 
 	private List<String> etiquetas;
 	private List<String> valores;
+	private List<String> valores2;
 
 	public Grafico() {
 		etiquetas = new ArrayList<String>();
 		valores = new ArrayList<String>();
+		valores2 = new ArrayList<String>();
 	}
 
 	public List<String> getEtiquetas() {
@@ -28,4 +30,14 @@ public class Grafico {
 	public void setValores(List<String> valores) {
 		this.valores = valores;
 	}
+
+	public List<String> getValores2() {
+		return valores2;
+	}
+
+	public void setValores2(List<String> valores2) {
+		this.valores2 = valores2;
+	}
+	
+	
 }

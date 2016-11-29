@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="../fragments/head_fragment :: head (#{home.page.title})">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Header principal -->
+		<header th:replace="/layout/header_layout :: header"
+			class="main-header"></header>
+
+		<aside th:replace="/layout/aside_layout :: aside" class="main-sidebar">
+
+		</aside>
+
+		<!-- Wrapper del Contenido -->
+		<div class="content-wrapper">
+
+			<!-- Contenido Principal -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-success">
+							<div class="box-body">
+								<form id="formSeguimientoFuerza" class="form-horizontal">
+									<div class="form-group">
+										<label for="ejercicio" class="col-sm-3 control-label">Seleccione
+											ejercicio:</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="ejercicio"
+												id="ejercicioSelect2">
+												<option th:each="ejercicio : ${ejercicios}"
+													th:value="${ejercicio.idTipoEjercicio}"
+													th:text="${ejercicio.nombreEjercicio}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="ejercicio" class="col-sm-3 control-label">Rango
+											de fecha:</label>
+										<div class="col-sm-6">
+											<input name="rangoFecha" id="rangoFecha" readonly="readonly"
+												class="form-control input-sm pull-right" type="text"
+												placeholder="Rango de fecha...">
+										</div>
+									</div>
+									<div class="box-footer">
+										<button type="submit" class="btn btn-primary pull-right">Consultar</button>
+										<br>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-success" id="cajaBarras">
+						<div class="box-header with-border">
+								<h3 class="box-title">Máximo peso (Kg.) levantado en ejercicio</h3>
+
+								<div class="box-tools pull-right">
+									<button type="button" class="btn btn-box-tool"
+										data-widget="collapse" data-toggle="tooltip" title="Minimizar">
+										<i class="fa fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-box-tool"
+										data-widget="remove" data-toggle="tooltip" title="Eliminar">
+										<i class="fa fa-times"></i>
+									</button>
+								</div>
+							</div>
+						<div class="box-body" style="display: block;">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="chart">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</section>
+			<!-- /Contenido Principal -->
+		</div>
+		<!-- /Wrapper del Contenido -->
+
+		<!-- Footer Principal -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">Proyecto Final DAW</div>
+			<!-- Contenido Izquierda -->
+			<strong>Copyright &copy; 2016 <a href="#">Antonio
+					Sanchez Astudillo</a>.
+			</strong> Todos los derechos reservados.
+		</footer>
+
+	</div>
+	<!-- /Wrapper -->
+
+	<!-- Fragment con los scripts de la aplicacion -->
+	<div th:include="../fragments/scripts_fragment :: scripts"></div>
+	<script th:src="@{/js/seguimientoFuerza.js}"></script>
+	<script th:src="@{/ajax/ajaxSeguimientoFuerza.js}"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ public interface EntrenamientoDao {
 	public Entrenamiento findById(int id);
 	public List<Entrenamiento> findAll();
 	public List<Entrenamiento> findAllByIdUsuario(int id);
-	public List<Entrenamiento> findAllBetweenDate(Usuario usuario, Date fechaInicio, Date fechaFin);
+	public List<Entrenamiento> findAllBetweenDateAndEjercicio(Usuario usuario, Date fechaInicio, Date fechaFin, int idEjercicio);
 	public void update(Entrenamiento entrenamiento);
 	public void delete(Entrenamiento entrenamiento);	
 

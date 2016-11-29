@@ -8,6 +8,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -65,12 +67,6 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	}
 
 	@Override
-	public List<Entrenamiento> findAllBetweenDate(Usuario usuario, Date fechaInicio, Date fechaFin) {
-		// TODO crear metodo de EntrenamientoDAO para consultar entrenamientos entre fechas.
-		return null;
-	}
-
-	@Override
 	public void update(Entrenamiento entrenamiento) {
 		getSession().saveOrUpdate(entrenamiento);
 		
@@ -80,6 +76,25 @@ public class EntrenamientoDaoImpl implements EntrenamientoDao{
 	public void delete(Entrenamiento entrenamiento) {
 		getSession().delete(entrenamiento);
 		
+	}
+
+	@Override
+	public List<Entrenamiento> findAllBetweenDateAndEjercicio(Usuario usuario, Date fechaInicio, Date fechaFin,
+			int idEjercicio) {
+		Criteria crit = getSession().createCriteria(Entrenamiento.class);
+		crit.createAlias("usuario", "usuario");
+		crit.add(Restrictions.eq("usuario.idUsuario", usuario.getIdUsuario()));
+		crit.add(Restrictions.ge("fecha", fechaInicio));
+		crit.add(Restrictions.le("fecha", fechaFin));
+		crit.createAlias("ejercicios.tipoEjercicio", "ejercicioTipo");
+		crit.add(Restrictions.eq("ejercicioTipo.idTipoEjercicio", idEjercicio));
+		crit.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
+		crit.addOrder(Order.asc("fecha"));
+		final List<Entrenamiento> entrenamientos = new ArrayList<>();
+		for(final Object o : crit.list()) {
+			entrenamientos.add((Entrenamiento)o);
+		}
+		return entrenamientos;
 	}
 
 	
