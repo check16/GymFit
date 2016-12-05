@@ -18,6 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 
+/**
+ * Clase de configuracion de Hibernate
+ * @author antonio
+ *
+ */
 @Configuration
 @ComponentScan("com.asanast.gymfit.config")
 @PropertySource(value = { "classpath:hibernate.properties" })
@@ -27,6 +32,10 @@ public class HibernateConfig {
 	@Autowired
 	private Environment environment;
 	
+	/**
+	 * Bean de sessionFactory para la comunicacion con la BD mediante Hibernate
+	 * @return sessionFactory, la factoria de session.
+	 */
 	@Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -36,6 +45,10 @@ public class HibernateConfig {
         return sessionFactory;
      }
 	
+	/**
+	 * Bean de datasource con las propiedades de conexion a la base de datos.
+	 * @return dataSource, el datasource
+	 */
 	@Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -46,6 +59,11 @@ public class HibernateConfig {
         return dataSource;
     }
 	
+	/**
+	 * Bean de transaccion para Hibernate
+	 * @param sessionFactory
+	 * @return txManager el Hibernate Transaction Manager
+	 */
 	@Bean
 	@Autowired
 	public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
@@ -54,6 +72,10 @@ public class HibernateConfig {
 		return txManager;
 	}
 
+	/**
+	 * Metodo que nos permite obtener las propiedades de configuracion para Hibernate
+	 * @return properties, las propiedades de configuracion de Hibernate
+	 */
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));

@@ -22,15 +22,30 @@ import com.asanast.gymfit.service.EntrenamientoService;
 import com.asanast.gymfit.service.TipoEjercicioService;
 import com.asanast.gymfit.util.Utilidades;
 
+/**
+ * Controlador para la gestion de la Fuerza en la aplicacion
+ * @author antonio
+ */
 @Controller
 public class FuerzaController {
 	
+	/**
+	 * Propiedad que encapsula el servicio del Entrenamiento
+	 */
 	@Autowired
 	private EntrenamientoService entrenamientoService;
 	
+	/**
+	 * Propiedad que encapsula el servicio de los tipos de ejercicio
+	 */
 	@Autowired
 	private TipoEjercicioService tipoEjercicioService;
 	
+	/**
+	 * Metodo para la peticion de mostrar el seguimiento de la fuerza
+	 * @param model el modelo de la vista
+	 * @return la vista a mostrar
+	 */
 	@RequestMapping("/home/seguimientoFuerza")
 	public String irSeguimientoFuerza(Model model) {
 		model.addAttribute("activo", "fuerza");
@@ -38,6 +53,15 @@ public class FuerzaController {
 		return "seguimientoFuerza";
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de mostrar la evolucion de la fuerza por intervalo de tiempo
+	 * @param sesion la sesion
+	 * @param inicio fecha de inicio de la evolucion de la fuerza
+	 * @param fin fecha de fin de la evolucion de la fuerza
+	 * @param idEjercicio el id del ejercicio a mostrar la evolución
+	 * @return evolucionFuerza Grafico con la evolucion de la fuerza
+	 * @throws ParseException excepcion de conversion de la fecha
+	 */
 	@RequestMapping(value="/home/seguimientoPeso/evolucionFuerzaIntervalo", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public Grafico obtenerPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin, int idEjercicio) throws ParseException {

@@ -26,18 +26,38 @@ import com.asanast.gymfit.service.EjercicioService;
 import com.asanast.gymfit.service.EntrenamientoService;
 import com.asanast.gymfit.service.TipoEjercicioService;
 
+/**
+ * Controlador del entrenamiento
+ * @author antonio
+ *
+ */
 @Controller
 public class EntrenamientoController {
 
+	/**
+	 * Propiedad que encapsula el servicio de los entrenamientos
+	 */
 	@Autowired
 	private EntrenamientoService entrenamientoService;
 
+	/**
+	 * Propiedad que encapsula el servicio de los tipos de ejercicio
+	 */
 	@Autowired
 	private TipoEjercicioService tipoEjercicioService;
 	
+	/**
+	 * Propiedad que encapsula el servicio de los ejercicios
+	 */
 	@Autowired
 	private EjercicioService ejercicioService;
 
+	/**
+	 * Metodo para la peticion de redireccion a la vista de entrenamiento
+	 * @param sesion la sesion
+	 * @param model el modelo para la vista
+	 * @return la vista
+	 */
 	@RequestMapping("/home/entrenamiento")
 	public String irEntrenamiento(HttpSession sesion, Model model) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
@@ -51,6 +71,12 @@ public class EntrenamientoController {
 		}
 	}
 
+	/**
+	 * Metodo para la peticion que lleva a la vista de la actualizacion del entrenamiento seleccionado
+	 * @param idEntrenamiento el id del entrenamiento seleccionado
+	 * @param model el modelo para la vista 
+	 * @return el nombre de la vista
+	 */
 	@RequestMapping(value = "/home/entrenamiento/{id}/actualizar")
 	public String irActualizarEntrenamiento(@PathVariable("id") int idEntrenamiento, Model model) {
 		Entrenamiento entrenamiento = entrenamientoService.findById(idEntrenamiento);
@@ -65,6 +91,11 @@ public class EntrenamientoController {
 		}
 	}
 	
+	/**
+	 * Metodo para la peticion que muestra la vista para crear nuevos entrenamientos
+	 * @param model el modelo de la vista
+	 * @return el nombre de la vista
+	 */
 	@RequestMapping(value = "/home/entrenamiento/nuevoentrenamiento")
 	public String irNuevoEntrenamiento(Model model) {
 		model.addAttribute("tipoEjercicios", tipoEjercicioService.findAll());
@@ -73,6 +104,15 @@ public class EntrenamientoController {
 		return "nuevoEntrenamiento";
 	}
 	
+	/**
+	 * Metodo para le peticion de creacion de nuevos entrenamientos
+	 * @param entrenamiento el entrenamiento a crear
+	 * @param result el bindeo de los parametros del formulario para comprobar errores
+	 * @param sesion la sesion actual
+	 * @param model el modelo de la vista
+	 * @param ra atributos para la redireccion
+	 * @return la vista a mostrar
+	 */
 	@RequestMapping(value="/home/entrenamiento/crearentrenamiento")
 	public String crearNuevoEntrenamiento(@Valid @ModelAttribute("entrenamiento") Entrenamiento entrenamiento,
 			BindingResult result, HttpSession sesion, Model model, RedirectAttributes ra) {
@@ -94,6 +134,15 @@ public class EntrenamientoController {
 		
 	}
 
+	/**
+	 * Metodo para la peticion de actualizar el entrenamiento
+	 * @param entrenamiento el entrenamiento a actualizar
+	 * @param result el bindeo de los parametros del formulario para comprobar errores
+	 * @param sesion la sesion actual
+	 * @param model el modelo de la vista
+	 * @param ra atributos para la redireccion
+	 * @return la vista a mostrar
+	 */
 	@RequestMapping(value = "/home/entrenamiento/actualizar")
 	public String actualizarEntrenamiento(@Valid @ModelAttribute("entrenamiento") Entrenamiento entrenamiento,
 			BindingResult result, Model model, HttpSession sesion, RedirectAttributes ra) {
@@ -119,6 +168,11 @@ public class EntrenamientoController {
 		return "redirect:/home/entrenamiento/" + entrenamiento.getIdEntrenamiento() + "/actualizar";
 	}
 
+	/**
+	 * Metodo para la peticion ajax de eliminar un entrenamiento
+	 * @param idEntrenamiento el id del entrenamiento a eliminar
+	 * @return si se elimina o no el entrenamiento
+	 */
 	@RequestMapping(value = "/home/entrenamiento/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public boolean eliminarEntrenamiento(@PathVariable("id") int idEntrenamiento) {
@@ -132,6 +186,11 @@ public class EntrenamientoController {
 
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de eliminar un ejercicio del entrenamiento
+	 * @param idEjercicio el id del ejercicio a eliminar
+	 * @return si se elimina o no el ejercicio
+	 */
 	@RequestMapping(value = "/home/entrenamiento/ejercicio/{id}/eliminar", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public boolean eliminarEjercicio(@PathVariable("id") int idEjercicio) {
@@ -146,6 +205,10 @@ public class EntrenamientoController {
 
 	}
 
+	/**
+	 * Metodo para la peticion ajax de crear ejercicio el cual proporciona la lista con los ejercicios
+	 * @return ejercicios la lista de ejercicios
+	 */
 	@RequestMapping(value = "/home/entrenamiento/crearejercicio", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public List<TipoEjercicio> dameEjercicios() {

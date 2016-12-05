@@ -23,21 +23,40 @@ import com.asanast.gymfit.pojo.VO.PasswordForm;
 import com.asanast.gymfit.service.UsuarioService;
 import com.asanast.gymfit.validations.PasswordFormValidator;
 
+/**
+ * Controlador para el usuario
+ * @author antonio
+ */
 @Controller
-
 public class UsuarioController {
 	
+	/**
+	 * Propiedad que encapsula el validador del formulario de cambio de contraseña
+	 */
 	@Autowired
-    PasswordFormValidator passwordValidator;
+    private PasswordFormValidator passwordValidator;
 	
+	/**
+	 * Propiedad que encapsula el servicio de usuario
+	 */
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	/**
+	 * Propiedad que encapsula el encoder para la contraseña
+	 */
 	@Autowired
 	private BCryptPasswordEncoder bcpe;
 	
+	/**
+	 * Metodo para la peticion de registro de usuario
+	 * @param usuario el usuario a registrar
+	 * @param result el bindeo del formulario de registro
+	 * @param ra atributos para la redireccion
+	 * @return la vista
+	 */
 	@RequestMapping("/registrarse")
-	public String registrarse(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult result, Model model, RedirectAttributes ra) {
+	public String registrarse(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult result, RedirectAttributes ra) {
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("error", true);
 			ra.addFlashAttribute("mensaje", "Error al registrarse!");
@@ -51,6 +70,12 @@ public class UsuarioController {
 		return "redirect:registro";
 	}
 	
+	/**
+	 * Metodo para la petición de ir al perfil de usuario
+	 * @param model el modelo de la vista
+	 * @param sesion la sesion
+	 * @return la vista
+	 */
 	@RequestMapping(value="/home/perfil")
 	public String irPerfil(Model model, HttpSession sesion) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
@@ -61,8 +86,17 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
+	/**
+	 * Metodo para la peticion de actualizar datos del perfil de usuario
+	 * @param perfilForm el formulario del perfil de usuario
+	 * @param result el bindeo del formulario del perfil
+	 * @param ra atributos para la redireccion
+	 * @param sesion la sesion
+	 * @param model el modelo para la vista
+	 * @return la vista
+	 */
 	@RequestMapping(value="/home/perfil/actualizar", method = RequestMethod.POST)
-	public String actualizarPerfil(@Valid @ModelAttribute("usuario") Usuario perfilForm,BindingResult result, @ModelAttribute("passwordForm") PasswordForm pf, RedirectAttributes ra, HttpSession sesion, Model model) {
+	public String actualizarPerfil(@Valid @ModelAttribute("usuario") Usuario perfilForm,BindingResult result, RedirectAttributes ra, HttpSession sesion, Model model) {
 		if(result.hasErrors()) {
 			return "perfil";
 		}else {
@@ -77,6 +111,13 @@ public class UsuarioController {
 		}
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de modificacion de la contraseña de usuario
+	 * @param pf el formulario con los datos del cambio de contraseña
+	 * @param sesion la sesion
+	 * @param results el bindeo del formulario del cambio de contraseña
+	 * @return los errores del bindeo del cambio de contraseña
+	 */
  	@RequestMapping(value="/home/perfil/modificarclave", method = RequestMethod.POST)
  	@ResponseBody
 	public List<ObjectError> modificarClave(@Valid @ModelAttribute("passwordForm") PasswordForm pf,HttpSession sesion, BindingResult results) {

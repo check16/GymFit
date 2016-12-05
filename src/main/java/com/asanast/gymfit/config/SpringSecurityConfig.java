@@ -14,18 +14,33 @@ import com.asanast.gymfit.service.CustomUserDetailsService;
 import com.asanast.gymfit.util.CustomAuthenticationProvider;
 import com.asanast.gymfit.util.CustomAuthenticationSuccessHandler;
 
+/**
+ * Clase de configuración de Spring Security
+ * @author antonio
+ */
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	/**
+	 * Propiedad que implementa el sistema personalizado de autenticación a la aplicación
+	 */
 	@Autowired
 	CustomAuthenticationProvider customAuthenticationProvider;
 
+	/**
+	 * Metodo de configuracion global para Spring Security
+	 * @param auth el manjeador de la autenticación
+	 * @throws Exception
+	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(customAuthenticationProvider);
 	}
 
+	/**
+	 * Metodo de configuracion de de las peticiones y roles de Hibernate, así como el login y logout.
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.sessionManagement()
@@ -38,23 +53,39 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().csrf().and().exceptionHandling()
 				.accessDeniedPage("/403");
 	}
-
+	
+	/**
+	 * Bean de encode para la encriptacion
+	 * @return encoder, el encoder para la encriptación
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
 	}
 	
+	/**
+	 * Bean del proveedor de autenticacion personalizado
+	 * @return
+	 */
 	@Bean
 	public CustomAuthenticationProvider customAuthenticationProvider() {
 		return new CustomAuthenticationProvider();
 	}
 	
+	/**
+	 * Bean personalizado para la obtencion de los datos de usuario a partir de la implementacion de la interface UserDetailService
+	 * @return CustomUserDetailsService
+	 */
 	@Bean
 	public CustomUserDetailsService customUserDetailsService() {
 		return new CustomUserDetailsService();
 	}
 	
+	/**
+	 * Bean de autenticación satisfactoria
+	 * @return CustomAuthenticationSuccessHandler
+	 */
 	@Bean
 	@Autowired
 	public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {

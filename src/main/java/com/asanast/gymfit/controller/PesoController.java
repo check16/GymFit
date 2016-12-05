@@ -15,12 +15,25 @@ import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
 import com.asanast.gymfit.service.PesoService;
 
+/**
+ * Controlador para el Peso
+ * @author antonio
+ *
+ */
 @Controller
 public class PesoController {
 	
+	/**
+	 * Propiedad que encapsula el servicio del peso
+	 */
 	@Autowired
 	private PesoService pesoService;
 	
+	/**
+	 * Metodo de inicialización  del controlador para el peso
+	 * @param model el modelo para la vista
+	 * @param sesion la sesion
+	 */
 	@ModelAttribute
 	public void init(Model model, HttpSession sesion) {
 		Usuario usuario = (Usuario) sesion.getAttribute("usuario");
@@ -37,6 +50,11 @@ public class PesoController {
 		}
 	}
 	
+	/**
+	 * Metodo para la peticion de ir a la vista de registro del peso
+	 * @param model el modelo de la vista
+	 * @return la vista
+	 */
 	@RequestMapping("/home/registrarPeso")
 	public String irRegistrarPeso(Model model) {
 		model.addAttribute("activoPeso", "regPeso");
@@ -44,6 +62,15 @@ public class PesoController {
 		return "registrarPeso";
 	}
 	
+	/**
+	 * Metodo para la peticion de registrar un peso 
+	 * @param peso el peso a registrar
+	 * @param results encapsula el bindeo del formulario del peso
+	 * @param model el modelo de la vista
+	 * @param sesion la sesion
+	 * @param ra atributos para la redirección
+	 * @return la vista
+	 */
 	@RequestMapping("/home/registrarPeso/registrar")
 	public String registrarPeso(@Valid @ModelAttribute ("peso") Peso peso, BindingResult results,Model model, HttpSession sesion, RedirectAttributes ra) {
 		if(results.hasErrors()) {

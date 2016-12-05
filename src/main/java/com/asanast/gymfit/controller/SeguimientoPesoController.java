@@ -23,13 +23,25 @@ import com.asanast.gymfit.pojo.VO.PesoTabla.EstadoPeso;
 import com.asanast.gymfit.service.PesoService;
 import com.asanast.gymfit.util.Utilidades;
 
+/**
+ * Controlador para el seguimiento del peso
+ * @author antonio
+ */
 @Controller
 public class SeguimientoPesoController {
 	
+	/**
+	 * Propiedad que encapsula el servicio del peso
+	 */
 	@Autowired
 	private PesoService pesoService;
 	
 	
+	/**
+	 * Metodo para la peticion de ir a la vista del seguimiento del peso
+	 * @param model el modelo de la vista
+	 * @return la vista
+	 */
 	@RequestMapping("/home/seguimientoPeso")
 	public String irSeguimientoPeso(Model model) {
 		model.addAttribute("activo", "peso");
@@ -37,6 +49,12 @@ public class SeguimientoPesoController {
 		return "seguimientoPeso";
 	}
 	
+	/**
+	 * Metodo para la petición ajax de obtener la evolucion del peso X dias atrás del día actual.
+	 * @param sesion la sesion
+	 * @param dias numero de dias atrás sobre el día actual para el que se quiere conocer la evolucion del peso
+	 * @return evolucionPeso el grafico con los datos para la evolucion del peso
+	 */
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPeso", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public Grafico obtenerPesos(HttpSession sesion, @RequestParam("dias") int dias) {
@@ -50,6 +68,14 @@ public class SeguimientoPesoController {
 		return evolucionPeso;
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de evolucion del peso en un intervalo de tiempo
+	 * @param sesion la sesion
+	 * @param inicio fecha de inicio para conocer la evolucion del peso
+	 * @param fin fehca de fin para la evolucion del peso
+	 * @return evolucionPeso grafico con los datos de la evolución del peso
+	 * @throws ParseException excepcion de parseo de la fecha
+	 */
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoIntervalo", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public Grafico obtenerPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin) throws ParseException {
@@ -63,6 +89,13 @@ public class SeguimientoPesoController {
 		return evolucionPeso;
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de evolucion del peso en formato tabla X dias atrás del día actual.
+	 * @param sesion la sesion
+	 * @param dias numero de dias atrás sobre el día actual para el que se quiere conocer la evolucion del peso
+	 * @return pesosTabla los datos para mostrar la tabla con los pesos
+	 * @throws ParseException excepcion de parseo de la fecha 
+	 */
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoTabla", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public List<PesoTabla> obtenerTablaPesosTabla(HttpSession sesion, @RequestParam("dias") int dias) throws ParseException {
@@ -76,6 +109,14 @@ public class SeguimientoPesoController {
 		return pesosTabla;
 	}
 	
+	/**
+	 * Metodo para la peticion ajax de evolucion del peso en formato tabla en un intervalo de tiempo
+	 * @param sesion la sesion
+	 * @param inicio fecha de inicio del intervalo de tiempo para la evolucion del peso
+	 * @param fin fecha de fin del intervalo de tiempo para la evolucion del peso
+	 * @return pesosTabla objeto que encapsula los datos para mostrar en la tabla referente a los pesos
+	 * @throws ParseException excepcion de parseo de la fecha 
+	 */
 	@RequestMapping(value="/home/seguimientoPeso/evolucionPesoIntervaloTabla", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public List<PesoTabla> obtenerTablaPesosIntervaloDias(HttpSession sesion, @RequestParam("inicio") String inicio, String fin) throws ParseException {
@@ -90,6 +131,11 @@ public class SeguimientoPesoController {
 		return pesosTabla;
 	}
 	
+	/**
+	 * Metodo que encapsula el sistema para determinar si un usuario aumenta, disminuye o mantiene el peso
+	 * @param pesosTabla los datos de la tabla con el peso para mostrar
+	 * @return pesosTabla los datos de la tabla con el estado del peso actualizado
+	 */
 	private List<PesoTabla> compruebaAumentoPerdidaPeso(List<PesoTabla> pesosTabla) {
 		if(!pesosTabla.isEmpty()) {
 			for(int i=1; i<pesosTabla.size(); i++) {
