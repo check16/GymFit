@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.asanast.gymfit.pojo.Ejercicio;
 import com.asanast.gymfit.pojo.Entrenamiento;
-import com.asanast.gymfit.pojo.Grafico;
 import com.asanast.gymfit.pojo.Usuario;
+import com.asanast.gymfit.pojo.VO.Grafico;
 import com.asanast.gymfit.service.EntrenamientoService;
 import com.asanast.gymfit.service.TipoEjercicioService;
 import com.asanast.gymfit.util.Utilidades;

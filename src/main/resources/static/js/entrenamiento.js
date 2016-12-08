@@ -13,8 +13,8 @@ $("#agregarEjercicio").on("click", function(e) {
 				tr+="<option value='" + valor.idTipoEjercicio +"'>" + valor.nombreEjercicio + "</option>"
 			});
 			tr+="</select></td>";
-			tr+="<td><input step='0.01' required class='form-control' min=0 type='number'value='0'></td>";
-			tr+="<td><input step='1' required class='form-control' min=0 type='number'value='0'></td>";
+			tr+="<td><input step='0.01' required class='form-control' min=1 type='number'value='0'></td>";
+			tr+="<td><input step='1' required class='form-control' min=1 type='number'value='0'></td>";
 			tr+="<td><a class='btn btn-danger btn borrarEjercicio'><i class='fa fa-trash'></i> Eliminar</a></td>";
 			$('#tablaEjercicios > tbody:last-child').append(tr);
 			

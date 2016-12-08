@@ -14,23 +14,41 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Usuario;
 
-
+/**
+ * Clase repositorio de implementacion del DAO del Tipo de ejercicio
+ * @author antonio
+ */
 @Repository
 public class UsuarioDaoImpl implements UsuarioDao{
 	
+	/**
+	 * Propiedad que encapsula la factoria de sesion de Hibernate
+	 */
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Metodo getter para obtener la sesion actual a partir de la factoria de Hibernate.
+	 * @return la sesion actual
+	 */
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
+	/**
+	 * Metodo para guardar un usuario en la BD
+	 * @param usuario el usuaruio a almacenar en la BD
+	 */
 	@Override
 	@Transactional
 	public void save(Usuario usuario) {
 		getSession().save(usuario);	
 	}
 
+	/**
+	 * Metodo para buscar todos los usuarios en la BD
+	 * @return el conjunto de usuarios
+	 */
 	@Override
 	@Transactional
 	public List<Usuario> findAll() {
@@ -42,6 +60,11 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		return usuarios;
 	}
 
+	/**
+	 * Metodo para encontrar un usuario por su id
+	 * @param id el id del usuario a encontrar
+	 * @return el usuario encontrado
+	 */
 	@Override
 	@Transactional
 	public Usuario findById(int id) {
@@ -50,6 +73,11 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		return (Usuario) criteria.uniqueResult();
 	}
 
+	/**
+	 * Metodo para encontrar un usuario por su nombre de login
+	 * @param login el login a buscar
+	 * @return el usuario encontrado
+	 */
 	@Override
 	@Transactional
 	public Usuario findByLogin(String login) {
@@ -58,6 +86,10 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		return (Usuario) criteria.uniqueResult();
 	}
 
+	/**
+	 * Metodo para actualizar un usuario
+	 * @param usuario el usuario a actualizar
+	 */
 	@Override
 	@Transactional
 	public void update(Usuario usuario) {
@@ -65,6 +97,10 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 	}
 
+	/**
+	 * Metodo para borrar un usuario
+	 * @param usuario el usuario a borrar
+	 */
 	@Override
 	@Transactional
 	public void delete(Usuario usuario) {

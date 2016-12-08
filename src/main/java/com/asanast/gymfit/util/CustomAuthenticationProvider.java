@@ -11,18 +11,28 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.asanast.gymfit.service.CustomUserDetailsService;
-
+/**
+ * Clase para la implementacion del AuthenticationProvider para que se realice de forma personalizada
+ * @author antonio
+ */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
+	/**
+	 * Propiedad que encapsula el servicio del detail service
+	 */
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 	
+	/**
+	 * Propiedad que encapsula el encoder de la contraseña
+	 */
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
 
-
+	/**
+	 * Metodo que sobreescribe la authenticación personalizada del usuario en la aplicacion
+	 */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 				//Datos que proceden del formulario
@@ -41,6 +51,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 				}
 	}
 	
+	/**
+	 * Metodo que indica el soporte para la autenticacion
+	 */
 	@Override
 	public boolean supports(Class<?> authentication) {
 		return true;

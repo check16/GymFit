@@ -6,7 +6,10 @@ import org.springframework.validation.Validator;
 
 import com.asanast.gymfit.pojo.VO.PasswordForm;
 
-
+/**
+ * Clase validadora del cambio de password
+ * @author antonio
+ */
 @Component
 public class PasswordFormValidator implements Validator{
 
@@ -15,6 +18,9 @@ public class PasswordFormValidator implements Validator{
 		return true;
 	}
 
+	/**
+	 * Metodo que se encarga de llevar a cabo la validacion del cambio de contraseña
+	 */
 	@Override
 	public void validate(Object target, Errors errors) {
 		PasswordForm pf = (PasswordForm) target;
@@ -32,8 +38,6 @@ public class PasswordFormValidator implements Validator{
 		}
 		if(pf.getRepiteClave().length() < 4) {
 			errors.rejectValue("repiteClave","Debe tener 4 caracteres como mínimo");
-		}
-		
+		}	
 	}
-
 }

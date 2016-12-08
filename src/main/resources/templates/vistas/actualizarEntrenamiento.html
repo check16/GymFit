@@ -114,7 +114,7 @@
 													<td><input
 														th:field="*{ejercicios[__${status.index}__].idEjercicio}"
 														th:value="${ejercicio.idEjercicio}" type="hidden"
-														class="form-control"> <!-- Agregar en el select la propiedad a la que tiene q bindearse -->
+														class="form-control">
 														<select
 														th:field="*{ejercicios[__${status.index}__].tipoEjercicio.idTipoEjercicio}"
 														class="form-control select2" style="width: 100%;">
@@ -124,12 +124,12 @@
 																th:selected="${ejercicio.tipoEjercicio.idTipoEjercicio == tipoEjercicio.idTipoEjercicio}" />
 													</select>
 													<td><input
-														min=0 required step="0.01"
+														min=1 required step="0.01"
 														th:field="*{ejercicios[__${status.index}__].cargaMax}"
 														th:value="${ejercicio.cargaMax}" type="number"
 														class="form-control" placeholder="(Kg.)"></td>
 
-													<td><input min=0 required step="1"
+													<td><input min=1 required step="1"
 														th:field="*{ejercicios[__${status.index}__].totalRepeticiones}"
 														th:value="${ejercicio.totalRepeticiones}" type="number"
 														class="form-control" placeholder="Total Rep"></td>

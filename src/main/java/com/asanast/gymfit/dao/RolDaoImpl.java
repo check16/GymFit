@@ -14,17 +14,31 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.asanast.gymfit.pojo.Rol;
 
-
+/**
+ * Clase repositorio de implementacion del DAO de Rol
+ * @author antonio
+ */
 @Repository
 public class RolDaoImpl implements RolDao{
 	
+	/**
+	 * Propiedad que encapsula la factoria de sesion de Hibernate
+	 */
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Metodo getter para obtener la sesion actual a partir de la factoria de Hibernate.
+	 * @return la sesion actual
+	 */
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
+	/**
+	 * Metodo para guardar un rol en la BD
+	 * @param rol el rol a guardar
+	 */
 	@Override
 	public void save(Rol rol) {
 		getSession().save(rol);
@@ -32,6 +46,10 @@ public class RolDaoImpl implements RolDao{
 		
 	}
 
+	/**
+	 * Metodo para obtener todos los roles de la BD
+	 * @return el conjunto de roles
+	 */
 	@Override
 	@Transactional
 	public List<Rol> findAll() {
@@ -43,6 +61,11 @@ public class RolDaoImpl implements RolDao{
 		return rols;
 	}
 
+	/**
+	 * Metodo para encontrar un rol por su id
+	 * @param id el id del rol
+	 * @return el rol
+	 */
 	@Override
 	@Transactional
 	public Rol findById(int id) {
@@ -51,6 +74,11 @@ public class RolDaoImpl implements RolDao{
 		return (Rol) criteria.uniqueResult();
 	}
 
+	/**
+	 * Metodo para encontrar un rol por su nombre
+	 * @param nombreRol el nombre del rol
+	 * @return el rol
+	 */
 	@Override
 	@Transactional
 	public Rol findByNombreRol(String nombreRol) {
@@ -59,6 +87,10 @@ public class RolDaoImpl implements RolDao{
 		return (Rol) criteria.uniqueResult();
 	}
 
+	/**
+	 * Metodo para actualizar el rol
+	 * @param rol el rol a actualizar
+	 */
 	@Override
 	@Transactional
 	public void update(Rol rol) {
@@ -66,6 +98,10 @@ public class RolDaoImpl implements RolDao{
 		
 	}
 
+	/**
+	 * Metodo para borrar un rol
+	 * @param rol el rol a borrar
+	 */
 	@Override
 	@Transactional
 	public void delete(Rol rol) {

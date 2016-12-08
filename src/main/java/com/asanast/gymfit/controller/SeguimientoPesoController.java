@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.asanast.gymfit.pojo.Grafico;
 import com.asanast.gymfit.pojo.Peso;
 import com.asanast.gymfit.pojo.Usuario;
+import com.asanast.gymfit.pojo.VO.Grafico;
 import com.asanast.gymfit.pojo.VO.PesoTabla;
 import com.asanast.gymfit.pojo.VO.PesoTabla.EstadoPeso;
 import com.asanast.gymfit.service.PesoService;
