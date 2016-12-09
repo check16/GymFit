@@ -1,5 +1,16 @@
+/**
+ * Variable global de la fecha de inicio
+ */
 var fechaInicio;
+
+/**
+ * Variable global de la fecha de fin
+ */
 var fechaFin;
+
+/**
+ * Cuando la pagina esté cargada se inicializa el plugin de rango de fechas DateRangePicker
+ */
 $(document).ready(function() {
 	fechaInicio = moment().subtract(29, 'days').format("DD/MM/YYYY");
 	fechaFin = moment().format("DD/MM/YYYY");
@@ -50,8 +61,10 @@ $(document).ready(function() {
 		
     });
 
+/**
+ * Funcion para el evento de click para filtrar por fecha la evolucion del peso
+ */
 $('#btnFiltrar').on("click", function() {
-	console.log("Fecha de inicio: " + fechaInicio + " || Fecha fin: " + fechaFin);
 	evolucionPesoUsuarioIntervalodias(fechaInicio, fechaFin);
 })
 

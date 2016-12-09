@@ -1,3 +1,7 @@
+/**
+ * Cuando la página esté preparada se crea el DataTable para la tabla de aprender los ejercicios.
+ * Para ello se usa tambien FancyBox en las imagenes y videos
+ */
 $(document).ready(function() {
 	miTabla = $('#tablaEjercicios').DataTable({
 

@@ -1,7 +1,14 @@
+/**
+ * Cuando la pagina esté preparada asignamos la funcion de la 
+ * modificacion de la clave al evento de submit del formulario
+ */
 $(document).ready(function() {
 	modificarClave();
 });
 
+/**
+ * Metodo para la peticion ajax de modificacion de la clave de usuario
+ */
 function modificarClave() {
 	$("#formClave").submit(function(event) {
 		event.preventDefault();

@@ -1,4 +1,14 @@
+/**
+ * Variable para el color generado del borde de la grafica de barras.
+ */
 var colorGeneradoBorde;
+
+/**
+ * Funcion para la peticion ajax de evolucion de la Fuerza en un intervalo de tiempo
+ * @param inicio la fecha de inicio
+ * @param fin la fecha de fin
+ * @returns
+ */
 function evolucionFuerzaUsuarioIntervalodias(inicio, fin) {
 
 	$.ajax({
@@ -15,6 +25,12 @@ function evolucionFuerzaUsuarioIntervalodias(inicio, fin) {
 	});
 }
 
+/**
+ * Funcion para procesar la respuesta de la peticion ajax de 
+ * la evolucion de la fuerza mediante la creacion de un grafico de barras
+ * @param respuesta
+ * @returns
+ */
 function procesarGraficoBarras(respuesta) {
 	$('#cajaBarras').show();
 	if (respuesta.valores.length == 0) {
@@ -91,6 +107,11 @@ function procesarGraficoBarras(respuesta) {
 	}
 }
 
+/**
+ * Funcion para generar colores aleatorios Rgba para las diferentes barras de la grafica
+ * @param valores los valores de la grafica para determinar cuantos colores se tienen que generar
+ * @returns colores, el array de colores Rgba
+ */
 function generarColoresRgba(valores) {
 	var r;
 	var g;

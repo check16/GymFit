@@ -1,5 +1,17 @@
+/**
+ * Variable global con la fecha de inicio
+ */
 var fechaInicio;
+
+/**
+ * Variable global con la fecha de fin
+ */
 var fechaFin;
+
+/**
+ * Cuando la pagina este preparada se prepara la funcion de mostrar el seguimietno de la fuerza
+ * y se inicializa el plugin select2
+ */
 $(document).ready(function() {
 	mostrarSeguimientoFuerza();
 	$('#ejercicioSelect2').select2();
@@ -52,6 +64,9 @@ $(document).ready(function() {
 		
     });
 
+/**
+ * Funcion para mostar el seguimiento de la fuerza al enviar el formulario
+ */
 function mostrarSeguimientoFuerza() {
 	$('#cajaBarras').hide();
 	$("#formSeguimientoFuerza").submit(function(event) {

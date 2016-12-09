@@ -1,7 +1,13 @@
+/**
+ * Cuando el documento este preparado se inicializa el plugin select2 de los diferentes input 'Select'
+ */
 $(document).ready(function() {
 	$('#tablaEjercicios tbody tr').find('select').select2();
 });
 
+/**
+ * Funcion para agregar un ejercicio al entrenamiento mediante una peticion ajax
+ */
 $("#agregarEjercicio").on("click", function(e) {
 	$.ajax({
 		url : "/gymfit/home/entrenamiento/crearejercicio",
@@ -25,6 +31,11 @@ $("#agregarEjercicio").on("click", function(e) {
 	
 });
 
+/**
+ * Funcion para modificar los indices de las tablas para reajustar los valores de los name
+ * para el envio al servidor
+ * @returns
+ */
 function modificarIndicesTabla() {
 	$('#tablaEjercicios tr').each(function (i) {
 		var indice = i-1;
@@ -41,6 +52,9 @@ function modificarIndicesTabla() {
 	
 }
 
+/**
+ * Funcion para borrar un ejercicio creado
+ */
 $(document).on('click','.borrarEjercicio', function(){
     $(this).parents('tr').remove();
     modificarIndicesTabla();

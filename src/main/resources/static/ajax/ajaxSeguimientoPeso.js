@@ -1,4 +1,13 @@
+/**
+ * Variable global con la tabla para el DataTable
+ */
 var miTabla;
+
+/**
+ * Cuando el documento este cargado, se realizan las funciones de
+ * mostrar el grafico de la evolucion del peso de los últimos 30 días y 
+ * de la tabla
+ */
 $(document).ready(
 		function() {
 			evolucionPesoUsuariodias(30);
@@ -12,6 +21,10 @@ $(document).ready(
 
 		});
 
+/**
+ * Funcion para la peticion de la evolucion gráfica del peso del usuario X dias antes del dia actual
+ * @param dias el numero de dias antes del dia actual para la evolucion del peso
+ */
 function evolucionPesoUsuariodias(dias) {
 
 	$.ajax({
@@ -26,6 +39,10 @@ function evolucionPesoUsuariodias(dias) {
 	});
 }
 
+/**
+ * Funcion para la peticion de la evolucion del peso del usuario X dias antes del dia actual para la tabla
+ * @param dias el numero de dias antes del dia actual para la evolucion del peso
+ */
 function evolucionPesoUsuarioTabla(dias) {
 	$.ajax({
 		url : "/gymfit/home/seguimientoPeso/evolucionPesoTabla",
@@ -39,6 +56,10 @@ function evolucionPesoUsuarioTabla(dias) {
 	});
 }
 
+/**
+ * Funcion para la peticion de la evolucion del peso del usuario X dias antes del dia actual para la tabla
+ * @param dias el numero de dias antes del dia actual para la evolucion del peso
+ */
 function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 
 	$.ajax({
@@ -66,6 +87,10 @@ function evolucionPesoUsuarioIntervalodias(inicio, fin) {
 	});
 }
 
+/**
+ * Metodo para procesar el Grafico de la evolucion del peso
+ * @param respuesta la respuesta ajax con los datos para el grafico
+ */
 function procesarGrafico(respuesta) {
 	if (respuesta.valores.length == 0) {
 		$(".chart")
@@ -130,6 +155,10 @@ function procesarGrafico(respuesta) {
 	}
 }
 
+/**
+ * Funcion para procesar la tabla con los datos de la respuesta ajax
+ * @param datos los datos para generar la tabla.
+ */
 function procesarTabla(datos) {
 	if (!$.fn.DataTable.isDataTable('#dataTable')) {
 		miTabla = $('#dataTable').DataTable({
@@ -182,8 +211,8 @@ function procesarTabla(datos) {
 		});
 	} else {
 		miTabla.clear().draw();
-		miTabla.rows.add(datos); // Add new data
-		miTabla.columns.adjust().draw(); // Redraw the DataTable
+		miTabla.rows.add(datos);
+		miTabla.columns.adjust().draw();
 	}
 
 }

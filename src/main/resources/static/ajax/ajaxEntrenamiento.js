@@ -1,3 +1,7 @@
+/**
+ * Cuando la página este lista se preparan las llamadas a las funciones de 
+ * eliminar entreno y ejercicios así como el dataTable
+ */
 $(document).ready(function() {
 	eliminarEntreno();
 	eliminarEjercicio();
@@ -36,6 +40,10 @@ $(document).ready(function() {
 	});
 });
 
+/**
+ * Funcion para eliminar un entrenamiento mediante peticion ajax y el uso de Sweet alert
+ * @returns mensaje de Sweet Alert con la información de si se borra o no
+ */
 function eliminarEntreno() {
 	$(".eliminarEntreno").click(function(event) {
 		event.preventDefault();
@@ -68,6 +76,10 @@ function eliminarEntreno() {
 	});
 }
 
+/**
+ * Funcion para la peticion ajax de eliminar un ejercicio
+ * @returns mensaje de Sweet alert con la informacion de la eliminacion
+ */
 function eliminarEjercicio() {
 	$(".eliminarEjercicio").click(function(event) {
 		event.preventDefault();

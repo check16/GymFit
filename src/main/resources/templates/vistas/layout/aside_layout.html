@@ -6,10 +6,10 @@
 <body>
 	<aside th:fragment="aside" class="main-sidebar">
 
-		<!-- sidebar: style can be found in sidebar.less -->
+		
 		<section class="sidebar">
 
-			<!-- Sidebar user panel (optional) -->
+			<!-- Sidebar -->
 			<div class="user-panel">
 				<div class="pull-left image">
 					<img th:src="@{'/img/user-icon.png'}"
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 
-			<!-- Sidebar Menu -->
+			<!-- Menu Sidebar -->
 			<ul class="sidebar-menu">
 				<li class="header">MENU PRINCIPAL</li>
 
@@ -55,9 +55,9 @@
 				<li th:class="${activo == 'fuerza'} ? 'active' : ''"><a
 					th:href="@{/home/seguimientoFuerza}"><i class="fa fa-hand-rock-o"></i><span>Seguimiento Fuerza</span></a></li>
 			</ul>
-			<!-- /.sidebar-menu -->
+			<!-- /Menu Sidebar -->
 		</section>
-		<!-- /.sidebar -->
+		<!-- /Sidebar -->
 	</aside>
 </body>
 </html>
