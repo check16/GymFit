@@ -46,5 +46,13 @@ public interface UsuarioDao {
 	 * Metodo para borrar un usuario
 	 * @param usuario el usuario a borrar
 	 */
-	public void delete(Usuario usuario);	
+	public void delete(Usuario usuario);
+	
+	/**
+	 * Metodo para comprobar si existe un usuario con un login e email
+	 * @param login el login del usuario
+	 * @param email el email del usuario
+	 * @return si existe o no
+	 */
+	public boolean existsUsuario(Usuario usuario);
 }

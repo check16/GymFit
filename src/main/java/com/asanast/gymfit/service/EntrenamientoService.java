@@ -26,10 +26,8 @@ public class EntrenamientoService {
 	/**
 	 * Metodo que guarda un entrenamiento en la BD
 	 * 
-	 * @param entrenamiento
-	 *            el entrenamiento a guardar
-	 * @param usuario
-	 *            el usuario del entrenamiento
+	 * @param entrenamiento el entrenamiento a guardar
+	 * @param usuario el usuario del entrenamiento
 	 */
 	public void save(Entrenamiento entrenamiento, Usuario usuario) {
 		entrenamiento.setUsuario(usuario);

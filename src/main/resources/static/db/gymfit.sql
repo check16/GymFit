@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `gymfit` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `gymfit`;
 -- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: gymfit
@@ -18,8 +20,7 @@
 --
 -- Table structure for table `ejercicio`
 --
-CREATE DATABASE gymfit;
-USE gymfit;
+
 DROP TABLE IF EXISTS `ejercicio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -32,6 +33,7 @@ CREATE TABLE `ejercicio` (
   PRIMARY KEY (`idEjercicio`),
   KEY `fk_ejercicio_entrenamiento1_idx` (`idEntrenamiento`),
   KEY `fk_ejercicio_tipo_ejercicio1_idx` (`idTipoEjercicio`),
+  CONSTRAINT `fk_ejercicio_entrenamiento` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ejercicio_tipo_ejercicio1` FOREIGN KEY (`idTipoEjercicio`) REFERENCES `tipo_ejercicio` (`idTipoEjercicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -173,7 +175,7 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_usuario_rol_idx` (`idRol`),
   CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +184,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (13,'check16','$2a$10$igtgNw42Ul.EjntzHhxY1eVOVdoExQ8Tyi7HeKV9Xybpymht.U7N6','antonio.san.87@hotmail.com',29,183,'user-icon.png',1,'2016-12-12','Antonio Sánchez');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -194,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-12  9:33:42
+-- Dump completed on 2016-12-12 10:28:13

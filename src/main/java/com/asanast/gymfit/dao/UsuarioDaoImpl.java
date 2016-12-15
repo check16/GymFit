@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -106,6 +107,27 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	public void delete(Usuario usuario) {
 		getSession().delete(usuario);
 		
+	}
+
+	/**
+	 * Metodo para comprobar si existe un usuario con un login e email
+	 * @param login el login del usuario
+	 * @param email el email del usuario
+	 * @return si existe o no
+	 */
+	@Override
+	@Transactional
+	public boolean existsUsuario(Usuario usuario) {
+		Criteria criteria = getSession().createCriteria(Usuario.class);
+		Criterion rest1= Restrictions.and(Restrictions.eq("login", usuario.getLogin()));
+		Criterion rest2= Restrictions.and(Restrictions.eq("email", usuario.getEmail()));
+		criteria.add(Restrictions.or(rest1, rest2));
+		Usuario usr = (Usuario) criteria.uniqueResult();
+		if(usr != null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

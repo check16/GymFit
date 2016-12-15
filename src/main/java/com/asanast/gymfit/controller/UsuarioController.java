@@ -59,8 +59,12 @@ public class UsuarioController {
 	public String registrarse(@ModelAttribute("usuario") @Valid Usuario usuario, BindingResult result, RedirectAttributes ra) {
 		if(result.hasErrors()) {
 			ra.addFlashAttribute("error", true);
-			ra.addFlashAttribute("mensaje", "Error al registrarse!");
+			ra.addFlashAttribute("mensaje", "Compruebe los campos");
 			return "registro";
+		}else if(usuarioService.existsUsuario(usuario)) {
+			ra.addFlashAttribute("error", true);
+			ra.addFlashAttribute("mensaje", "El login o email ya existe!");
+			return "redirect:registro";
 		}
 		usuario.setFechaRegistro(new Date());
 		usuario.setRutaFoto("user-icon.png");

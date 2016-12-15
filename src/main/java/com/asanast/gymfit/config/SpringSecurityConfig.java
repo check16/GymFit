@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.asanast.gymfit.service.CustomUserDetailsService;
 import com.asanast.gymfit.util.CustomAuthenticationProvider;
@@ -54,24 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.accessDeniedPage("/403");
 	}
 	
-	/**
-	 * Bean de encode para la encriptacion
-	 * @return encoder, el encoder para la encriptación
-	 */
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
-	}
-	
-	/**
-	 * Bean del proveedor de autenticacion personalizado
-	 * @return
-	 */
-	@Bean
-	public CustomAuthenticationProvider customAuthenticationProvider() {
-		return new CustomAuthenticationProvider();
-	}
+
 	
 	/**
 	 * Bean personalizado para la obtencion de los datos de usuario a partir de la implementacion de la interface UserDetailService
@@ -91,5 +73,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
 		return new CustomAuthenticationSuccessHandler();
 	}
+	
+	
 
 }

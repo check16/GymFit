@@ -88,4 +88,8 @@ public class UsuarioService {
 	public void delete(Usuario usuario) {
 		usuarioDao.delete(usuario);
 	}
+	
+	public boolean existsUsuario(Usuario usuario) {
+		return usuarioDao.existsUsuario(usuario);
+	}
 }

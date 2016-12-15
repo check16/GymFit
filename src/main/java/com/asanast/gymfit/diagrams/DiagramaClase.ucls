@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.13" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="com.asanast.gymfit.config.SpringSecurityConfig" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/config/SpringSecurityConfig.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="149" width="409" x="4777" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.asanast.gymfit.config.HibernateConfig" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/config/HibernateConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="408" x="469" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.asanast.gymfit.config.BeanConfig" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/config/BeanConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="329" x="1982" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.asanast.gymfit.controller.PesoController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/PesoController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="131" width="409" x="5226" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.asanast.gymfit.controller.EntrenamientoController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/EntrenamientoController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="221" width="516" x="4015" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.asanast.gymfit.controller.SeguimientoPesoController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/SeguimientoPesoController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="185" width="396" x="6029" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.asanast.gymfit.controller.UsuarioController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/UsuarioController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="167" width="427" x="3875" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.asanast.gymfit.controller.EjerciciosController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/EjerciciosController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="95" width="192" x="3305" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.asanast.gymfit.controller.IdrController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/IdrController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="185" width="314" x="5675" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.asanast.gymfit.controller.FuerzaController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/FuerzaController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="113" width="340" x="3635" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.asanast.gymfit.controller.InicioController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/InicioController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="113" width="134" x="3431" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.asanast.gymfit.controller.LoginController" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/controller/LoginController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="167" width="386" x="1556" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="13" language="java" name="com.asanast.gymfit.dao.EjercicioDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/EjercicioDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="238" x="4775" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="14" language="java" name="com.asanast.gymfit.dao.RolDaoImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/RolDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="185" x="3206" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="15" language="java" name="com.asanast.gymfit.dao.PesoDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/PesoDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="263" x="5523" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="16" language="java" name="com.asanast.gymfit.dao.PesoDaoImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/PesoDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="293" width="263" x="5372" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="17" language="java" name="com.asanast.gymfit.dao.UsuarioDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/UsuarioDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3673" y="1791"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="com.asanast.gymfit.dao.EntrenamientoDaoImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/EntrenamientoDaoImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4541" y="1217"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.asanast.gymfit.dao.UsuarioDaoImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/UsuarioDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="185" x="3716" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="20" language="java" name="com.asanast.gymfit.dao.EntrenamientoDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/EntrenamientoDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="393" x="4342" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="21" language="java" name="com.asanast.gymfit.dao.RolDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/RolDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3290" y="1806"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="22" language="java" name="com.asanast.gymfit.dao.TipoEjercicioImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/TipoEjercicioImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2791" y="1247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.asanast.gymfit.dao.EjercicioDaoImpl" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/EjercicioDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4902" y="1213"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="com.asanast.gymfit.dao.TipoEjercicioDao" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/dao/TipoEjercicioDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2800" y="1025"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="com.asanast.gymfit.exceptions.GlobalExcepcionHandler" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/exceptions/GlobalExcepcionHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="95" width="196" x="917" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="26" language="java" name="com.asanast.gymfit.pojo.VO.IdrForm.Sexo" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/IdrForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="129" x="2815" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="27" language="java" name="com.asanast.gymfit.pojo.VO.PesoTabla" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/PesoTabla.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="311" width="196" x="6465" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="28" language="java" name="com.asanast.gymfit.pojo.VO.PesoTabla.EstadoPeso" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/PesoTabla.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="167" width="151" x="6465" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="29" language="java" name="com.asanast.gymfit.pojo.Entrenamiento" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/Entrenamiento.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="401" width="230" x="2391" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.asanast.gymfit.pojo.VO.Grafico" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/Grafico.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="174" x="2351" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.asanast.gymfit.pojo.Rol" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/Rol.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="311" width="182" x="2169" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.asanast.gymfit.pojo.TipoEjercicio" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/TipoEjercicio.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3074" y="185"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.asanast.gymfit.pojo.Peso" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/Peso.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="257" width="180" x="1949" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.asanast.gymfit.pojo.VO.IdrForm" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/IdrForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="347" width="160" x="2565" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.asanast.gymfit.pojo.Ejercicio" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/Ejercicio.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="347" width="281" x="2984" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.asanast.gymfit.pojo.VO.PasswordForm" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/PasswordForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="159" x="1357" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="37" language="java" name="com.asanast.gymfit.pojo.VO.IdrForm.Objetivo" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/IdrForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="210" x="2565" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="38" language="java" name="com.asanast.gymfit.pojo.VO.IdrForm.Actividad" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/VO/IdrForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="146" x="2379" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="39" language="java" name="com.asanast.gymfit.pojo.Usuario" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/pojo/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="743" width="247" x="2169" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="com.asanast.gymfit.service.RolService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/RolService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="166" x="3000" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="com.asanast.gymfit.service.UsuarioService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/UsuarioService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="221" width="245" x="3431" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="com.asanast.gymfit.service.CustomUserDetailsService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/CustomUserDetailsService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="95" width="230" x="3605" y="811"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="com.asanast.gymfit.service.EjercicioService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/EjercicioService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4739" y="479"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="com.asanast.gymfit.service.EntrenamientoService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/EntrenamientoService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="203" width="442" x="4015" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="com.asanast.gymfit.service.PesoService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/PesoService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="257" width="332" x="5675" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="com.asanast.gymfit.service.TipoEjercicioService" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/service/TipoEjercicioService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3621" y="538"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="com.asanast.gymfit.util.Constantes" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/util/Constantes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="164" x="1153" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="com.asanast.gymfit.util.Utilidades" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/util/Utilidades.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="197" x="232" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="com.asanast.gymfit.util.CustomAuthenticationProvider" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/util/CustomAuthenticationProvider.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="131" width="279" x="5053" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="com.asanast.gymfit.util.CustomAuthenticationSuccessHandler" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/util/CustomAuthenticationSuccessHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3205" y="1077"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="com.asanast.gymfit.validations.PasswordFormValidator" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/validations/PasswordFormValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="113" width="164" x="3941" y="1252"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="com.asanast.gymfit.GymfitDawApplication" project="gymfit-daw" 
+    file="/gymfit-daw/src/main/java/com/asanast/gymfit/GymfitDawApplication.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="151" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="53">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="54" name="tipoEjercicio"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="57" name="entrenamientos"/>      
+      <multiplicity id="58" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="60" name="ejercicioDao"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="63" name="estadoPeso"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="66" name="ejercicioService"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="69" name="pesos"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="72" name="usuarioDao"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="75" name="ejercicios"/>      
+      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="77">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <association id="78">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="79" name="pesoService"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="82" name="entrenamientoDao"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="85" name="objetivo"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <bendpoint x="3329" y="391"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="88" name="tipoEjercicioService"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="91" name="usuarioService"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="94" name="entrenamientoService"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="97" name="rolDao"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="99">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <nesting id="100">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="28"/>  
+  </nesting>  
+  <association id="101">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="102" name="pesoService"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="105" name="ejercicios"/>      
+      <multiplicity id="106" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="107">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="37"/>  
+  </nesting>  
+  <association id="108">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="109" name="usuarios"/>      
+      <multiplicity id="110" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <bendpoint x="4486" y="676"/>    
+    <bendpoint x="3905" y="764"/>    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="112" name="customUserDetailsService"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="115" name="usuario"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="118" name="customAuthenticationProvider"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="120">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="121">    
+    <bendpoint x="3753" y="402"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="122" name="tipoEjercicioService"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="125" name="sexo"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="128" name="usuario"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <bendpoint x="3635" y="98"/>    
+    <bendpoint x="3591" y="134"/>    
+    <bendpoint x="3500" y="270"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="131" name="tipoEjercicioService"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="134" name="usuarioService"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="137" name="pesoService"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="139">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="38"/>  
+  </nesting>  
+  <association id="140">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="141" name="actividad"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="143">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <association id="144">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="145" name="rolDao"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="147">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <association id="148">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="149" name="usuarioService"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="152" name="passwordValidator"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="154">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <association id="155">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="156" name="usuarioService"/>      
+      <multiplicity id="157" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="158">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="159">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="160" name="entrenamiento"/>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="163" name="entrenamientoService"/>      
+      <multiplicity id="164" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="166" name="pesoDao"/>      
+      <multiplicity id="167" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="168">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="169" name="rol"/>      
+      <multiplicity id="170" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <bendpoint x="3254" y="836"/>    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="172" name="tipoEjercicioDao"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
