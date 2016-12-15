@@ -35,7 +35,7 @@ CREATE TABLE `ejercicio` (
   KEY `fk_ejercicio_tipo_ejercicio1_idx` (`idTipoEjercicio`),
   CONSTRAINT `fk_ejercicio_entrenamiento` FOREIGN KEY (`idEntrenamiento`) REFERENCES `entrenamiento` (`idEntrenamiento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ejercicio_tipo_ejercicio1` FOREIGN KEY (`idTipoEjercicio`) REFERENCES `tipo_ejercicio` (`idTipoEjercicio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `ejercicio` (
 
 LOCK TABLES `ejercicio` WRITE;
 /*!40000 ALTER TABLE `ejercicio` DISABLE KEYS */;
+INSERT INTO `ejercicio` VALUES (1,95.00,5,1,1),(2,120.00,5,1,5),(3,127.50,5,2,5),(4,100.00,5,2,4),(5,90.00,5,2,6),(6,115.00,5,2,7),(7,135.00,5,3,5),(8,26.00,8,3,3),(9,97.00,5,3,4),(10,120.00,5,3,7),(11,110.00,5,4,5),(12,90.00,5,4,1),(13,115.00,5,5,5),(14,97.00,5,5,4),(15,70.00,8,5,6),(16,26.00,5,5,3),(17,130.00,5,6,5),(18,110.00,5,6,7),(19,120.00,5,6,2),(20,80.00,8,6,1);
 /*!40000 ALTER TABLE `ejercicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +64,7 @@ CREATE TABLE `entrenamiento` (
   PRIMARY KEY (`idEntrenamiento`),
   KEY `fk_entrenamiento_usuario1_idx` (`idUsuario`),
   CONSTRAINT `fk_entrenamiento_usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +73,7 @@ CREATE TABLE `entrenamiento` (
 
 LOCK TABLES `entrenamiento` WRITE;
 /*!40000 ALTER TABLE `entrenamiento` DISABLE KEYS */;
+INSERT INTO `entrenamiento` VALUES (1,'Rutina FullBody Día 1','2016-12-12','Primer dia de la rutina FullBody 5x5 para ganancia de fuerza.',13),(2,'Rutina FullBody Día 2','2016-12-14','Segundo día de la rutina FullBody 5x5 para la ganancia de fuerza.',13),(3,'Rutina FullBody Día 3','2016-12-16','Tercer día de la rutina FullBody 5x5 para la ganancia de fuerza.',13),(4,'Rutina FullBody Día 1','2016-12-05','Primer dia de la rutina FullBody 5x5 para ganancia de fuerza.',13),(5,'Rutina FullBody día 2','2016-12-07','Segundo día de la rutina FullBody 5x5 para la ganancia de fuerza.',13),(6,'Rutina FullBody día 3','2016-12-09','Tercer día de la rutina FullBody 5x5 para la ganancia de fuerza.',13);
 /*!40000 ALTER TABLE `entrenamiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,6 +100,7 @@ CREATE TABLE `peso` (
 
 LOCK TABLES `peso` WRITE;
 /*!40000 ALTER TABLE `peso` DISABLE KEYS */;
+INSERT INTO `peso` VALUES (79.9,'2016-10-31',13),(81.8,'2016-11-07',13),(81.0,'2016-11-14',13),(82.0,'2016-11-21',13),(82.5,'2016-11-28',13),(83.0,'2016-12-05',13),(83.0,'2016-12-12',13),(82.0,'2016-12-13',13),(82.3,'2016-12-15',13);
 /*!40000 ALTER TABLE `peso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-12 10:28:13
+-- Dump completed on 2016-12-15 13:47:37
